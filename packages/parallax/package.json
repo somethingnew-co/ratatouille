@@ -1,0 +1,32 @@
+{
+  "name": "@stnew/parallax",
+  "version": "0.1.0",
+  "description": "React components to create parallax scroll effects for banners, images or any other DOM elements.",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "transpile": "babel src -d dist --ignore '**/*.spec.js,**/*.stories.js'",
+    "jest": "jest --coverage --verbose --color"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
+    }
+  },
+  "jest": {
+    "setupFiles": [
+      "../../jest.setup.js"
+    ]
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  }
+}
