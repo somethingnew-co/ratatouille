@@ -1,17 +1,17 @@
 {
-  "name": "@stnew/parallax",
+  "name": "@stnew/ontentful-proxy",
   "version": "0.1.0",
-  "description": "React components to create parallax scroll effects for banners, images or any other DOM elements.",
+  "description": "A contentful proxy middleware",
   "main": "dist/index.js",
   "module": "src/index.js",
   "scripts": {
-    "transpile": "babel src -d dist --ignore '**/*.spec.js,**/*.stories.js'",
     "jest": "jest --coverage --verbose --color"
   },
   "babel": {
     "presets": [
       "@babel/preset-env",
-      "@babel/preset-react"
+      "@babel/preset-react",
+      "next/babel"
     ],
     "env": {
       "test": {
@@ -27,6 +27,11 @@
     ]
   },
   "dependencies": {
-    "prop-types": "^15.7.2"
+    "contentful": "^7.3.0",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0"
   }
 }
