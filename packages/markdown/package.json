@@ -4,6 +4,10 @@
   "description": "A markdown parsing React component",
   "main": "dist/index.js",
   "module": "src/index.js",
+  "license": {
+    "type": "MIT",
+    "url": "https://www.opensource.org/licenses/mit-license.php"
+  },
   "scripts": {
     "transpile": "babel src -d dist --ignore '**/*.spec.js,**/*.stories.js'",
     "test": "jest --coverage --verbose --color"
@@ -28,5 +32,6 @@
   },
   "dependencies": {
     "commonmark": "^0.28.1"
-  }
+  },
+  "gitHead": "bbf8b5caebda7ee37115f26a72ff0fc1cda846b5"
 }

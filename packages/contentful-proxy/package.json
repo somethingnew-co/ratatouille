@@ -4,6 +4,10 @@
   "description": "A contentful proxy middleware",
   "main": "dist/index.js",
   "module": "src/index.js",
+  "license": {
+    "type": "MIT",
+    "url": "https://www.opensource.org/licenses/mit-license.php"
+  },
   "scripts": {
     "jest": "jest --coverage --verbose --color"
   },
@@ -33,5 +37,6 @@
   "devDependencies": {
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0"
-  }
+  },
+  "gitHead": "bbf8b5caebda7ee37115f26a72ff0fc1cda846b5"
 }
