@@ -9,7 +9,7 @@
     "url": "https://www.opensource.org/licenses/mit-license.php"
   },
   "scripts": {
-    "transpile": "babel src -d dist --ignore '**/*.spec.js,**/*.stories.js'",
+    "build": "babel src -d dist --ignore '**/*.spec.js,**/*.stories.js'",
     "test": "jest --coverage --verbose --color"
   },
   "babel": {

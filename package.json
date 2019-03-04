@@ -25,6 +25,7 @@
     "next": "^8.0.3"
   },
   "scripts": {
+    "build": "lerna exec --parallel -- npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
