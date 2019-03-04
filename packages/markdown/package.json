@@ -31,7 +31,9 @@
     ]
   },
   "dependencies": {
-    "commonmark": "^0.28.1"
+    "commonmark": "^0.28.1",
+    "he": "^1.2.0",
+    "react-html-parser": "^2.0.2"
   },
   "publishConfig": {
     "access": "public"

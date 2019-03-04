@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import isString from 'lodash/isString';
 import flatten from 'lodash/flatten';
+import ReactHtmlParser from 'react-html-parser';
 
 class HtmlString extends Component {
   replace(source, regex, fn) {
@@ -68,16 +70,19 @@ class HtmlString extends Component {
    * returns a prop object (e.g. {id: 'asdf', someProp: 'asdf', selected: true}).
    */
   parseAttributes(attrString) {
-    if (!attrString || attrString.trim() === '') {
-      return {};
-    }
-    const div =  document.createElement('div');
     const props = {};
-    div.innerHTML = `<div ${attrString.trim()} />`;
-    for (let attr of div.firstChild.attributes) {
-      const attrName = this.parseAttributeName(attr.name);
-      props[attrName] = (attr.value) ? attr.value : true;
+
+    if (!attrString || attrString.trim() === '') {
+      return props;
     }
+
+    const parsedAttrs = ReactHtmlParser(`<div ${attrString.trim()} />`)[0].props;
+    Object.keys(parsedAttrs).forEach((attrKey) => {
+      if (attrKey !== 'children') {
+        props[this.parseAttributeName(attrKey)] = parsedAttrs[attrKey];
+      }
+    });
+
     return props;
   }
 
