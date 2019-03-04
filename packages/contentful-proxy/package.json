@@ -38,5 +38,8 @@
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0"
   },
-  "gitHead": "bfd273e6b3489b8d0bda758578302fb85627912f"
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "e05ae8baa2fc25fd8824b17e32a371d6342ff6a6"
 }
