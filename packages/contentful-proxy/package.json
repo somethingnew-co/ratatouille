@@ -1,5 +1,5 @@
 {
-  "name": "@stnew/ontentful-proxy",
+  "name": "@stnew/contentful-proxy",
   "version": "0.0.5",
   "description": "A contentful proxy middleware",
   "main": "dist/index.js",
