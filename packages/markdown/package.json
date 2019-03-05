@@ -21,6 +21,10 @@
     "he": "^1.2.0",
     "lodash": "^4.17.11"
   },
+  "devDependencies": {
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/react": "^4.1.11"
+  },
   "publishConfig": {
     "access": "public"
   }
