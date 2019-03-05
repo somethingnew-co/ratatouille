@@ -1,45 +1,67 @@
 {
-  "name": "root",
-  "private": true,
+  "name": "@stnew/ratatouille",
+  "version": "0.0.1",
+  "description": "stnew react component library",
+  "scripts": {
+    "storybook": "NODE_ENV=development start-storybook -p 9001",
+    "prestart": "npm install && npm run build",
+    "start": "npm-run-all --parallel storybook build:watch",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna exec --parallel -- babel src -d dist --ignore src/__tests__/,src/__stories__/,src/__wireframe__/**",
+    "build:watch": "npm run build -- --watch",
+    "export-static-storybook": "build-storybook -c .storybook -o .out",
+    "publish-packages": "lerna publish",
+    "prepublish-packages": "npm run build",
+    "postinstall": "npm run bootstrap"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:somethingnew-co/ratatouille.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/somethingnew-co/ratatouille/issues"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/react": "^4.1.11",
+    "all-contributors-cli": "^5.10.2",
+    "babel-core": "^7.0.0-bridge",
+    "babel-plugin-module-resolver": "^3.1.1",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.1.0",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.9.1",
-    "jest": "^24.1.0",
-    "lerna": "^3.13.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "@storybook/react": "^4.1.13",
-    "@storybook/addon-actions": "^4.1.13",
-    "@storybook/addon-links": "^4.1.13",
-    "@storybook/addons": "^4.1.13",
-    "babel-loader": "^8.0.5"
-  },
-  "dependencies": {
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "next": "^8.0.3"
-  },
-  "scripts": {
-    "build": "lerna exec --parallel -- npm run build",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "env": {
-      "test": {
-        "plugins": [
-          "transform-es2015-modules-commonjs"
-        ]
-      }
-    }
+    "babel-jest": "^24.0.0",
+    "babel-loader": "^8.0.5",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-import-resolver-babel-module": "^5.0.0-beta.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "eslint-plugin-react-hooks": "^1.0.0",
+    "glob-loader": "^0.3.0",
+    "jest": "^24.0.0",
+    "jest-dom": "^3.0.1",
+    "lerna": "^3.10.7",
+    "npm-run-all": "^4.1.5",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-testing-library": "^5.4.4",
+    "styled-components": "^4.1.3",
+    "styled-map": "^3.2.0-rc.1",
+    "husky": "^1.3.1"
   }
 }
