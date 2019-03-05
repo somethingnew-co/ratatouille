@@ -1,6 +1,15 @@
-const TEST_REGEX = '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|js?)$';
 module.exports = {
-  testRegex: TEST_REGEX,
-  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
-  testURL: 'http://localhost',
+  setupFiles: ['<rootDir>/jest.setup.js'],
+  testMatch: ['**/*.(test|spec).(js|jsx)'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/dist/',
+    '/.out/',
+  ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/dist/',
+    '/.out/',
+  ],
+  snapshotSerializers: ['enzyme-to-json/serializer'],
 };

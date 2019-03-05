@@ -3,8 +3,15 @@
     "extends": [
         "airbnb"
     ],
-    "plugins": [
-    ],
+    "env": {
+        "jest/globals": true
+    },
+    "globals": {
+        "shallow": true,
+        "render": true,
+        "mount": true
+    },
+    "plugins": ["jest"],
     "settings": {
         "import/resolver": {
             "babel-module": {}
