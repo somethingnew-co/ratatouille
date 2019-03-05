@@ -14,14 +14,24 @@ JavaScript reference implementation.
    - sublist
    - sublist
 
-<TestA className="test" />
+<TestA classname="testclass" someProp="ComponentA" someBool someNum=333 />
 <TestB>asdf</TestB>
 `;
 
-const TestA = ({ className }) => (
-  <div className={className}>ComponentTestA</div>
+const TestA = ({
+  className,
+  someProp,
+  someBool,
+  someNum,
+}) => (
+  <div>{someBool ? `${someProp}-${someNum * 2}-${className}` : ''}</div>
 );
-TestA.propTypes = { className: PropTypes.string.isRequired };
+TestA.propTypes = {
+  className: PropTypes.string.isRequired,
+  someProp: PropTypes.string.isRequired,
+  someBool: PropTypes.bool.isRequired,
+  someNum: PropTypes.number.isRequired,
+};
 
 const TestB = ({ children }) => (
   <div className="test-b">{children}</div>
@@ -35,7 +45,7 @@ const customTags = {
 
 const realError = console.error;
 console.error = (...x) => {
-  if (x[0].indexOf('is unrecognized in this browser') > -1 || x[0].indexOf('incorrect casing. Use PascalCase') > -1) {
+  if (x[0].indexOf('recognize') > -1 || x[0].indexOf('incorrect casing. Use PascalCase') > -1) {
     return;
   }
   realError(...x);
@@ -54,12 +64,16 @@ describe('Markdown Component', () => {
     expect(comp.find('ol').length).toBe(1);
   });
 
-
   it('parses and renders custom component tags', () => {
     const comp = mount(<Markdown content={exampleString} customTags={customTags} />);
     expect(comp.find('TestA').length).toBe(1);
-    expect(comp.find('TestA').text()).toEqual('ComponentTestA');
     expect(comp.find('TestB').length).toBe(1);
     expect(comp.find('TestB').text()).toEqual('asdf');
+  });
+
+  it('converts attributes to props', () => {
+    const comp = mount(<Markdown content={exampleString} customTags={customTags} />);
+    expect(comp.find('TestA').length).toBe(1);
+    expect(comp.find('TestA').text()).toEqual('ComponentA-666-testclass');
   });
 });

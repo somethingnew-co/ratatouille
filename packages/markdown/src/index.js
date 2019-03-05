@@ -5,22 +5,21 @@ import { decode } from 'he';
 import HtmlString from './HtmlString';
 
 const Markdown = (props) => {
-  const { content, ...other } = props;
+  const { content, component, ...other } = props;
 
-  if (!content) {
+  if (!content || content.trim() === '') {
     return null;
   }
 
-  let parsedContent = Array.isArray(content) ? content.join('') : content;
-
   const reader = new commonmark.Parser();
   const writer = new commonmark.HtmlRenderer({ esc: str => str });
-  parsedContent = writer.render(reader.parse(parsedContent));
+  const parsedContent = writer.render(reader.parse(content));
   const decoded = decode(parsedContent); // decode HTML entities
 
   return (
     <HtmlString
       content={decoded}
+      component={component}
       {...other}
     />
   );

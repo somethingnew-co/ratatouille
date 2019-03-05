@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isString from 'lodash/isString';
+import isNaN from 'lodash/isNaN';
 import flatten from 'lodash/flatten';
-import ReactHtmlParser from 'react-html-parser';
 
 class HtmlString extends Component {
   replace(source, regex, fn) {
@@ -79,11 +79,42 @@ class HtmlString extends Component {
       return props;
     }
 
-    const parsedAttrs = ReactHtmlParser(`<div ${attrString.trim()} />`)[0].props;
-    Object.keys(parsedAttrs).forEach((attrKey) => {
-      if (attrKey !== 'children') {
-        props[this.parseAttributeName(attrKey)] = parsedAttrs[attrKey];
+    const sanitized = attrString.replace(/\s*([=])\s*/g, '$1').trim(); // remove whitespace around equal signs
+    const attrs = sanitized.split(' ');
+    attrs.forEach((attr) => {
+      // don't process if empty string
+      if (attr.trim() === '') {
+        return;
       }
+
+      // if no equal sign, treat as boolean
+      if (attr.indexOf('=') === -1) {
+        props[this.parseAttributeName(attr.trim())] = true;
+        return;
+      }
+
+      // attribute had assigned value
+      const keyValue = attr.split('=');
+      const key = keyValue[0].trim();
+      let value = keyValue[1].trim();
+
+      value = value.replace(/'([^']+(?='))'/g, '$1'); // strip surrounding quotes
+      value = value.replace(/"([^"]+(?="))"/g, '$1'); // strip surrounding quotes
+
+      // value was number
+      if (isNaN(value * 1) === false) {
+        props[this.parseAttributeName(key)] = value * 1;
+        return;
+      }
+
+      // value was boolean
+      if (['false', 'true'].indexOf(value.toLowerCase()) > -1) {
+        props[this.parseAttributeName(key)] = value.toLowerCase() === 'true';
+        return;
+      }
+
+      // value was string
+      props[this.parseAttributeName(key)] = value;
     });
 
     return props;
@@ -140,7 +171,11 @@ class HtmlString extends Component {
 
 HtmlString.propTypes = {
   className: PropTypes.string,
-  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  component: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.shape({ render: PropTypes.func.isRequired }),
+  ]),
   content: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   customTags: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };

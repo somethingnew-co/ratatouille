@@ -3,7 +3,7 @@
   "version": "0.0.9",
   "description": "A markdown parsing React component",
   "main": "dist/index.js",
-  "module": "src/index.js",
+  "module": "dist/index.js",
   "license": {
     "type": "MIT",
     "url": "https://www.opensource.org/licenses/mit-license.php"
@@ -19,8 +19,7 @@
   "dependencies": {
     "commonmark": "^0.28.1",
     "he": "^1.2.0",
-    "lodash": "^4.17.11",
-    "react-html-parser": "^2.0.2"
+    "lodash": "^4.17.11"
   },
   "publishConfig": {
     "access": "public"
