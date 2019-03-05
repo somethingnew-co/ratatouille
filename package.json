@@ -10,7 +10,7 @@
     "test:watch": "jest --watch",
     "lint": "eslint .",
     "bootstrap": "lerna bootstrap",
-    "build": "lerna exec --parallel -- babel src -d dist --ignore src/__tests__/,src/__stories__/,src/__wireframe__/**",
+    "build": "lerna exec --parallel -- babel src -d dist --ignore **/*.spec.js,**/*.stories.js",
     "build:watch": "npm run build -- --watch",
     "export-static-storybook": "build-storybook -c .storybook -o .out",
     "publish-packages": "lerna publish",
