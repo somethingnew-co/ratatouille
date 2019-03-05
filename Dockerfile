@@ -3,6 +3,7 @@ FROM node:alpine as builder
 WORKDIR '/app'
 COPY . .
 RUN npm install
+RUN npm run bootstrap
 RUN npm run export-static-storybook
 
 FROM nginx
