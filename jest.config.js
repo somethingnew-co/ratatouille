@@ -1,4 +1,5 @@
 module.exports = {
+  coverageDirectory: '.coverage',
   setupFiles: ['<rootDir>/jest.setup.js'],
   testMatch: ['**/*.(test|spec).(js|jsx)'],
   testPathIgnorePatterns: [
