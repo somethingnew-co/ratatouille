@@ -4,7 +4,7 @@
   "description": "Responsive type system for styled-components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/bitmap/styled-type",
+  "repository": "https://github.com/somethingnew-co/ratatouille/tree/master/packages/typography",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
@@ -18,9 +18,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bitmap/styled-type/issues"
+    "url": "https://github.com/somethingnew-co/ratatouille/tree/master/packages/typography/issues"
   },
-  "homepage": "https://github.com/bitmap/styled-type#readme",
+  "homepage": "https://github.com/somethingnew-co/ratatouille/tree/master/packages/typography#readme",
   "keywords": [
     "react",
     "styled",

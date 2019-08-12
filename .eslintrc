@@ -1,17 +1,20 @@
 {
-    "parser": "babel-eslint",
     "extends": [
-        "airbnb"
+        "airbnb",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
     ],
     "env": {
-        "jest/globals": true
+        "jest/globals": true,
+        "browser": true,
+        "node": true,
     },
     "globals": {
         "shallow": true,
         "render": true,
         "mount": true
     },
-    "plugins": ["jest"],
+    "plugins": ["jest", "react"],
     "settings": {
         "import/resolver": {
             "babel-module": {}
@@ -19,8 +22,10 @@
     },
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-props-no-spreading": "off",
         "no-unused-vars": ["error", { "args": "none" }],
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        "import/prefer-default-export": "off",
         "jsx-a11y/anchor-is-valid": ["error", {
             "components": ["Link"],
             "specialLink": ["route"],
@@ -34,6 +39,34 @@
         "jsx-a11y/click-events-have-key-events": "off",
         "jsx-a11y/no-static-element-interactions": "off",
         "import/extensions": "off",
-        "import/no-unresolved": "off"
-    }
+        "import/no-unresolved": "off",
+        "@typescript-eslint/indent": ["error", 2, {
+            "ObjectExpression": "first"
+        }],
+        "@typescript-eslint/explicit-function-return-type": ["error", {
+            "allowExpressions": true,
+            "allowTypedFunctionExpressions": true
+        }]
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/*.js",
+                "**/*.jsx"
+            ],
+            "parser": "babel-eslint",
+        },
+        {
+            "files": [
+                "**/*.ts",
+                "**/*.tsx"
+            ],
+            "parser": "@typescript-eslint/parser",
+            "rules": {
+                "react/jsx-filename-extension": "off",
+                "@typescript-eslint/no-explicit-any": "error",
+                "react/prop-types": "off",
+            }
+          },
+    ]
 }
