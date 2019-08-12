@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import HtmlString from '.';
@@ -11,7 +13,7 @@ const exampleString = `
 <ol>
   <li>item one</li>
   <li>item two</li>
-</ol>    
+</ol>
 <TestA className="test" />
 <TestB>asdf</TestB>
 `;

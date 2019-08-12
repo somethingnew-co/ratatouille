@@ -4,4 +4,3 @@ dist/
 .storybook/
 .out/
 *.config.js
-packages/markdown

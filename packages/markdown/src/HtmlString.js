@@ -159,9 +159,9 @@ class HtmlString extends Component {
         },
       );
     });
-    if (!parsedContent ||
-      (isString(parsedContent) && parsedContent.trim() === '') ||
-      (Array.isArray(parsedContent) && parsedContent.join('').trim() === '')
+    if (!parsedContent
+      || (isString(parsedContent) && parsedContent.trim() === '')
+      || (Array.isArray(parsedContent) && parsedContent.join('').trim() === '')
     ) {
       return <ComponentProp {...other} />;
     }

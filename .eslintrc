@@ -2,7 +2,7 @@
     "extends": [
         "airbnb",
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
     ],
     "env": {
         "jest/globals": true,
@@ -61,11 +61,15 @@
                 "**/*.ts",
                 "**/*.tsx"
             ],
+            "extends": [
+                "plugin:@typescript-eslint/recommended",
+            ],
             "parser": "@typescript-eslint/parser",
             "rules": {
                 "react/jsx-filename-extension": "off",
                 "@typescript-eslint/no-explicit-any": "error",
                 "react/prop-types": "off",
+                "react/display-name": "off",
             }
           },
     ]

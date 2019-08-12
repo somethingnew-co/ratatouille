@@ -4,13 +4,13 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import Markdown from '.';
 
-const contentA = `## Markdown  
-A React component for **parsing and rendering** a _markdown_ string. 
+const contentA = `## Markdown
+A React component for **parsing and rendering** a _markdown_ string.
 Especially useful to render markdown content from [Contentful](https://www.contentful.com).
 `;
 
-const contentB = `## Markdown  
-The Markdown component also allows defining custom tags, so that the markdown 
+const contentB = `## Markdown
+The Markdown component also allows defining custom tags, so that the markdown
 string can contain markup that translates to React components.
 <Example color="red">This is an Example: <Demo /></Example>
 `;
@@ -23,7 +23,7 @@ Example.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const DemoButton = () => <button onClick={action('button click')}>Button</button>;
+const DemoButton = () => <button type="button" onClick={action('button click')}>Button</button>;
 
 storiesOf('Markdown', module)
 

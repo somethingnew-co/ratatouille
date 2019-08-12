@@ -12,7 +12,7 @@ const Markdown = (props) => {
   }
 
   const reader = new commonmark.Parser();
-  const writer = new commonmark.HtmlRenderer({ esc: str => str });
+  const writer = new commonmark.HtmlRenderer({ esc: (str) => str });
   const parsedContent = writer.render(reader.parse(content));
   const decoded = decode(parsedContent); // decode HTML entities
 

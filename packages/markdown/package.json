@@ -4,10 +4,7 @@
   "description": "A markdown parsing React component",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "license": {
-    "type": "MIT",
-    "url": "https://www.opensource.org/licenses/mit-license.php"
-  },
+  "license": "MIT",
   "files": [
     "dist"
   ],
@@ -18,9 +15,8 @@
   },
   "dependencies": {
     "commonmark": "^0.28.1",
-    "eslint-config": "^0.3.0",
     "he": "^1.2.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^4.1.11",
