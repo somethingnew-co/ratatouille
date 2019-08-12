@@ -60,5 +60,9 @@
     "styled-components": "^4.3.2",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "d0031fa05ed7429fded2844fb1ab1f5665132348"
 }
