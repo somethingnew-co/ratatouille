@@ -1,5 +1,5 @@
 {
-  "name": "styled-type",
+  "name": "@stnew/typography",
   "version": "1.0.1",
   "description": "Responsive type system for styled-components",
   "main": "dist/index.js",
