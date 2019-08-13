@@ -1,6 +1,8 @@
 {
+    "root": true,
     "extends": [
-        "airbnb",
+        "./packages/eslint-config",
+        "./packages/eslint-config-typescript",
         "eslint:recommended",
         "plugin:react/recommended",
     ],
@@ -12,20 +14,21 @@
     "globals": {
         "shallow": true,
         "render": true,
-        "mount": true
+        "mount": true,
     },
-    "plugins": ["jest", "react"],
+    "plugins": ["jest", "react", "import", "jsx-a11y"],
     "settings": {
-        "import/resolver": {
-            "babel-module": {}
+        "react": {
+            "version": "latest"
         }
     },
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-props-no-spreading": "off",
-        "no-unused-vars": ["error", { "args": "none" }],
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
         "import/prefer-default-export": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
         "jsx-a11y/anchor-is-valid": ["error", {
             "components": ["Link"],
             "specialLink": ["route"],
@@ -38,17 +41,21 @@
         }],
         "jsx-a11y/click-events-have-key-events": "off",
         "jsx-a11y/no-static-element-interactions": "off",
-        "import/extensions": "off",
-        "import/no-unresolved": "off",
-        "@typescript-eslint/indent": ["error", 2, {
-            "ObjectExpression": "first"
-        }],
-        "@typescript-eslint/explicit-function-return-type": ["error", {
-            "allowExpressions": true,
-            "allowTypedFunctionExpressions": true
-        }]
+
     },
     "overrides": [
+        {
+            "files": [
+                "**/*{-,.}{test,stories}.js",
+                "**/*{-,.}{test,stories}.jsx",
+                "**/*{-,.}{test,stories}.ts",
+                "**/*{-,.}{test,stories}.tsx",
+            ],
+            "rules":{
+                //devDependencies are all in the root
+                "import/no-extraneous-dependencies": "off"
+            }
+        },
         {
             "files": [
                 "**/*.js",
@@ -71,7 +78,6 @@
             "parser": "@typescript-eslint/parser",
             "rules": {
                 "react/jsx-filename-extension": "off",
-                "@typescript-eslint/no-explicit-any": "error",
                 "react/prop-types": "off",
                 "react/display-name": "off",
             }
