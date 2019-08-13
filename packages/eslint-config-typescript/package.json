@@ -1,0 +1,27 @@
+{
+  "name": "@stnew/eslint-config-typescript",
+  "version": "0.1.0",
+  "description": "Something New eslint config for TypeScript",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somethingnew-co/ratatouille.git"
+  },
+  "author": "@stnew",
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslint-plugin"
+  ],
+  "dependencies": {
+    "@stnew/eslint-config": "^0.1.0",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=5.0.0"
+  }
+}

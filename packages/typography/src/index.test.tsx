@@ -1,8 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { mount } from 'enzyme';
 import { theme } from '../test/setup';
-import { Text } from '.';
+import { Text } from './index';
 
 describe('<Text>', () => {
   it('renders', () => {
