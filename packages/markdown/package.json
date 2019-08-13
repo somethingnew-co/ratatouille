@@ -20,12 +20,9 @@
     "commonmark": "^0.28.1",
     "eslint-config": "^0.3.0",
     "he": "^1.2.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   },
-  "devDependencies": {
-    "@storybook/addon-actions": "^4.1.11",
-    "@storybook/react": "^4.1.11"
-  },
+  "devDependencies": {},
   "publishConfig": {
     "access": "public"
   }
