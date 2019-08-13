@@ -1,4 +1,6 @@
-export const cssReset = `
+import { css } from 'styled-components';
+
+export default css`
     *,
     *:before,
     *:after {
@@ -10,11 +12,6 @@ export const cssReset = `
         text-rendering: optimizelegibility;
         -webkit-tap-highlight-color: transparent;
         -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-    }
-
-    #__next {
-        height: 100vh;
     }
 
     a {

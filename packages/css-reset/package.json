@@ -1,27 +1,27 @@
 {
-  "name": "@stnew/cssresets",
+  "name": "@stnew/css-reset",
   "version": "1.0.0",
-  "description": "> TODO: description",
+  "description": "styled-components css reset",
   "author": "Sam Kilgus <samkilgus@gmail.com>",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
   "license": "ISC",
-  "main": "lib/CSSResets.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "styled-components": "^4.3.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/somethingnew-co/ratatouille.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "rm -rf dist && npm ci && npm run build"
   },
   "bugs": {
     "url": "https://github.com/somethingnew-co/ratatouille/issues"
