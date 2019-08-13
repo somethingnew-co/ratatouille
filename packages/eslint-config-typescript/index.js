@@ -2,7 +2,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
     'plugin:@typescript-eslint/recommended',
-    '@cabe',
+    '@stnew',
   ],
   plugins: [
     '@typescript-eslint',

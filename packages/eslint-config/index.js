@@ -105,7 +105,7 @@ module.exports = {
     'prefer-rest-params': 2,
     'prefer-spread': 2,
     'prefer-template': 2,
-    'quote-props': [2, 'consistant'],
+    'quote-props': [2, 'consistent'],
     quotes: [2, 'single'],
     'rest-spread-spacing': [2, 'never'],
     semi: [2, 'always'],
