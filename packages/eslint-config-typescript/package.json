@@ -1,6 +1,6 @@
 {
   "name": "@stnew/eslint-config-typescript",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Something New eslint config for TypeScript",
   "main": "index.js",
   "publishConfig": {
@@ -17,7 +17,7 @@
     "eslint-plugin"
   ],
   "dependencies": {
-    "@stnew/eslint-config": "^0.1.1",
+    "@stnew/eslint-config": "^0.1.2",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0"
   },
