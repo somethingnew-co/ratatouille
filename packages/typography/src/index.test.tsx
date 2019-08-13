@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../test/setup';
 import { Text } from './index';
+import { mount } from 'enzyme';
 
 describe('<Text>', () => {
   it('renders', () => {
