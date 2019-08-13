@@ -1,5 +1,6 @@
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
+import { addReadme } from 'storybook-readme';
 
 const viewportOptions = {
   defaultViewport: 'desktop'
@@ -13,4 +14,5 @@ function loadStories() {
 
 addParameters({ viewport: viewportOptions });
 addDecorator(withA11y);
+addDecorator(addReadme);
 configure(loadStories, module);
