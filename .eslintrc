@@ -55,6 +55,10 @@
                 "**/*.jsx"
             ],
             "parser": "babel-eslint",
+            "rules": {
+                "react/require-default-props": "off",
+                "react/button-has-type": "off",
+            }
         },
         {
             "files": [
