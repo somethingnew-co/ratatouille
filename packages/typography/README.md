@@ -1,16 +1,16 @@
-# styled-type
+# @stnew/typography
 
 Responsive typography system for [styled-components]. Leverages [styled-system] under the hood.
 
 ## Install
 
 ```sh
-npm install styled-type
+npm install @stnew/typography
 ```
 
 ## Setup
 
-`styled-type` lets you define type styles in you styled-components [theme](https://www.styled-components.com/docs/advanced#theming).
+`@stnew/typography` lets you define type styles in you styled-components [theme](https://www.styled-components.com/docs/advanced#theming).
 
 Before anything, make sure you [wrap your app or component in `<ThemeProvider>`](https://www.styled-components.com/docs/advanced#theming).
 
@@ -36,11 +36,11 @@ const theme = {
 }
 ```
 
-Import the `<Text>` component from `styled-type` and use the `typeStyle` prop to style your typography.
+Import the `<Text>` component from `@stnew/typography` and use the `typeStyle` prop to style your typography.
 
 ```js
 import React from "react";
-import { Text } from "styled-type";
+import { Text } from "@stnew/typography";
 
 export const MyComponent = props => (
   <article>
@@ -136,10 +136,6 @@ const theme = {
 // Component.js
 <Text typeStyle="heading" textStyle="caps">Hello World</Text>
 ```
-
-## License
-
-[MIT](https://github.com/bitmap/react-hook-inview/blob/master/LICENSE)
 
 [styled-components]: https://www.styled-components.com/
 [styled-system]: https://www.styled-system.com/
