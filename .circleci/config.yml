@@ -1,5 +1,6 @@
-version: 2.0
-
+version: 2.1
+orbs:
+  slack: circleci/slack@3.3.0
 jobs:
   test:
     working_directory: ~/ratatouille
@@ -39,6 +40,9 @@ jobs:
           command: |
             git remote add dokku dokku@deploy.somethingnew.co:ratatouille
             git push dokku master
+      - slack/notify:
+          color: '#6cca98'
+          message: 'ratatouille:${CIRCLE_TAG:-$CIRCLE_SHA1} has reached https://ratatouille.somethingnew.co'
 
 workflows:
   version: 2
