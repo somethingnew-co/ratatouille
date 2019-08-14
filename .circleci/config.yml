@@ -30,6 +30,7 @@ jobs:
             apt-get update
             apt-get install -y git
       - checkout 
+      - add_ssh_keys
       - run:
           name: Deploy master to dokku
           command: |
