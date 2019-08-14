@@ -32,6 +32,9 @@ jobs:
       - checkout 
       - add_ssh_keys
       - run:
+          name: Add dokku to known_hosts
+          command: ssh-keyscan -H deploy.somethingnew.co >> ~/.ssh/known_hosts
+      - run:
           name: Deploy master to dokku
           command: |
             git remote add dokku dokku@deploy.somethingnew.co:ratatouille
