@@ -1,4 +1,4 @@
-# React Component Library Publishing Starter
+# React Component Library Publishing Starter.
 
 ## Getting Started
 
