@@ -1,0 +1,33 @@
+{
+  "name": "@stnew/image",
+  "version": "1.0.0",
+  "description": "image component for react projects with optional cross-browser lazy-loading",
+  "author": "Something New",
+  "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "@types/lodash": "^4.14.136"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somethingnew-co/ratatouille.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "rm -rf dist && npm ci && npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/somethingnew-co/ratatouille/issues"
+  }
+}
