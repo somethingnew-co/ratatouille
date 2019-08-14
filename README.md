@@ -49,3 +49,22 @@ git remote add dokku dokku@deploy.somethingnew.co:ratatouille
 # then push
 git push dokku master
 ```
+
+## Hygen Package Templates
+We use [Hygen](http://www.hygen.io/) to generate starter code for new packages.
+
+### Usage
+Create a new package: `hygen package new --name="{NAME}"`
+Additional arguments:
+- use `--component` if your package will be a react (typescript) component;
+  - use `--functional` if your component package will be a functional component (not stateful);
+- use `--styled` if your package will use [styled-components](https://www.styled-components.com/);
+- use `--description="{DESC}"` where {DESC} will be the description for your package in `package.json`;
+
+### Naming
+- replace {NAME} with the name of your new component
+- each word in the name should be separated by a space.
+  - for example, `--name="new package"` will create an npm package called `@stnew/new-package`. 
+  - It can then be imported under the name: `NewPackage`.
+    - eg. `import NewPackage from '@stnew/new-package';`
+
