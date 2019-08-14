@@ -54,7 +54,7 @@ git push dokku master
 We use [Hygen](http://www.hygen.io/) to generate starter code for new packages.
 
 ### Usage
-Create a new package: `hygen package new --name="{NAME}"`
+Create a new package: `npm run new-pkg <NAME> [-- <args>]`
 Additional arguments:
 - use `--component` if your package will be a react (typescript) component;
   - use `--functional` if your component package will be a functional component (not stateful);
@@ -64,7 +64,6 @@ Additional arguments:
 ### Naming
 - replace {NAME} with the name of your new component
 - each word in the name should be separated by a space.
-  - for example, `--name="new package"` will create an npm package called `@stnew/new-package`. 
+  - for example, `--name="new package"` will create an npm package called `@stnew/new-package`.
   - It can then be imported under the name: `NewPackage`.
     - eg. `import NewPackage from '@stnew/new-package';`
-
