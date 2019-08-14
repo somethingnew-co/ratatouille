@@ -15,7 +15,10 @@
     "url": "git+https://github.com/somethingnew-co/ratatouille.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "rm -rf dist && npm ci && npm run build"
   },
   "bugs": {
     "url": "https://github.com/somethingnew-co/ratatouille/issues"
