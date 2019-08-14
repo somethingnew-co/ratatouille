@@ -1,24 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const propTypes = {
-  className: PropTypes.string,
-  onClick: PropTypes.func,
-  children: PropTypes.element,
-  disabled: PropTypes.string,
-  label: PropTypes.string,
-  title: PropTypes.string,
-  as: PropTypes.oneOf(['a', 'button']),
-  href: PropTypes.string,
-  target: PropTypes.string,
-  rel: PropTypes.string,
-  type: PropTypes.oneOf(['button', 'submit']),
-};
+interface Props {
+  className?: string;
+  onClick?: () => void;
+  children?: React.ReactChildren;
+  disabled?: boolean;
+  label?: string;
+  title?: string;
+  as?: 'a' | 'button';
+  href?: string;
+  target?: string;
+  rel?: string;
+  type?: 'button' | 'submit';
+}
 const defaultProps = {
   className: 'button',
 };
 
-const Button = (props) => {
+const Button: React.FC<Props> = (props) => {
   const {
     className,
     onClick,
@@ -56,7 +55,6 @@ const Button = (props) => {
       href={href}
       title={title || label}
       className={className}
-      disabled={!href || disabled}
       target={externalLink ? '_blank' : target}
       rel={externalLink ? 'noreferrer' : rel}
     >
@@ -65,7 +63,6 @@ const Button = (props) => {
   );
 };
 
-Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
 export default Button;

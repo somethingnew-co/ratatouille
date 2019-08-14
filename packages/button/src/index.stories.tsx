@@ -1,17 +1,15 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-/* eslint-enable import/no-extraneous-dependencies */
 
-import Readme from '../README.md';
-import Button from '.';
+import README from '../README.md';
+import Button from './index';
 
 const ButtonStories = storiesOf('Button', module);
 
 ButtonStories.addParameters({
   readme: {
-    sidebar: Readme,
+    sidebar: README,
   },
 });
 
