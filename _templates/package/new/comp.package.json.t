@@ -17,6 +17,9 @@ to: packages/<%= h.changeCase.camel(name) %>/package.json
     "access": "public"
   },
   "peerDependencies": {
+    <%_ if(locals.component) { _%>
+    "react": "^16.9.0"
+    <%_ } _%>
     <%_ if(locals.styled) { _%>
     "styled-components": "latest"
     <%_ } _%>

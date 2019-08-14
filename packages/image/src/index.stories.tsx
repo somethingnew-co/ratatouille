@@ -6,5 +6,5 @@ import Image from '.';
 const ImageStories = storiesOf('Image', module);
 
 ImageStories.add('default', () => (
-  <Image />
+  <Image src={'/assets/stn-new.png'} />
 ));

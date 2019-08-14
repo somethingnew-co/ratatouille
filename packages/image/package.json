@@ -13,10 +13,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {},
-  "devDependencies": {
-    "@types/lodash": "^4.14.136"
+  "peerDependencies": {
+    "react": "^16.9.0"
   },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/somethingnew-co/ratatouille.git"

@@ -1,42 +1,28 @@
 import React from 'react';
-import get from 'lodash/get';
 
 interface ImageProps {
-  title: string,
-  description: string,
-  defaultMedia: string,
-  mobileMedia: string,
-  tabletMedia: string,
-  hideTooltip: boolean,
-  fit: string,
-  noLazy: boolean,
+  src: string;
+  alt?: string;
+  title?: string;
+  lazy?: boolean;
+  lazyTimeout?: number;
 }
 interface ImageState {
-  loaded: boolean,
+  loaded: boolean;
 }
 
-const isSVG = (fileName: string): boolean => {
-  const ext = fileName.split('.').pop();
-  return !!ext && ext.toLowerCase() === 'svg';
-};
-
 class Image extends React.Component<ImageProps, ImageState> {
-  static defaultProps = {
-    title: null,
-    description: null,
-    hideTooltip: false,
-    fit: 'contain',
-    noLazy: false,
-  };
+  defaultProps = { lazyTimeout: 2000 };
 
-  imageElement: React.RefObject<unknown>;
+  imageElement: React.RefObject<HTMLImageElement>;
+
   observer: IntersectionObserver | null;
 
   constructor(props: ImageProps) {
     super(props);
-    const { noLazy } = props;
+    const { lazy } = props;
 
-    this.state = { loaded: noLazy };
+    this.state = { loaded: !lazy };
 
     this.imageElement = React.createRef();
     this.observer = null;
@@ -46,13 +32,13 @@ class Image extends React.Component<ImageProps, ImageState> {
   }
 
   componentDidMount() {
-    const { noLazy } = this.props;
-    if (!noLazy && this.imageElement.current) {
+    const { lazy, lazyTimeout } = this.props;
+    if (lazy && this.imageElement.current) {
       this.observer = new IntersectionObserver(this.interactionHandler, {
         rootMargin: '500px',
       });
       this.observer.observe(this.imageElement.current as Element);
-      setTimeout(this.completeLoad, 2000);
+      setTimeout(this.completeLoad, lazyTimeout);
     }
   }
 
@@ -68,20 +54,25 @@ class Image extends React.Component<ImageProps, ImageState> {
     const { loaded } = this.state;
     if (!loaded && this.imageElement.current) {
       this.setState({ loaded: true }, () => {
-        if (this.observer) 
+        if (this.observer)
           this.observer.unobserve(this.imageElement.current as Element);
       });
     }
   }
 
   render() {
-    const { } = this.props;
-    const { } = this.state;
+    const { title, alt, src } = this.props;
+    const { loaded } = this.state;
 
     return (
-      <div>edit me</div>
+      <img
+        src={loaded ? src : ''}
+        alt={alt || title}
+        title={title || alt}
+        ref={this.imageElement}
+      />
     );
   }
-};
+}
 
 export default Image;

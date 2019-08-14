@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "stnew react component library",
   "scripts": {
-    "storybook": "NODE_ENV=development start-storybook -p 9001",
+    "storybook": "NODE_ENV=development start-storybook -s ./shared -p 9001",
     "prestart": "npm install && npm run build",
     "start": "npm-run-all --parallel storybook build:watch",
     "test": "jest --coverage",

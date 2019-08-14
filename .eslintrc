@@ -41,7 +41,6 @@
         }],
         "jsx-a11y/click-events-have-key-events": "off",
         "jsx-a11y/no-static-element-interactions": "off",
-
     },
     "overrides": [
         {
@@ -80,6 +79,7 @@
                 "react/jsx-filename-extension": "off",
                 "react/prop-types": "off",
                 "react/display-name": "off",
+                "@typescript-eslint/explicit-function-return-type": "off",
             }
           },
     ]
