@@ -56,10 +56,10 @@ We use [Hygen](http://www.hygen.io/) to generate starter code for new packages.
 ### Usage
 Create a new package: `hygen package new --name="{NAME}"`
 Additional arguments:
-- use `--component` if your package will be a react (typescript) component;
-  - use `--functional` if your component package will be a functional component (not stateful);
-- use `--styled` if your package will use [styled-components](https://www.styled-components.com/);
-- use `--description="{DESC}"` where {DESC} will be the description for your package in `package.json`;
+- use `--component` if your package will be a react (typescript) component
+  - use `--functional` if your component package will be a functional component (not stateful)
+- use `--styled` if your package will use [styled-components](https://www.styled-components.com/)
+- use `--description="{DESC}"` where {DESC} will be the description for your package in `package.json`
 
 ### Naming
 - replace {NAME} with the name of your new component
