@@ -2,16 +2,22 @@
   "name": "@stnew/css-reset",
   "version": "1.0.0",
   "description": "styled-components css reset",
-  "author": "Sam Kilgus <samkilgus@gmail.com>",
+  "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
     "styled-components": "^4.3.0"
+  },
+  "devDependencies": {
+   "@types/styled-components": "latest"
   },
   "repository": {
     "type": "git",
