@@ -37,7 +37,7 @@ to: packages/<%= h.changeCase.camel(name) %>/package.json
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "tsc",
     "prepare": "npm run build",
-    "prepublishOnly": "rm -rf dist && npm ci && npm run build"
+    "prepublishOnly": "rm -rf dist  && npm run build"
   },
   "bugs": {
     "url": "https://github.com/somethingnew-co/ratatouille/issues"
