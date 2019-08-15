@@ -1,10 +1,7 @@
----
-to: packages/<%= h.changeCase.camel(name) %>/package.json
----
 {
-  "name": "@stnew/<%= h.inflection.dasherize(h.changeCase.lower(name)) %>",
+  "name": "@stnew/image",
   "version": "1.0.0",
-  "description": "<%= locals.description ? description : null %>",
+  "description": "image component for react projects with optional cross-browser lazy-loading",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
   "license": "ISC",
@@ -17,17 +14,8 @@ to: packages/<%= h.changeCase.camel(name) %>/package.json
     "access": "public"
   },
   "peerDependencies": {
-    <%_ if(locals.component) { _%>
-    "react": "^16.9.0"
-    <%_ } _%>
-    <%_ if(locals.styled) { _%>
-    "styled-components": "latest"
-    <%_ } _%>
-  },
-  "devDependencies": {
-    <%_ if(locals.styled) { _%>
-    "@types/styled-components": "latest"
-    <%_ } _%>
+    "react": "^16.9.0",
+    "react-dom": "^16.8.5"
   },
   "repository": {
     "type": "git",

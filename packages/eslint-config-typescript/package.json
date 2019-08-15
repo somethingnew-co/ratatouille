@@ -16,12 +16,10 @@
     "eslint",
     "eslint-plugin"
   ],
-  "dependencies": {
-    "@stnew/eslint-config": "^0.1.2",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0"
-  },
   "peerDependencies": {
-    "eslint": ">=5.0.0"
+    "eslint": ">=5.0.0",
+    "@stnew/eslint-config": "*",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0"
   }
 }

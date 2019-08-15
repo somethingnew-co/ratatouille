@@ -37,17 +37,17 @@ class <%= fName %> extends React.Component<<%= fName %>Props, <%= fName %>State>
     const { } = this.state;
 
     return (
-      <% if(locals.styled) { -%>
+      <%_ if(locals.styled) { _%>
       <Styled.<%= fName %>>edit me</Styled.<%= fName %>>
-      <% } else { -%>
+      <%_ } else { _%>
       <div>edit me</div>
-    <% } -%>
+    <%_ } _%>
   );
   }
 };
-<% } -%>
-<% } else { -%>
+<%_ } _%>
+<%_ } else { _%>
 const <%= fName %> = {};
-<% } -%>
+<%_ } _%>
 
 export default <%= fName %>;

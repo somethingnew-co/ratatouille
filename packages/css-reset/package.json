@@ -16,9 +16,6 @@
   "peerDependencies": {
     "styled-components": "^4.3.0"
   },
-  "devDependencies": {
-    "@types/styled-components": "latest"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/somethingnew-co/ratatouille.git"

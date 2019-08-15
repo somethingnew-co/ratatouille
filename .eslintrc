@@ -22,6 +22,14 @@
             "version": "latest"
         }
     },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "warnOnUnsupportedTypeScriptVersion": true
+    },
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-props-no-spreading": "off",
@@ -41,15 +49,14 @@
         }],
         "jsx-a11y/click-events-have-key-events": "off",
         "jsx-a11y/no-static-element-interactions": "off",
-
     },
     "overrides": [
         {
             "files": [
-                "**/*{-,.}{test,stories}.js",
-                "**/*{-,.}{test,stories}.jsx",
-                "**/*{-,.}{test,stories}.ts",
-                "**/*{-,.}{test,stories}.tsx",
+                "**/*{-,.}{spec,test,stories}.js",
+                "**/*{-,.}{spec,test,stories}.jsx",
+                "**/*{-,.}{spec,test,stories}.ts",
+                "**/*{-,.}{spec,test,stories}.tsx",
             ],
             "rules":{
                 //devDependencies are all in the root
@@ -61,7 +68,6 @@
                 "**/*.js",
                 "**/*.jsx"
             ],
-            "parser": "babel-eslint",
             "rules": {
                 "react/require-default-props": "off",
                 "react/button-has-type": "off",
@@ -72,10 +78,6 @@
                 "**/*.ts",
                 "**/*.tsx"
             ],
-            "extends": [
-                "plugin:@typescript-eslint/recommended",
-            ],
-            "parser": "@typescript-eslint/parser",
             "rules": {
                 "react/jsx-filename-extension": "off",
                 "react/prop-types": "off",
