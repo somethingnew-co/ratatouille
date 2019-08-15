@@ -13,9 +13,7 @@ interface ImageState {
 
 class Image extends React.Component<ImageProps, ImageState> {
   defaultProps = { lazyTimeout: 2000 };
-
   imageElement: React.RefObject<HTMLImageElement>;
-
   observer: IntersectionObserver | null;
 
   constructor(props: ImageProps) {
@@ -31,7 +29,7 @@ class Image extends React.Component<ImageProps, ImageState> {
     this.interactionHandler = this.interactionHandler.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     const { lazy, lazyTimeout } = this.props;
     if (lazy && this.imageElement.current) {
       this.observer = new IntersectionObserver(this.interactionHandler, {
@@ -42,15 +40,15 @@ class Image extends React.Component<ImageProps, ImageState> {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     if (this.observer) this.observer.disconnect();
   }
 
-  interactionHandler(entries: IntersectionObserverEntry[]) {
+  interactionHandler(entries: IntersectionObserverEntry[]): void {
     if (entries[0].isIntersecting) this.completeLoad();
   }
 
-  completeLoad() {
+  completeLoad(): void {
     const { loaded } = this.state;
     if (!loaded && this.imageElement.current) {
       this.setState({ loaded: true }, () => {
@@ -60,7 +58,7 @@ class Image extends React.Component<ImageProps, ImageState> {
     }
   }
 
-  render() {
+  render(): JSX.Element {
     const { title, alt, src } = this.props;
     const { loaded } = this.state;
 

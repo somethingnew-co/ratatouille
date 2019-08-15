@@ -36,7 +36,9 @@ module.exports = {
       },
     }],
     'linebreak-style': ['error', 'unix'],
-    'lines-between-class-members': 'error',
+    'lines-between-class-members': ['error', 'always', {
+      exceptAfterSingleLine: true,
+    }],
     'new-cap': 'error',
     'new-parens': 'error',
     'no-await-in-loop': 'error',

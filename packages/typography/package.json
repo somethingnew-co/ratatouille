@@ -36,10 +36,9 @@
     "styled-components": "^4.3.0"
   },
   "dependencies": {
-    "styled-system": "^5.0.16"
+    "styled-system": "^5.1.0"
   },
   "devDependencies": {
-    "@types/styled-components": "^4.1.18",
     "@types/styled-system": "^5.0.0"
   },
   "publishConfig": {
