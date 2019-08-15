@@ -1,6 +1,6 @@
 {
   "name": "@stnew/image",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "image component for react projects with optional cross-browser lazy-loading",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
