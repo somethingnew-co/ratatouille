@@ -1,7 +1,7 @@
 {
-  "name": "@stnew/image",
-  "version": "1.0.2",
-  "description": "image component for react projects with optional cross-browser lazy-loading",
+  "name": "@stnew/responsive-image",
+  "version": "1.0.0",
+  "description": "picture componenet that displays different resources at different screen sizes as provided.",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "access": "public"
   },
   "peerDependencies": {
+    "intersection-observer": "latest",
     "react": "^16.9.0",
     "react-dom": "^16.8.5"
   },
@@ -26,10 +27,9 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "tsc",
     "prepare": "npm run build",
-    "prepublishOnly": "rm -rf dist  && npm run build"
+    "prepublishOnly": "rm -rf dist && npm ci && npm run build"
   },
   "bugs": {
     "url": "https://github.com/somethingnew-co/ratatouille/issues"
-  },
-  "gitHead": "0652ff7bdb405f4bab9c40c674523acef18e6885"
+  }
 }
