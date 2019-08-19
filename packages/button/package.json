@@ -5,8 +5,8 @@
   "author": "Sam Kilgus <samkilgus@gmail.com>",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
   "license": "ISC",
-  "main": "dist/index.jsx",
-  "module": "dist/index.jsx",
+  "main": "dist/index.js",
+  "types": "dis/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
