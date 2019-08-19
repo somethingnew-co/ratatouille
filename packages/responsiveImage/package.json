@@ -18,9 +18,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.8.5"
   },
-  "devDependencies": {
-    "styled-components": "^4.3.0"
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/somethingnew-co/ratatouille.git"
