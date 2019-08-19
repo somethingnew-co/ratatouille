@@ -1,0 +1,105 @@
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import styled from 'styled-components';
+
+import Carousel from '.';
+
+const CarouselStories = storiesOf('Carousel', module);
+
+const Container = styled.div`
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    outline: 2px solid black;
+
+    .carousel-button {
+      outline: none;
+      appearance: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      height: 50px;
+      width: 50px;
+      background-color: black;
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      
+
+      border: 0;
+      padding: 0;
+      margin: 0;
+
+      border-radius: 50%;
+
+      :hover {
+        background-color: #333;
+        cursor: pointer;
+      }
+    }
+
+    .carousel-button.forward {
+      right: 50px;
+      z-index: 1;
+      :before {
+        content: ">";
+        margin: 0 auto;
+      }
+    }
+
+    .carousel-button.backward {
+      left: 50px;
+      z-index: 1;
+      :before {
+        content: "<";
+        margin: 0 auto;
+      }
+    }
+
+    .carousel-item-wrapper {
+      position: absolute;
+      z-index: 0;
+      top: 50%;
+      left: 50%;
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .carousel-item-wrapper.active {
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+
+    .carousel-item-wrapper.prev {
+      opacity: 0;
+      transform: translateX(-200px);
+    }
+
+    .carousel-item-wrapper.next {
+      opacity: 0;
+      transform: translateX(200px);
+    }
+
+    .carousel-indicators {
+      display: none;
+    }
+  }
+`;
+
+const dummyCarouselItems = [
+  <span key="one">one</span>,
+  <span key="two">two</span>,
+  <span key="tie">tie</span>,
+  <span key="your">your</span>,
+  <span key="shoe">shoe</span>,
+];
+
+CarouselStories.add('default', () => (
+  <Container>
+    <Carousel items={dummyCarouselItems} />
+  </Container>
+));

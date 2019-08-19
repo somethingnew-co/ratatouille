@@ -1,5 +1,5 @@
 ---
-to: "<%= locals.component ? `packages/${h.changeCase.camel(name)}/src/index.story.tsx` : null %>"
+to: "<%= locals.component ? `packages/${h.changeCase.camel(name)}/src/index.stories.tsx` : null %>"
 ---
 <%_ const fName = h.changeCase.pascal(name); _%>
 import React from 'react';

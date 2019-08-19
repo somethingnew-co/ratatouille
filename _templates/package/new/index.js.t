@@ -26,7 +26,7 @@ interface <%= fName %>State {  }
 class <%= fName %> extends React.Component<<%= fName %>Props, <%= fName %>State> {
   constructor(props: <%= fName %>Props) {
     super(props);
-  
+
     this.state = { };
   }
 
