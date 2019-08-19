@@ -1,8 +1,8 @@
 import React from 'react';
 
 declare module 'react' {
-  interface HTMLAttributes<T> {
-    loading?: string;
+  interface ImgHTMLAttributes<T> {
+    loading?: 'lazy' | 'eager' | 'auto';
   }
 }
 
@@ -110,7 +110,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
 
     return (
       <picture ref={this.imageElement}>
-        <img alt={alt || title} title={title || alt} />
+        <img alt={alt || title} title={alt ? title : ''} />
       </picture>
     );
   }
