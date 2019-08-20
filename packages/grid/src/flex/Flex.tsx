@@ -1,43 +1,41 @@
 import React, { FC } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { flexbox, position, FlexboxProps, PositionProps } from 'styled-system';
-import { Box } from './Box';
-import { baseTheme, calcFlexPercentage, calcFlexGap } from './helpers';
-import { SC } from './Grid.types';
+import { flexbox, FlexboxProps } from 'styled-system';
+import { Box } from '../Box';
+import { baseTheme, calcFlexPercentage, calcFlexGap } from '../helpers';
+import { SC } from '../types';
 
-/**
- * Base flexbox
- * Extension of <Box> component with flexbox props.
- */
-const FlexBox = styled(Box)<FlexboxProps & PositionProps>`
+const Flexbox = styled(Box)<FlexboxProps>`
   ${flexbox}
-  ${position}
 `;
 
+
+// <Flex.Box>
 /**
- * <Flex>
- * Extension of <FlexBox>. Naked flex container.
+ * Extension of `<Box>` with `flexbox` props from styled-system.
  */
-export const Flex = styled(FlexBox)<FlexboxProps>`
+export const Flex = styled(Flexbox)<FlexboxProps>`
   display: flex;
 `;
 
-/**
- * <FlexItem>
- * Extension of <FlexBox>. Naked <Flex> child component.
- */
-export const FlexItem = FlexBox;
 
+// <Flex.Item>
 /**
- * <FlexRow>
- * Extension of <Flex> with negative margins.
- * Bootstrap-style grid row.
+ * Basic layout block intended to be used inside a flexbox container. Identical to `<Flex.Box>` besides exclusion of `display: flex`.
  */
+export const FlexItem = Flexbox;
 
+
+// <Flex.Row>
 interface Row {
   noPad?: boolean;
 }
 
+/**
+ * Extension of `<Flex.Box>` with negative margins.
+ * Intended to wrap `<Flex.Col>` components for bootstrap-style flexbox grid.
+ * Must be inside `<Flex.Wrapper>`, otherwise use `<Flex.Box>`.
+ */
 export const FlexRow: FC<SC & Row> = ({
   noPad,
   children,
@@ -55,12 +53,8 @@ export const FlexRow: FC<SC & Row> = ({
   return <Flex mx={margin} {...rest}>{children}</Flex>;
 };
 
-/**
- * <FlexCol>
- * <FlexRow> child component.
- * Bootsrap-style grid column.
- */
 
+// <Flex.Col>
 export interface Col {
   span?: number | number[];
   offset?: number | number[];
@@ -69,6 +63,10 @@ export interface Col {
   order?: number | number[];
 }
 
+/**
+ * Child of `<Flex.Row>` with built in padding from theme for bootstrap-style grid.
+ * Otherwise identical to `<Flex.Item>`.
+ */
 export const FlexCol: FC<SC & Col> = ({
   span,
   offset,
@@ -80,7 +78,7 @@ export const FlexCol: FC<SC & Col> = ({
 }) => {
   const theme = React.useContext(ThemeContext);
 
-  return <FlexBox
+  return <Flexbox
     px={theme && theme.grid ? calcFlexGap(theme) : calcFlexGap(baseTheme)}
     width={span ? calcFlexPercentage(span, theme) : '100%'}
     ml={offset ? calcFlexPercentage(offset, theme) : undefined}
@@ -88,6 +86,6 @@ export const FlexCol: FC<SC & Col> = ({
     right={pull ? calcFlexPercentage(pull, theme) : undefined}
     order={order || undefined}
     {...rest}
-  >{children}</FlexBox>;
+  >{children}</Flexbox>;
 
 };

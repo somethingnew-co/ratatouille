@@ -1,6 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Box, Container, Flex, FlexItem, FlexRow, FlexCol, Grid, GridItem } from './index';
+import { Box, Container } from './index';
+import { Flex, FlexItem, FlexRow, FlexCol } from './flex/Flex';
+import { GridBox, GridItem } from './grid/Grid';
 
 import { baseTheme, makePropArray, generateColumnStrings, calcFlexPercentage, calcFlexGap } from './helpers';
 
@@ -30,14 +32,14 @@ describe('@stnew/layout', () => {
     expect(wrapper.containsMatchingElement(<div>Hello World!</div>)).toEqual(true);
   });
   it('Renders Grid', () => {
-    const wrapper = mount(<Grid>Hello World!</Grid>);
+    const wrapper = mount(<GridBox>Hello World!</GridBox>);
     expect(wrapper.containsMatchingElement(<div>Hello World!</div>)).toEqual(true);
   });
   it('Renders GridItem', () => {
-    const wrapper = mount(<Grid>
+    const wrapper = mount(<GridBox>
       <GridItem>Hello World!</GridItem>
       <GridItem>Hola Mundo!</GridItem>
-    </Grid>);
+    </GridBox>);
     expect(wrapper.containsMatchingElement(<div>Hola Mundo!</div>)).toEqual(true);
   });
 

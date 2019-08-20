@@ -5,10 +5,13 @@
 
 import React, { FC } from 'react';
 import { ThemeContext } from 'styled-components';
-import { SC } from './Grid.types';
+import { SC } from './types';
 
 import { Box } from './Box';
 
+/**
+ * Extension of `<Box>` with max-width applied that corresponds to theme breakpoints.
+ */
 export const Container: FC<SC> = props => {
   const theme = React.useContext(ThemeContext);
 
