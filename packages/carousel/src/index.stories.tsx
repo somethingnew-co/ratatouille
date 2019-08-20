@@ -104,6 +104,12 @@ const dummyCarouselItems = [
 
 CarouselStories.add('default', () => (
   <Container>
+    <Carousel items={dummyCarouselItems} />
+  </Container>
+));
+
+CarouselStories.add('auto rotate', () => (
+  <Container>
     <Carousel autoRotate items={dummyCarouselItems} />
   </Container>
 ));
