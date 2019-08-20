@@ -2,9 +2,16 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled from 'styled-components';
 
+import README from '../README.md';
 import Carousel from '.';
 
 const CarouselStories = storiesOf('Carousel', module);
+
+CarouselStories.addParameters({
+  readme: {
+    sidebar: README,
+  },
+});
 
 const Container = styled.div`
   .carousel-container {
