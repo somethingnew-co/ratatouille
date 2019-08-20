@@ -1,7 +1,14 @@
 /**
  * Base theme as fallback
  */
-export const baseTheme = {
+ type ThemeGrid = {
+   grid: {
+     columns: number;
+     gap: number | number[];
+   };
+ }
+
+export const baseTheme: ThemeGrid = {
   grid: {
     columns: 12,
     gap: [10, 20],
@@ -44,16 +51,12 @@ export function generateColumnStrings(
 /**
  * Calculates flex percentages from theme
  */
-export function calcFlexPercentage(n: number | number[], theme: {
-  grid?: {
-    column: number;
-  };
-}): string[] {
+export function calcFlexPercentage(n: number | number[], theme: ThemeGrid): string[] {
   const props = makePropArray(n);
   let col = 12;
 
   if (theme && theme.grid) {
-    col = theme.grid.column;
+    col = theme.grid.columns;
   }
 
   return props.map(prop => `${prop / col * 100}%`);
@@ -62,15 +65,7 @@ export function calcFlexPercentage(n: number | number[], theme: {
 /**
  * Calculates flex padding from theme
  */
-export function calcFlexGap(
-  theme: {
-    grid?: {
-      gap: number[];
-    };
-  },
-  row = false
-
-): number[] {
+export function calcFlexGap(theme: ThemeGrid, row = false): number[] {
   let gaps = baseTheme.grid.gap;
 
   if (theme && theme.grid) {
