@@ -5,7 +5,16 @@ import { Box, Container } from './index';
 import * as Flex from './flex';
 import * as Grid from './grid';
 
+import README from '../README.md';
+
 const Stories = storiesOf('Grid', module);
+
+
+Stories.addParameters({
+  readme: {
+    sidebar: README,
+  },
+});
 
 import styled from 'styled-components';
 
@@ -65,6 +74,21 @@ Stories.add('Examples', () => (
         <Box display="inline-block" className="box" p={10} ml={10}>Hello world!</Box>
         <Box display="inline-block" className="box" p={10} ml={10}>Hello world!</Box>
       </div>
+
+      <h2>CSS Grid</h2>
+      <Grid.Box my={10} className="grid">
+        <Grid.Item py={10} className="grid__item">Hello world!</Grid.Item>
+        <Grid.Item py={10} className="grid__item" start={1} end={5}>Hello world!</Grid.Item>
+        <Grid.Item py={10} className="grid__item" start={5} end={9}>Hello world!</Grid.Item>
+        <Grid.Item py={10} className="grid__item" start={9}>Hello world!</Grid.Item>
+        <Grid.Item py={10} className="grid__item" start={1} end={7}>Hello world!</Grid.Item>
+        <Grid.Item py={10} className="grid__item" start={[1, 7]} end={[-1]}>Hello world!</Grid.Item>
+        <Grid.Item py={10} className="grid__item" col="5/9" row="4">Hello world!</Grid.Item>
+        <Grid.Item display="flex" py={10} className="grid__item" col="1/5" row="4 / 7"><Box m="auto">Hello world!</Box></Grid.Item>
+        <Grid.Item py={10} className="grid__item" col="5/9" row="6">Hello world!</Grid.Item>
+        <Grid.Item py={10} className="grid__item" start={9} row="5">Hello world!</Grid.Item>
+      </Grid.Box>
+
       <h2>Flex</h2>
       <Flex.Box className="flex" p={10} my={10} width={[6 / 12]} mx="auto">Hello world!</Flex.Box>
       <Flex.Box className="flex" my={10} height={80} justifyContent="space-between">
@@ -72,7 +96,6 @@ Stories.add('Examples', () => (
         <Flex.Item className="flex__item" alignSelf="center"><Box p={10}>Hello world!</Box></Flex.Item>
         <Flex.Item className="flex__item" alignSelf="flex-end"><Box p={10}>Hello world!</Box></Flex.Item>
       </Flex.Box>
-
       <Box px={10}>
         <Flex.Row className="flex__row">
           <Flex.Col display="flex" className="flex__col" span={6}>
@@ -111,21 +134,44 @@ Stories.add('Examples', () => (
             </Box>
           </Flex.Col>
         </Flex.Row>
+
+        <Flex.Row className="flex__row">
+          <Flex.Col display="flex" className="flex__col" span={2} offset={2}>
+            <Box py={10} m="auto">
+              Hello world!
+            </Box>
+          </Flex.Col>
+          <Flex.Col display="flex" className="flex__col" span={2} push={2}>
+            <Box py={10} m="auto">
+              Hello world!
+            </Box>
+          </Flex.Col>
+          <Flex.Col display="flex" className="flex__col" span={4} pull={1}>
+            <Box py={10} m="auto">
+              Hello world!
+            </Box>
+          </Flex.Col>
+        </Flex.Row>
+
+        <Flex.Row className="flex__row">
+          <Flex.Col display="flex" className="flex__col" order={3}>
+            <Box py={10} m="auto">
+              1
+            </Box>
+          </Flex.Col>
+          <Flex.Col display="flex" className="flex__col" order={2}>
+            <Box py={10} m="auto">
+              2
+            </Box>
+          </Flex.Col>
+          <Flex.Col display="flex" className="flex__col" order={1}>
+            <Box py={10} m="auto">
+              3
+            </Box>
+          </Flex.Col>
+        </Flex.Row>
       </Box>
 
-      <h2>Grid</h2>
-      <Grid.Box my={10} className="grid">
-        <Grid.Item py={10} className="grid__item">Hello world!</Grid.Item>
-        <Grid.Item py={10} className="grid__item" start={1} end={5}>Hello world!</Grid.Item>
-        <Grid.Item py={10} className="grid__item" start={5} end={9}>Hello world!</Grid.Item>
-        <Grid.Item py={10} className="grid__item" start={9}>Hello world!</Grid.Item>
-        <Grid.Item py={10} className="grid__item" start={1} end={7}>Hello world!</Grid.Item>
-        <Grid.Item py={10} className="grid__item" start={[1, 7]} end={[-1]}>Hello world!</Grid.Item>
-        <Grid.Item py={10} className="grid__item" col="5/9" row="4">Hello world!</Grid.Item>
-        <Grid.Item display="flex" py={10} className="grid__item" col="1/5" row="4 / 7"><Box m="auto">Hello world!</Box></Grid.Item>
-        <Grid.Item py={10} className="grid__item" col="5/9" row="6">Hello world!</Grid.Item>
-        <Grid.Item py={10} className="grid__item" start={9} row="5">Hello world!</Grid.Item>
-      </Grid.Box>
     </Container>
   </ShowGrid>
 

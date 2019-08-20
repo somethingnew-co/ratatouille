@@ -79,6 +79,7 @@ export const FlexCol: FC<SC & Col> = ({
   const theme = React.useContext(ThemeContext);
 
   return <Flexbox
+    position={rest.position || 'relative'}
     px={theme && theme.grid ? calcFlexGap(theme) : calcFlexGap(baseTheme)}
     width={span ? calcFlexPercentage(span, theme) : '100%'}
     ml={offset ? calcFlexPercentage(offset, theme) : undefined}

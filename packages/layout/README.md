@@ -32,6 +32,10 @@ const Component = () => (
 
 ## CSS Grid Layout
 
+```javascript
+import * as Grid from '@stnew/layout/grid';
+```
+
 ### Grid.Wrapper
 
 Identical to [`<Container>`], intended to wrap CSS grid.
@@ -66,6 +70,10 @@ const Component = () => (
 ```
 
 ## Flex Layout
+
+```javascript
+import * as Flex from '@stnew/layout/flex';
+```
 
 ### Flex.Box
 
