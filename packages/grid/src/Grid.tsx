@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { grid, GridProps } from 'styled-system';
+import { Box } from './Box';
+import { baseTheme, generateColumnStrings } from './helpers';
+import { SC } from './Grid.types';
 
-import { Box } from './index';
-
+/**
+ * Base styled components
+ */
 const GridBox = styled(Box)<GridProps>`
   display: grid;
   ${grid}
@@ -13,52 +17,48 @@ const Item = styled(Box)<GridProps>`
   ${grid}
 `;
 
-const Grid: React.FC = props => {
+/**
+ * <Grid>
+ * CSS Grid component from styled-components theme
+ */
+export const Grid: FC<SC> = props => {
   const { children } = props;
   const theme = React.useContext(ThemeContext);
 
   return <GridBox
-    gridTemplateColumns={theme ? `repeat(${theme.grid.columns}, 1fr)` : 'repeat(12, 1fr)'}
-    gridColumnGap={theme ? theme.grid.gap : 10}
+    gridTemplateColumns={`repeat(${theme ? theme.grid.columns : baseTheme.grid.columns}, 1fr)`}
+    gridColumnGap={theme ? theme.grid.gap : baseTheme.grid.gap}
+    gridRowGap={theme ? theme.grid.gap : baseTheme.grid.gap}
     {...props}
   >
     {children}
   </GridBox>;
 };
 
+/**
+ * <GridItem>
+ * <Grid> component child
+ */
 interface GridItemProps {
-  start?: (string | number)[];
-  end?: (string | number)[];
-  row?: (string | number)[];
+  start?: number | number[]; // grid-column-start
+  end?: number | number[]; // grid-column-end
+  col?: string | string[]; // grid-column
+  row?: string | number | (string | number)[]; // grid-row
 }
 
-function generateColumn(
-  start: GridItemProps['start'],
-  end: GridItemProps['end']
-): string[] {
+export const GridItem: FC<SC & GridItemProps> = props => {
+  const { children, start, end, col, row } = props;
+  let gridColumn = ['1 / -1'];
+
   if (start) {
-    const map = start.map(
-      (start: number | string, i: number): string => (
-        `${start} / ${end ? end[i] : '-1'}`
-      )
-    );
-
-    return map;
-  } else {
-    return ['1 / -1'];
+    gridColumn = generateColumnStrings(start, end);
   }
-}
 
-const GridItem: React.FC<GridItemProps> = props => {
-  const { children, start, end, row } = props;
-  const gridColum = generateColumn(start, end);
-  return <Item gridColumn={gridColum} gridRow={row} {...props}>{children}</Item>;
+  return <Item gridColumn={col || gridColumn} gridRow={row} {...props}>{children}</Item>;
 };
 
 GridItem.defaultProps = {
   start: [1],
   end: [-1],
-  row: ['auto'],
+  row: 'auto',
 };
-
-export { Grid, GridItem };

@@ -1,7 +1,7 @@
 {
-  "name": "@stnew/grid",
+  "name": "@stnew/layout",
   "version": "0.0.0",
-  "description": "Customizable Flexbox/CSS Grid",
+  "description": "Extensive flexbox/CSS grid layout system",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
   "license": "ISC",

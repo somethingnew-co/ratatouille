@@ -1,4 +1,4 @@
 export { Box } from './Box';
-export { Flex } from './Flex';
-export { default as Container } from './Container';
+export { Container } from './Container';
+export { Flex, FlexItem, FlexRow, FlexCol } from './Flex';
 export { Grid, GridItem } from './Grid';
