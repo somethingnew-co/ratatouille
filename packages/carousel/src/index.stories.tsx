@@ -43,7 +43,7 @@ const Container = styled.div`
       }
     }
 
-    .carousel-button.forward {
+    .carousel-button.next {
       right: 50px;
       z-index: 1;
       :before {
@@ -52,7 +52,7 @@ const Container = styled.div`
       }
     }
 
-    .carousel-button.backward {
+    .carousel-button.prev {
       left: 50px;
       z-index: 1;
       :before {
@@ -104,6 +104,6 @@ const dummyCarouselItems = [
 
 CarouselStories.add('default', () => (
   <Container>
-    <Carousel items={dummyCarouselItems} />
+    <Carousel autoRotate items={dummyCarouselItems} />
   </Container>
 ));

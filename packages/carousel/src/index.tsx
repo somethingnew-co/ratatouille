@@ -32,29 +32,37 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
 
   constructor(props: CarouselProps) {
     super(props);
-    const { startIndex } = props;
+    const { startIndex, items } = props;
 
-    this.state = { current: startIndex || 0 };
+    this.state = { current: mod(startIndex || 0, items.length) };
 
     this.rotateForward = this.rotateForward.bind(this);
     this.rotateBackward = this.rotateBackward.bind(this);
+    this.startAutoRotate = this.startAutoRotate.bind(this);
   }
 
   componentDidMount(): void {
+    this.startAutoRotate();
+  }
+
+  startAutoRotate(): void {
     const { autoRotate, autoRotateTimeout } = this.props;
-    if (autoRotate && setInterval) {
+    if (autoRotate && window) {
+      if (this.rotateInterval) clearInterval(this.rotateInterval);
       this.rotateInterval = setInterval(this.rotateForward, autoRotateTimeout);
     }
   }
 
-  rotateForward(): void {
+  rotateForward(event: React.MouseEvent): void {
+    if (event) this.startAutoRotate();
     const { items } = this.props;
     const { current } = this.state;
     const next = mod(current + 1, items.length);
     this.setState({ current: next });
   }
 
-  rotateBackward(): void {
+  rotateBackward(event: React.MouseEvent): void {
+    if (event) this.startAutoRotate();
     const { items } = this.props;
     const { current } = this.state;
     const next = mod(current - 1, items.length);
@@ -70,7 +78,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     return (
       <div className="carousel-container">
         <div
-          className="carousel-button backward"
+          className="carousel-button prev"
           onClick={this.rotateBackward}
         >
           {prevButton}
@@ -100,7 +108,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
           ))}
         </div>
         <div
-          className="carousel-button forward"
+          className="carousel-button next"
           onClick={this.rotateForward}
         >
           {nextButton}
