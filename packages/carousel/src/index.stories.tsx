@@ -67,11 +67,13 @@ const Container = styled.div`
       top: 50%;
       left: 50%;
       transition: transform 0.5s, opacity 0.5s;
+      user-select: none;
     }
 
     .carousel-item-wrapper.active {
       transform: translateX(-50%);
       opacity: 1;
+      user-select: auto;
     }
 
     .carousel-item-wrapper.prev {
