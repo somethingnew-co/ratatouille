@@ -88,16 +88,18 @@ const Container = styled.div`
 
     .carousel-indicators {
       display: none;
+      user-select: none;
     }
   }
 `;
 
 const dummyCarouselItems = [
-  <span key="one">one</span>,
-  <span key="two">two</span>,
-  <span key="tie">tie</span>,
-  <span key="your">your</span>,
-  <span key="shoe">shoe</span>,
+  <span key="imagining">imagining</span>,
+  <span key="the">the</span>,
+  <span key="pieces">pieces</span>,
+  <span key="seeing">seeing</span>,
+  <span key="the2">the</span>,
+  <span key="whole">whole</span>,
 ];
 
 CarouselStories.add('default', () => (
