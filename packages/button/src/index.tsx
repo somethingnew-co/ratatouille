@@ -17,7 +17,7 @@ const defaultProps = {
   className: 'button',
 };
 
-const Button: React.FC<Props> = props => {
+const Button: React.FC<Props> = (props) => {
   const {
     className,
     onClick,
