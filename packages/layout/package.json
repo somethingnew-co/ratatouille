@@ -1,12 +1,12 @@
 {
-  "name": "@stnew/button",
-  "version": "1.1.2",
-  "description": "Reuseable button component for React projects",
-  "author": "Sam Kilgus <samkilgus@gmail.com>",
+  "name": "@stnew/layout",
+  "version": "0.0.0",
+  "description": "Extensive flexbox/CSS grid layout system",
+  "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
   "license": "ISC",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
   "publishConfig": {
     "access": "public"
   },
@@ -25,7 +25,14 @@
   },
   "peerDependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.8.5"
+    "react-dom": "^16.8.5",
+    "styled-components": "*"
   },
-  "gitHead": "0652ff7bdb405f4bab9c40c674523acef18e6885"
+  "gitHead": "0652ff7bdb405f4bab9c40c674523acef18e6885",
+  "devDependencies": {
+    "@types/styled-system": "^5.1.0"
+  },
+  "dependencies": {
+    "styled-system": "^5.1.0"
+  }
 }
