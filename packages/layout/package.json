@@ -6,7 +6,11 @@
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
   "license": "ISC",
   "main": "dist/index.js",
-  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "grid.js",
+    "flex.js"
+  ],
   "publishConfig": {
     "access": "public"
   },
