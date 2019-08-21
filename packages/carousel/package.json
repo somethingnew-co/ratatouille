@@ -16,8 +16,6 @@
   "peerDependencies": {
     "react": "^16.9.0"
   },
-  "devDependencies": {
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/somethingnew-co/ratatouille.git"

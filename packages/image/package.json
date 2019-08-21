@@ -1,6 +1,6 @@
 {
   "name": "@stnew/image",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "image component for react projects with optional cross-browser lazy-loading",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
@@ -17,7 +17,6 @@
     "react": "^16.9.0",
     "react-dom": "^16.8.5"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/somethingnew-co/ratatouille.git"
