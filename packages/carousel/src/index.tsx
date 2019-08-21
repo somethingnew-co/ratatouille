@@ -8,6 +8,7 @@ interface CarouselProps {
   autoRotate?: boolean;
   autoRotateTimeout?: number;
 }
+
 interface CarouselState {
   current: number;
 }
