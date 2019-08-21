@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled, { css } from 'styled-components';
 
+import README from '../README.md';
 import { ZipCodeInput, EmailInput } from '.';
 
 const generalStyles = css`
@@ -52,7 +53,7 @@ const EmailWrapperIndicator = styled.div`
       right: 0;
       top: 0;
       width: 0;
-      height: 100px;
+      height: 100%;
       transition: width 0.3s, color 0.3s;
     }
   
@@ -71,6 +72,12 @@ const EmailWrapperIndicator = styled.div`
 `;
 
 const FormsStories = storiesOf('Forms', module);
+
+FormsStories.addParameters({
+  readme: {
+    sidebar: README,
+  },
+});
 
 FormsStories.add('Zip Code Input', () => (
   <ZipCodeWrapper>
