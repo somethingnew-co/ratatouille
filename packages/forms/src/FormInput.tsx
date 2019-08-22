@@ -1,55 +1,30 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-export interface FormInputOwnProps {
-  id?: string;
-  name?: string;
-  className?: string;
-  required?: boolean;
-  autoFocus?: boolean;
-  placeholder?: string;
-  customInputIndicator?: React.ReactNode;
-  disableIndicator?: boolean;
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-}
-
-interface FormInputControlledProps {
-  type?: string;
-  value?: string;
+export interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   invalid?: boolean;
   validated?: boolean;
+  autoFocus?: boolean;
+  customInputIndicator?: React.ReactNode;
+  disableIndicator?: boolean;
 }
 
-type FormInputProps = FormInputOwnProps & FormInputControlledProps;
-
-const FormInput = ({
-  autoFocus,
-  placeholder,
-  id,
+const FormInput: FC<FormInputProps> = ({
+  type = 'text',
   className = 'form-input',
-  name,
-  value,
-  onChange,
-  onFocus,
-  onBlur,
   invalid,
   validated,
-  type = 'text',
-  required,
   customInputIndicator,
   disableIndicator,
-}: FormInputProps): JSX.Element | null => {
-  // ensure invalid state overrides valid state
-  const valid = validated && !invalid;
-
+  ...rest
+}) => {
   const wrapperClassList = [`${className}-wrapper`];
   const indicatorClassList = [`${className}-indicator`];
+
+  // ensure invalid state overrides valid state
   if (invalid) {
     wrapperClassList.push('invalid');
     indicatorClassList.push('invalid');
-  }
-  if (valid) {
+  } else if (validated) {
     wrapperClassList.push('valid');
     indicatorClassList.push('valid');
   }
@@ -57,17 +32,9 @@ const FormInput = ({
   return (
     <div className={wrapperClassList.join(' ')}>
       <input
-        className={className}
-        id={id}
-        name={name}
-        autoFocus={autoFocus}
-        placeholder={placeholder}
-        onChange={onChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        value={value}
         type={type}
-        required={required}
+        className={className}
+        {...rest}
       />
       {!disableIndicator && (
         <div className={indicatorClassList.join(' ')}>

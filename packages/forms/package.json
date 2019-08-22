@@ -16,8 +16,6 @@
   "peerDependencies": {
     "react": "^16.9.0"
   },
-  "devDependencies": {
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/somethingnew-co/ratatouille.git"
@@ -30,5 +28,11 @@
   },
   "bugs": {
     "url": "https://github.com/somethingnew-co/ratatouille/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.137"
   }
 }

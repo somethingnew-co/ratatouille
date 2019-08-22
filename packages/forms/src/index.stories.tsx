@@ -56,12 +56,12 @@ const EmailWrapperIndicator = styled.div`
       height: 100%;
       transition: width 0.3s, color 0.3s;
     }
-  
+
     .form-input-indicator.invalid {
       width: 15px;
       background-color: red;
     }
-  
+
     .form-input-indicator.valid {
       width: 15px;
       background-color: green;
@@ -87,7 +87,7 @@ FormsStories.add('Zip Code Input', () => (
 
 FormsStories.add('Email Input', () => (
   <EmailWrapper>
-    <EmailInput disableIndicator />
+    <EmailInput disableIndicator placeholder="hi@somethingnew.co"/>
   </EmailWrapper>
 ));
 

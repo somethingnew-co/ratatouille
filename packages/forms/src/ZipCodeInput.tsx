@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-import { ValidatedInput, ValidatedInputCallbacks, FormInputProps } from '.';
-
-type ZipCodeInputProps = FormInputProps & ValidatedInputCallbacks;
+import ValidatedInput, { ValidatedInputProps } from './ValidatedInput';
 
 const validator = (value: string): boolean => /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(value);
 
-const ZipCodeInput = (props: ZipCodeInputProps): JSX.Element => {
-  const { onValid, onInvalid, onEmpty, ...inputProps } = props;
-  inputProps.placeholder = inputProps.placeholder || 'zip code';
-  return (
-    <ValidatedInput
-      validator={validator}
-      onValid={onValid}
-      onInvalid={onInvalid}
-      onEmpty={onEmpty}
-      input={inputProps}
-      type="text"
-    />
-  );
-};
+const ZipCodeInput: FC<ValidatedInputProps> = ({
+  type = 'text',
+  placeholder = 'zipcode',
+  ...rest
+}) => (
+  <ValidatedInput
+    pattern="[0-9]{5}"
+    validator={validator}
+    {...{
+      type,
+      placeholder,
+      ...rest,
+    }}
+  />
+);
 
 export default ZipCodeInput;

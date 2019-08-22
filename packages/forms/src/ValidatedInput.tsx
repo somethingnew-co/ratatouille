@@ -1,21 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
+import _ from 'lodash';
+import FormInput, { FormInputProps } from './FormInput';
 
-import { FormInput, FormInputProps } from '.';
-
-export interface ValidatedInputCallbacks {
+export interface ValidatedInputProps extends FormInputProps {
+  validator?: (value: string) => boolean;
   onValid?: () => void;
   onInvalid?: () => void;
   onEmpty?: () => void;
 }
-
-interface ValidatedInputOwnProps {
-  validator?: (value: string) => boolean;
-  type?: string;
-  input: FormInputProps;
-}
-
-type ValidatedInputProps = ValidatedInputCallbacks & ValidatedInputOwnProps;
 
 interface ValidatedInputState {
   value: string;
@@ -23,8 +15,8 @@ interface ValidatedInputState {
   invalid: boolean;
 }
 
-class ValidatedInput extends React.Component<ValidatedInputProps, ValidatedInputState> {
-
+class ValidatedInput extends React.Component<ValidatedInputProps & React.HTMLProps<HTMLInputElement>
+, ValidatedInputState> {
   private validateTimeout?: number;
 
   constructor(props: ValidatedInputProps) {
@@ -76,7 +68,7 @@ class ValidatedInput extends React.Component<ValidatedInputProps, ValidatedInput
   }
 
   render(): JSX.Element {
-    const { input: inputProps } = this.props;
+    const inputProps = _.omit(this.props, ['validator', 'onValid', 'onInvalid', 'onEmpty']);
 
     return (
       <FormInput
