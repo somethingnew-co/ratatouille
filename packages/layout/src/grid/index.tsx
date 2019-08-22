@@ -4,5 +4,5 @@ export {
 } from './Grid';
 
 export {
-  Container as Wrapper,
+  Container,
 } from '../Container';

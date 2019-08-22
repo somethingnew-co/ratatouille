@@ -13,6 +13,7 @@ const Flexbox = styled(Box)<FlexboxProps>`
 // <Flex.Box>
 /**
  * Extension of `<Box>` with `flexbox` props from styled-system.
+ * If child is `<Flex.Row>`, use `<Flex.Container>` to offset negative margins.
  */
 export const Flex = styled(Flexbox)<FlexboxProps>`
   display: flex;
@@ -21,7 +22,8 @@ export const Flex = styled(Flexbox)<FlexboxProps>`
 
 // <Flex.Item>
 /**
- * Basic layout block intended to be used inside a flexbox container. Identical to `<Flex.Box>` besides exclusion of `display: flex`.
+ * Basic layout block intended to be used inside a flexbox container.
+ * Identical to `<Flex.Box>` besides exclusion of `display: flex`.
  */
 export const FlexItem = Flexbox;
 
@@ -34,7 +36,7 @@ interface Row {
 /**
  * Extension of `<Flex.Box>` with negative margins.
  * Intended to wrap `<Flex.Col>` components for bootstrap-style flexbox grid.
- * Must be inside `<Flex.Wrapper>`, otherwise use `<Flex.Box>`.
+ * Must be inside `<Flex.Container>`, otherwise use `<Flex.Box>`.
  */
 export const FlexRow: FC<SC & Row> = ({
   noPad,
