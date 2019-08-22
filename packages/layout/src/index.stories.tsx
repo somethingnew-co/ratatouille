@@ -27,19 +27,18 @@ const ShowGrid = styled.div`
   }
 
   .container {
-   border: 1px solid black;
+    border: 1px solid black;
   }
 
   .box {
-   box-shadow: inset 0 0 0 1px rgb(255, 128, 0);
-   background: rgb(255, 128, 0, 0.2);
+    box-shadow: inset 0 0 0 1px rgb(255, 128, 0);
+    background: rgb(255, 128, 0, 0.2);
   }
 
   .grid {
-    background: rgba(128, 0, 128, 0.2);
-
     &__item {
-     box-shadow: inset 0 0 0 1px rgb(128, 0, 128);
+      background: rgba(128, 0, 128, 0.2);
+      box-shadow: inset 0 0 0 1px rgb(128, 0, 128);
     }
   }
 
@@ -57,26 +56,29 @@ const ShowGrid = styled.div`
 
     }
     &__col {
-     box-shadow: inset 0 0 0 1px rgb(0, 128, 128);
+      box-shadow: inset 0 0 0 1px rgb(0, 128, 128);
     }
   }
 `;
 
 Stories.add('Examples', () => (
   <ShowGrid>
-    <Container className="container">
-      <h2>Box</h2>
+
+    <h2>Box</h2>
+    <Container className="container" py={10}>
       <Box className="box" p={10} mb={10}>Hello world!</Box>
       <Box className="box" p={10} mb={10} width={'50%'}>Hello world!</Box>
       <Box className="box" p={10} mb={10} width={'50%'} ml="auto">Hello world!</Box>
       <div>
         <Box display="inline-block" className="box" p={10}>Hello world!</Box>
-        <Box display="inline-block" className="box" p={10} ml={10}>Hello world!</Box>
-        <Box display="inline-block" className="box" p={10} ml={10}>Hello world!</Box>
+        <Box display="inline-block" className="box" p={10} ml={20}>Hello world!</Box>
+        <Box display="inline-block" className="box" p={10} ml={20}>Hello world!</Box>
       </div>
+    </Container>
 
-      <h2>CSS Grid</h2>
-      <Grid.Box my={10} className="grid">
+    <h2>CSS Grid</h2>
+    <Grid.Container className="container" py={10}>
+      <Grid.Box className="grid">
         <Grid.Item py={10} className="grid__item">Hello world!</Grid.Item>
         <Grid.Item py={10} className="grid__item" start={1} end={5}>Hello world!</Grid.Item>
         <Grid.Item py={10} className="grid__item" start={5} end={9}>Hello world!</Grid.Item>
@@ -88,9 +90,11 @@ Stories.add('Examples', () => (
         <Grid.Item py={10} className="grid__item" col="5/9" row="6">Hello world!</Grid.Item>
         <Grid.Item py={10} className="grid__item" start={9} row="5">Hello world!</Grid.Item>
       </Grid.Box>
+    </Grid.Container>
 
-      <h2>Flex</h2>
-      <Flex.Box className="flex" p={10} my={10} width={[6 / 12]} mx="auto">Hello world!</Flex.Box>
+    <h2>Flex</h2>
+    <Flex.Container className="container" py={10}>
+      <Flex.Box className="flex" p={10} mb={10} width={[6 / 12]} mx="auto">Hello world!</Flex.Box>
       <Flex.Box className="flex" my={10} height={80} justifyContent="space-between">
         <Flex.Item className="flex__item" alignSelf="flex-start"><Box p={10}>Hello world!</Box></Flex.Item>
         <Flex.Item className="flex__item" alignSelf="center"><Box p={10}>Hello world!</Box></Flex.Item>
@@ -142,12 +146,12 @@ Stories.add('Examples', () => (
             </Box>
           </Flex.Col>
           <Flex.Col display="flex" className="flex__col" span={2} push={2}>
-            <Box py={10} m="auto">
+            <Box py={10} m="auto" color="rgba(255, 0, 0, 0.5)">
               Hello world!
             </Box>
           </Flex.Col>
           <Flex.Col display="flex" className="flex__col" span={4} pull={1}>
-            <Box py={10} m="auto">
+            <Box py={10} m="auto" color="rgba(0, 0, 255, 0.5)">
               Hello world!
             </Box>
           </Flex.Col>
@@ -171,8 +175,7 @@ Stories.add('Examples', () => (
           </Flex.Col>
         </Flex.Row>
       </Box>
-
-    </Container>
+    </Flex.Container>
   </ShowGrid>
 
 ));

@@ -16,7 +16,8 @@ const Item = styled(Box)<GridProps>`
 
 // <Grid.Box>
 /**
- * CSS grid layout block extending `<Box>`. Includes `grid` props from `styled-system`.
+ * CSS grid layout block extending `<Box>`.
+ * Includes `grid` props from `styled-system`.
  */
 export const GridBox: FC<SC> = props => {
   const { children } = props;
@@ -36,7 +37,8 @@ export const GridBox: FC<SC> = props => {
 /**
  *
  * Basic layout block with `grid` props from [styled-system].
- * Identical to `<Grid.Box>` besides exclusion of `display: grid`, and intended to be used inside a `<Grid.Box>` container.
+ * Identical to `<Grid.Box>` besides exclusion of `display: grid`,
+ * and intended to be used inside a `<Grid.Box>` container.
  */
 interface GridItemProps {
   // grid-row
@@ -57,7 +59,13 @@ export const GridItem: FC<SC & GridItemProps> = props => {
     gridColumn = generateColumnStrings(start, end);
   }
 
-  return <Item gridColumn={col || gridColumn} gridRow={row} {...props}>{children}</Item>;
+  return (
+    <Item
+      gridColumn={col || gridColumn}
+      gridRow={row} {...props}>
+      {children}
+    </Item>
+  );
 };
 
 GridItem.defaultProps = {

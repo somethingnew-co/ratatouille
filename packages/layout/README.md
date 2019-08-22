@@ -36,7 +36,7 @@ const Component = () => (
 import * as Grid from '@stnew/layout/grid';
 ```
 
-### Grid.Wrapper
+### Grid.Container
 
 Identical to [`<Container>`], intended to wrap CSS grid.
 
@@ -59,13 +59,13 @@ end   | `number` or `number[]`                           | CSS prop `grid-column
 import * as Grid from '@stnew/layout/grid';
 
 const Component = () => (
-  <Grid.Wrapper>
+  <Grid.Container>
     <Grid.Box>
       <Grid.Item col="1/7">Hello world!</GridItem>
       <Grid.Item col="7/12">Hello world!</GridItem>
       <Grid.Item start={5} end={9}>Hello world!</GridItem>
     </Grid.Box>
-  </Grid.Wrapper>
+  </Grid.Container>
 )
 ```
 
@@ -95,13 +95,13 @@ const Component = () => (
 
 ## Bootstrap-style Flex Grid
 
-### Flex.Wrapper
+### Flex.Container
 
 Identical to [`<Container>`], intended to wrap bootstrap-style grid.
 
 ### Flex.Row
 
-Extension of `<Flex.Box>` with negative margins. Intended to wrap `<Flex.Col>` components for bootstrap-style flexbox grid. Must be inside `<Flex.Wrapper>`, otherwise use `<Flex.Box>`.
+Extension of `<Flex.Box>` with negative margins. Intended to wrap `<Flex.Col>` components for bootstrap-style flexbox grid. Must be inside `<Flex.Container>`, otherwise use `<Flex.Box>`.
 
 ### Flex.Col
 
@@ -119,13 +119,13 @@ order  | `number` or `number[]` | specify order of columns
 import * as Flex from '@stnew/layout/flex';
 
 const Component = () => (
-  <Flex.Wrapper>
+  <Flex.Container>
     <Flex.Row>
       <Flex.Col span={4}>Hello world!</Flex.Col>
       <Flex.Col span={4}>Hello world!</Flex.Col>
       <Flex.Col span={2} offset={4}>Hello world!</Flex.Col>
     </FlexRow>
-  </Flex.Wrapper>
+  </Flex.Container>
 )
 ```
 

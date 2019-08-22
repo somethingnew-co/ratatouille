@@ -6,5 +6,5 @@ export {
 } from './Flex';
 
 export {
-  Container as Wrapper,
+  Container,
 } from '../Container';
