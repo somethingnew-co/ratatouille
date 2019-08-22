@@ -45,7 +45,7 @@ class ValidatedInput extends React.Component<ValidatedInputProps & React.HTMLPro
           validated: isValid,
           invalid: !isValid,
         });
-        if (onValid) onValid();
+        if (isValid && onValid) onValid();
       } else {
         this.setState({ value });
 

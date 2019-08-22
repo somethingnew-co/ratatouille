@@ -93,6 +93,6 @@ FormsStories.add('Email Input', () => (
 
 FormsStories.add('Email Input w/ Indicator', () => (
   <EmailWrapperIndicator>
-    <EmailInput />
+    <EmailInput onInvalid={() => console.log('invalid')} onEmpty={() => console.log('empty')} onValid={() => console.log('valid')} />
   </EmailWrapperIndicator>
 ));
