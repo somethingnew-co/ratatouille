@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import styled, { css } from 'styled-components';
 
 import README from '../README.md';
@@ -81,18 +82,33 @@ FormsStories.addParameters({
 
 FormsStories.add('Zip Code Input', () => (
   <ZipCodeWrapper>
-    <ZipCodeInput disableIndicator />
+    <ZipCodeInput
+      disableIndicator
+      onInvalid={action('invalid')}
+      onEmpty={action('empty')}
+      onValid={action('valid')}
+    />
   </ZipCodeWrapper>
 ));
 
 FormsStories.add('Email Input', () => (
   <EmailWrapper>
-    <EmailInput disableIndicator placeholder="hi@somethingnew.co"/>
+    <EmailInput
+      disableIndicator
+      placeholder="hi@somethingnew.co"
+      onInvalid={action('invalid')}
+      onEmpty={action('empty')}
+      onValid={action('valid')}
+    />
   </EmailWrapper>
 ));
 
 FormsStories.add('Email Input w/ Indicator', () => (
   <EmailWrapperIndicator>
-    <EmailInput onInvalid={() => console.log('invalid')} onEmpty={() => console.log('empty')} onValid={() => console.log('valid')} />
+    <EmailInput
+      onInvalid={action('invalid')}
+      onEmpty={action('empty')}
+      onValid={action('valid')}
+    />
   </EmailWrapperIndicator>
 ));
