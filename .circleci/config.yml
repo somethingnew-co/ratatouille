@@ -11,12 +11,13 @@ jobs:
       - restore_cache: 
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: install-npm-wee
+          name: install dependencies
           command: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+            - ./packages/*/node_modules
       - run:
           name: lint
           command: npm run lint
