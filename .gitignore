@@ -32,6 +32,7 @@ node_modules
 dist
 
 # package-lock in monorepo
+/packages/**/package-lock.json
 
 # IDEA/Webstorm project files
 .idea
