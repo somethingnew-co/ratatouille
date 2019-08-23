@@ -1,4 +1,6 @@
 module.exports = ({ config, mode }) => {
+    config.module.rules[0].use[0].options.sourceType = "unambiguous";
+
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       exclude: /(node_modules)/,

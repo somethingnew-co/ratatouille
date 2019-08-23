@@ -12,11 +12,13 @@ module.exports = {
     '/node_modules/',
     '/dist/',
     '/.out/',
+    '/deprecated/',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
     '/.out/',
+    '/deprecated/',
   ],
   snapshotSerializers: ['enzyme-to-json/serializer'],
 };

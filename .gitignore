@@ -46,6 +46,7 @@ dist
 build
 
 # Other
+checksum.txt
 .out
 .cache
 dist

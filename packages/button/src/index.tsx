@@ -1,25 +1,19 @@
-import React from 'react';
+import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 
-interface Props {
-  className?: string;
-  onClick?: () => void;
-  children?: React.ReactChildren;
-  disabled?: boolean;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string;
-  title?: string;
-  as?: 'a' | 'button';
-  href?: string;
-  target?: string;
-  rel?: string;
-  type?: 'button' | 'submit';
 }
+
+interface AProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  external?: boolean;
+}
+
 const defaultProps = {
   className: 'button',
 };
 
-const Button: React.FC<Props> = (props) => {
+const Button: React.FC<{ as?: 'button' | 'a' } & ButtonProps & AProps> = props => {
   const {
-    className,
     onClick,
     children,
     disabled,
@@ -30,6 +24,8 @@ const Button: React.FC<Props> = (props) => {
     target,
     rel,
     type,
+    external,
+    ...rest
   } = props;
 
   const isButton = type === 'button' || type === 'submit' || as === 'button';
@@ -39,24 +35,24 @@ const Button: React.FC<Props> = (props) => {
       <button
         type={type}
         title={title || label}
-        className={className}
         onClick={onClick}
         disabled={!onClick || disabled}
+        {...rest}
       >
         {children || label}
       </button>
     );
   }
 
-  const externalLink = !!href && href.indexOf('http') === 0;
+  const externalLink = !!href && href.indexOf('http') === 0 || external;
 
   return (
     <a
       href={href}
       title={title || label}
-      className={className}
       target={externalLink ? '_blank' : target}
-      rel={externalLink ? 'noreferrer' : rel}
+      rel={externalLink ? 'noopener noreferrer' : rel}
+      {...rest}
     >
       {children || label}
     </a>
