@@ -1,6 +1,6 @@
 {
   "name": "@stnew/ratatouille",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "stnew react component library",
   "scripts": {
     "storybook": "NODE_ENV=development start-storybook -s ./shared -p 9001",
