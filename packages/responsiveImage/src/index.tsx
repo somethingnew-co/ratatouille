@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ImgHTMLAttributes } from 'react';
 
 declare module 'react' {
   interface ImgHTMLAttributes<T> {
@@ -6,7 +6,7 @@ declare module 'react' {
   }
 }
 
-interface ResponsiveImageProps {
+interface ResponsiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   sources: {
     src: string;
     width: number;
@@ -16,9 +16,8 @@ interface ResponsiveImageProps {
   indexUnit?: 'px' | 'rem' | 'vw';
   lazyTimeout?: number;
   lazy?: boolean;
-  alt?: string;
-  title?: string;
 }
+
 interface ResponsiveImageState {
   loaded: boolean;
 }
