@@ -1,0 +1,40 @@
+{
+  "name": "@stnew/accordion",
+  "version": "0.0.0",
+  "description": "Accordion",
+  "author": "Something New",
+  "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somethingnew-co/ratatouille.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "rm -rf dist  && npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/somethingnew-co/ratatouille/issues"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.8.5",
+    "styled-components": "*"
+  },
+  "gitHead": "0652ff7bdb405f4bab9c40c674523acef18e6885",
+  "dependencies": {
+    "react-transition-group": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/react-transition-group": "^4.2.2"
+  }
+}
