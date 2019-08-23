@@ -1,0 +1,46 @@
+{
+  "name": "@stnew/cached-request",
+  "version": "1.0.0",
+  "description": "Express middleware to cache requests, with plugin support for 3rd party client integrations.",
+  "author": "Something New",
+  "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "express": "^4.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somethingnew-co/ratatouille.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "rm -rf dist  && npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/somethingnew-co/ratatouille/issues"
+  },
+  "dependencies": {
+    "@types/lru-cache": "^5.1.0",
+    "axios": "^0.19.0",
+    "lru-cache": "^5.1.1",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/redis-mock": "^0.17.0",
+    "@types/supertest": "^2.0.8",
+    "axios-mock-adapter": "^1.17.0",
+    "redis-mock": "^0.46.0",
+    "supertest": "^4.0.2"
+  }
+}
