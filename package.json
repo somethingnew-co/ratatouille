@@ -1,6 +1,6 @@
 {
   "name": "@stnew/ratatouille",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "stnew react component library",
   "scripts": {
     "storybook": "NODE_ENV=development start-storybook -s ./shared -p 9001",
@@ -9,7 +9,7 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint packages/**/src/**/*",
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap --no-ci",
     "build": "lerna exec --parallel npm run build --ignore @stnew/eslint*",
     "export-static-storybook": "build-storybook -c .storybook -o .out",
     "publish-packages": "lerna publish",
