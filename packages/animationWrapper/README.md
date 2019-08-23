@@ -19,7 +19,7 @@ const AnimatedComponent = () => (
 Props              | Type                         | Desc
 ------------------ | ---------------------------- | --------------------------------------
 children           | `ReactNode` or `ReactNode[]` | Element(s) to be animated.
-rootMargin         | `number`                     | `rootMargin` for [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Creating_an_intersection_observer).
+rootMargin         | `string`                     | `rootMargin` for [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Creating_an_intersection_observer).
 generalClass       | `string`                     | css class to be applied at all times to the wrapper component.
 finalClass         | `string`                     | css class to be applied to the wrapper component once the content comes into view.
 initialClass       | `string`                     | css class to be applied to the wrapper component before the content comes into view.

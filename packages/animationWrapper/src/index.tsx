@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 interface AnimationWrapperProps {
   children?: ReactNode | ReactNode[];
-  rootMargin?: number;
+  rootMargin?: string;
   generalClass?: string;
   finalClass?: string;
   initialClass?: string;
@@ -17,7 +17,7 @@ interface AnimationWrapperState {
 
 class AnimationWrapper extends React.Component<AnimationWrapperProps, AnimationWrapperState> {
   static defaultProps = {
-    rootMargin: 100,
+    rootMargin: '100px',
     generalClass: 'animation-general',
     finalClass: 'animation-final',
     initialClass: 'animation-initial',
@@ -55,7 +55,7 @@ class AnimationWrapper extends React.Component<AnimationWrapperProps, AnimationW
 
     if (this.wrapper.current) {
       this.observer = new IntersectionObserver(this.interactionHandler, {
-        rootMargin: `${rootMargin}px`,
+        rootMargin,
       });
       this.observer.observe(this.wrapper.current);
     }
