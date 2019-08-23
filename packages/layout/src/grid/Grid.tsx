@@ -19,7 +19,7 @@ const Item = styled(Box)<GridProps>`
  * CSS grid layout block extending `<Box>`.
  * Includes `grid` props from `styled-system`.
  */
-export const GridBox: FC<SC> = props => {
+export const GridBox: FC<SC> = (props) => {
   const { children } = props;
   const theme = React.useContext(ThemeContext);
 
@@ -51,7 +51,7 @@ interface GridItemProps {
   end?: number | number[];
 }
 
-export const GridItem: FC<SC & GridItemProps> = props => {
+export const GridItem: FC<SC & GridItemProps> = (props) => {
   const { children, start, end, col, row } = props;
   let gridColumn = ['1 / -1'];
 
