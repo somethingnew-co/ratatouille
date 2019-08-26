@@ -15,7 +15,7 @@
     "publish-packages": "lerna publish",
     "prepublish-packages": "npm run build",
     "postinstall": "npm run bootstrap",
-    "new-pkg": "hygen package new",
+    "new-pkg": "hygen package new --",
     "new-comp": "hygen package new --component --",
     "new-styled-comp": "hygen package new --component --",
     "new-fc": "hygen package new --component --functional --",
