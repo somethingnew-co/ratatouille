@@ -3,7 +3,7 @@ to: packages/<%= h.changeCase.camel(name) %>/package.json
 ---
 {
   "name": "@stnew/<%= h.inflection.dasherize(h.changeCase.lower(name)) %>",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "<%= locals.description ? description : null %>",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
@@ -18,20 +18,17 @@ to: packages/<%= h.changeCase.camel(name) %>/package.json
   },
   "peerDependencies": {
     <%_ if(locals.component) { _%>
-    "react": "^16.9.0"
-    <%_ } _%>
-    <%_ if(locals.styled) { _%>
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"<%_ if(locals.styled) { _%>,
     "styled-components": "latest"
     <%_ } _%>
+  <%_ } _%>
   },
-  "devDependencies": {
-    <%_ if(locals.styled) { _%>
-    "@types/styled-components": "latest"
-    <%_ } _%>
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/somethingnew-co/ratatouille.git"
+    "url": "git+https://github.com/somethingnew-co/ratatouille.git",
+    "directory": "packages/react-dom/<%= h.inflection.dasherize(h.changeCase.lower(name)) %>"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",

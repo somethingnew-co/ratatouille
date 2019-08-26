@@ -8,20 +8,18 @@ import React from 'react';
 import * as Styled from './index.styled';
 <%_ } _%>
 
-interface <%= fName %>Props {  }
+interface <%= fName %>Props { }
 <%_ if(locals.functional) { _%>
 
-const <%= fName %> = (props: <%= fName %>Props) => {
-  return (
-    <%_ if(locals.styled) { _%>
-    <Styled.<%= fName %>>edit me</Styled.<%= fName %>>
-    <%_ } else { _%>
-    <div>edit me</div>
-    <%_ } _%>
-  );
-};
+const <%= fName %>: React.FC<<%= fName %>Props> = props => (
+  <%_ if(locals.styled) { _%>
+  <Styled.<%= fName %>>{props.children}</Styled.<%= fName %>>
+  <%_ } else { _%>
+  <div>{props.children}</div>
+  <%_ } _%>
+);
 <%_ } else { _%>
-interface <%= fName %>State {  }
+interface <%= fName %>State { }
 
 class <%= fName %> extends React.Component<<%= fName %>Props, <%= fName %>State> {
   constructor(props: <%= fName %>Props) {
@@ -30,19 +28,19 @@ class <%= fName %> extends React.Component<<%= fName %>Props, <%= fName %>State>
     this.state = { };
   }
 
-  componentDidMount() { }
+  componentDidMount(): void { }
 
-  render() {
+  render(): JSX.Element {
     const { } = this.props;
     const { } = this.state;
 
     return (
       <%_ if(locals.styled) { _%>
-      <Styled.<%= fName %>>edit me</Styled.<%= fName %>>
+      <Styled.<%= fName %>>{this.props.children}</Styled.<%= fName %>>
       <%_ } else { _%>
-      <div>edit me</div>
+      <div>{this.props.children}</div>
     <%_ } _%>
-  );
+    );
   }
 };
 <%_ } _%>
