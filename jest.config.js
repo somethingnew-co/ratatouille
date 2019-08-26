@@ -21,4 +21,9 @@ module.exports = {
     '/deprecated/',
   ],
   snapshotSerializers: ['enzyme-to-json/serializer'],
+  globals: {
+    'ts-jest': {
+      diagnostics: false
+    }
+  }
 };
