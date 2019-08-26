@@ -8,15 +8,19 @@ jobs:
       - image: circleci/node:10
     steps:
       - checkout 
-      - restore_cache: 
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: install-npm-wee
+          name: Generate cache checksum
+          command: ./checksum.sh
+      - restore_cache: 
+          key: dependency-cache-{{ checksum "checksum.txt" }}
+      - run:
+          name: install dependencies
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "checksum.txt" }}
           paths:
             - ./node_modules
+            - ./packages/*/node_modules
       - run:
           name: lint
           command: npm run lint
