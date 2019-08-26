@@ -1,8 +1,6 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-interface AnimationWrapperProps {
-  children?: ReactNode | ReactNode[];
-  rootMargin?: string;
+interface AnimationWrapperProps extends IntersectionObserverInit {
   generalClass?: string;
   finalClass?: string;
   initialClass?: string;
@@ -17,10 +15,12 @@ interface AnimationWrapperState {
 
 class AnimationWrapper extends React.Component<AnimationWrapperProps, AnimationWrapperState> {
   static defaultProps = {
+    root: null,
     rootMargin: '100px',
-    generalClass: 'animation-general',
-    finalClass: 'animation-final',
-    initialClass: 'animation-initial',
+    threshold: 0,
+    generalClass: 'animation',
+    initialClass: 'animation-from',
+    finalClass: 'animation-to',
     delay: 0,
     heightDelayMult: 1,
   };
@@ -43,7 +43,7 @@ class AnimationWrapper extends React.Component<AnimationWrapperProps, AnimationW
   }
 
   componentDidMount(): void {
-    const { rootMargin, heightDelayMult } = this.props;
+    const { root, rootMargin, threshold, heightDelayMult } = this.props;
     const { delay } = this.state;
     const { top } = this.wrapper.current ? this.wrapper.current.getBoundingClientRect() : { top: null };
     const height = window.innerHeight;
@@ -55,7 +55,9 @@ class AnimationWrapper extends React.Component<AnimationWrapperProps, AnimationW
 
     if (this.wrapper.current) {
       this.observer = new IntersectionObserver(this.interactionHandler, {
+        root,
         rootMargin,
+        threshold,
       });
       this.observer.observe(this.wrapper.current);
     }

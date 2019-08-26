@@ -16,21 +16,21 @@ AnimationWrapperStories.addParameters({
 });
 
 const Container = styled.div`
-  .animation-general {
+  .animation {
     display: block;
     transition: transform 0.3s, opacity 0.3s;
     transition-delay: 0.3s;
     transition-timing-function: ease-out;
   }
 
+  .animation-from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
   .animation-final {
     opacity: 1;
     transform: translateY(0);
-  }
-
-  .animation-initial {
-    opacity: 0;
-    transform: translateY(100px);
   }
 `;
 
