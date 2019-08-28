@@ -1,6 +1,6 @@
 {
   "name": "@stnew/carousel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unstyled carousel component that handles cycling states/logic.",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
