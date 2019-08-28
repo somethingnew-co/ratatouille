@@ -34,8 +34,8 @@ Stories.addParameters({
 });
 
 const icon = {
-  open: <Icon>😲</Icon>,
-  closed: <Icon>😐</Icon>,
+  open: <Icon>🙉</Icon>,
+  closed: <Icon>🙈</Icon>,
 };
 
 Stories.add('Basic Accordion', () => (
