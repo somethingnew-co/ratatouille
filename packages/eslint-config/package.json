@@ -1,6 +1,6 @@
 {
   "name": "@stnew/eslint-config",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Something New eslint config",
   "main": "index.js",
   "publishConfig": {
