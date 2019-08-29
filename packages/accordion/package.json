@@ -30,7 +30,7 @@
     "react-dom": "^16.8.5",
     "styled-components": "*"
   },
-  "gitHead": "0652ff7bdb405f4bab9c40c674523acef18e6885",
+  "gitHead": "e8ef89ae65e15aa4990bb6299a733ac4e09d957d",
   "dependencies": {
     "react-transition-group": "^4.2.2"
   },
