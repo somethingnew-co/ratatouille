@@ -57,7 +57,7 @@ jobs:
             echo "TITLE: ${TITLE}"
       - slack/notify:
           color: '#6cca98'
-          message: 'Pull Request `${TITLE}` has reached https://ratatouille.somethingnew.co'
+          message: 'Pull Request \`$TITLE\` has reached https://ratatouille.somethingnew.co'
 
 workflows:
   version: 2
