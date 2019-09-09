@@ -44,13 +44,9 @@ jobs:
           command: |
             git remote add dokku dokku@deploy.somethingnew.co:ratatouille
             git push dokku master
-      - run:
-          name: Set Build Title
-          command: |
-            echo "export TITLE=`git log --format=oneline -n 1 $CIRCLE_SHA1`" >> $BASH_ENV
       - slack/notify:
           color: '#6cca98'
-          message: 'Pull Request \`$TITLE\` has reached https://ratatouille.somethingnew.co'
+          message: 'Pull Request \`$(git log --format=%B -n 1 $CIRCLE_SHA1)\` has reached https://ratatouille.somethingnew.co'
 
 workflows:
   version: 2
