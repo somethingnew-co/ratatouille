@@ -48,6 +48,13 @@ jobs:
           name: Set Build Title
           command: |
             [ -z "$CIRCLE_PULL_REQUEST" ] && echo "export TITLE=${CIRCLE_TAG:-$CIRCLE_SHA1}" >> $BASH_ENV || echo "export TITLE=`curl --user ${GITHUB_ACCOUNT}:${GITHUB_TOKEN} -s $CIRCLE_PULL_REQUEST | jq -r '.title'`" >> $BASH_ENV
+            source $BASH_ENV
+      - run:
+          command: |
+            echo "CIRCLE_TAG: ${CIRCLE_TAG}"
+            echo "CIRCLE_SHA1: ${CIRCLE_SHA1}"
+            echo "CIRCLE_PULL_REQUEST: ${CIRCLE_PULL_REQUEST}"
+            echo "TITLE: ${PR_TITLE}"
       - slack/notify:
           color: '#6cca98'
           message: 'Pull Request `${TITLE}` has reached https://ratatouille.somethingnew.co'
