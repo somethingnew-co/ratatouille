@@ -33,7 +33,7 @@ jobs:
           name: Install git
           command: |
             apt-get update
-            apt-get install -y git curl jq
+            apt-get install -y git curl
       - checkout 
       - add_ssh_keys
       - run:
@@ -48,12 +48,6 @@ jobs:
           name: Set Build Title
           command: |
             echo "export TITLE=`git log --format=oneline -n 1 $CIRCLE_SHA1`" >> $BASH_ENV
-      - run:
-          command: |
-            echo "CIRCLE_TAG: ${CIRCLE_TAG}"
-            echo "CIRCLE_SHA1: ${CIRCLE_SHA1}"
-            echo "CIRCLE_PULL_REQUEST: ${CIRCLE_PULL_REQUEST}"
-            echo "TITLE: ${TITLE}"
       - slack/notify:
           color: '#6cca98'
           message: 'Pull Request \`$TITLE\` has reached https://ratatouille.somethingnew.co'
