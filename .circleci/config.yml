@@ -33,7 +33,7 @@ jobs:
           name: Install git
           command: |
             apt-get update
-            apt-get install -y git curl
+            apt-get install -y git curl jq
       - checkout 
       - add_ssh_keys
       - run:
@@ -44,9 +44,13 @@ jobs:
           command: |
             git remote add dokku dokku@deploy.somethingnew.co:ratatouille
             git push dokku master
+      - run:
+          name: Set Build Title
+          command: |
+            [ -z "$CIRCLE_PULL_REQUEST" ] && echo "export TITLE=${CIRCLE_TAG:-$CIRCLE_SHA1}" >> $BASH_ENV || echo "export TITLE=`curl --user ${GITHUB_ACCOUNT}:${GITHUB_TOKEN} -s $CIRCLE_PULL_REQUEST | jq -r '.title'`" >> $BASH_ENV
       - slack/notify:
           color: '#6cca98'
-          message: 'ratatouille:${CIRCLE_TAG:-$CIRCLE_SHA1} has reached https://ratatouille.somethingnew.co'
+          message: 'Pull Request `${TITLE}` has reached https://ratatouille.somethingnew.co'
 
 workflows:
   version: 2
