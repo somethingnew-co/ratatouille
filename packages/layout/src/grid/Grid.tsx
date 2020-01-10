@@ -2,7 +2,8 @@ import React, { FC } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { grid, GridProps } from 'styled-system';
 import { Box } from '../Box';
-import { baseTheme, generateColumnStrings } from '../helpers';
+import { generateColumnStrings } from '../utils';
+import { gap, columns } from '../utils/grid';
 import { SC } from '../types';
 
 const Grid = styled(Box)<GridProps>`
@@ -24,9 +25,9 @@ export const GridBox: FC<SC> = props => {
   const theme = React.useContext(ThemeContext);
 
   return <Grid
-    gridTemplateColumns={`repeat(${theme ? theme.grid.columns : baseTheme.grid.columns}, 1fr)`}
-    gridColumnGap={theme ? theme.grid.gap : baseTheme.grid.gap}
-    gridRowGap={theme ? theme.grid.gap : baseTheme.grid.gap}
+    gridTemplateColumns={columns(theme)}
+    gridColumnGap={gap(theme)}
+    gridRowGap={gap(theme)}
     {...props}
   >
     {children}
@@ -53,11 +54,7 @@ interface GridItemProps {
 
 export const GridItem: FC<SC & GridItemProps> = props => {
   const { children, start, end, col, row } = props;
-  let gridColumn = ['1 / -1'];
-
-  if (start) {
-    gridColumn = generateColumnStrings(start, end);
-  }
+  const gridColumn = generateColumnStrings(start, end);
 
   return (
     <Item

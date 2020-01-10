@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { ThemeContext } from 'styled-components';
-import { makePropArray } from './helpers';
+import { makePropArray } from './utils';
 import { SC } from './types';
 import { Box } from './Box';
+import { baseTheme } from './utils/theme';
 
 // <Container>
 /**
@@ -10,7 +11,7 @@ import { Box } from './Box';
  */
 export const Container: FC<SC> = props => {
   const theme = React.useContext(ThemeContext);
-  const gap = theme ? makePropArray(theme.grid.gap).map(gap => `${gap / 2}px`) : '10px';
+  const gap = theme ? makePropArray(theme.grid.gap).map(gap => gap) : baseTheme.grid.gap;
 
   let maxWidth;
 

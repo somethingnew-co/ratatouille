@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { flexbox, FlexboxProps } from 'styled-system';
 import { Box } from '../Box';
-import { baseTheme, calcFlexPercentage, calcFlexGap } from '../helpers';
+import { calcFlexPercentage, calcFlexGap, calcFlexMargin } from '../utils';
 import { SC } from '../types';
 
 const Flexbox = styled(Box)<FlexboxProps>`
@@ -44,13 +44,7 @@ export const FlexRow: FC<SC & Row> = ({
   ...rest
 }) => {
   const theme = React.useContext(ThemeContext);
-  let margin: string | number | (string | number)[] = calcFlexGap(baseTheme, true);
-
-  if (noPad) {
-    margin = 0;
-  } else if (theme && theme.grid) {
-    margin = calcFlexGap(theme, true);
-  }
+  const margin = calcFlexMargin(theme, noPad);
 
   return <Flex mx={margin} {...rest}>{children}</Flex>;
 };
@@ -82,7 +76,7 @@ export const FlexCol: FC<SC & Col> = ({
 
   return <Flexbox
     position={rest.position || 'relative'}
-    px={theme && theme.grid ? calcFlexGap(theme) : calcFlexGap(baseTheme)}
+    px={calcFlexGap(theme)}
     width={span ? calcFlexPercentage(span, theme) : '100%'}
     ml={offset ? calcFlexPercentage(offset, theme) : undefined}
     left={push ? calcFlexPercentage(push, theme) : undefined}
