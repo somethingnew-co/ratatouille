@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it works 1`] = `
+.c0 {
+  font-size: 16px;
+}
+
+.c1 {
+  color: red;
+}
+
+@media screen and (min-width:40em) {
+  .c0 {
+    font-size: 24px;
+  }
+}
+
+<div>
+  <p
+    class=""
+  >
+    Hello World
+  </p>
+  <h1
+    class="c0"
+    font-size="16,24"
+  >
+    Testing H1
+  </h1>
+  <h2
+    class="c1"
+    color="red"
+  >
+    Testing H2
+  </h2>
+</div>
+`;

@@ -31,7 +31,7 @@ export interface TextProps extends StyledTypeProps {
   typeStyle?: string;
 }
 
-const StyledType = styled('p')(
+const StyledType = styled.p(
   textStyle,
   colorStyle,
   compose(
