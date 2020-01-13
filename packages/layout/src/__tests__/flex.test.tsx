@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import * as Flex from '../flex';
+import { Flex } from '..';
 import 'jest-styled-components';
 
 describe('Flex', () => {
