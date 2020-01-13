@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`it works 1`] = `
+exports[`render Text with styles 1`] = `
 .c0 {
   font-size: 16px;
 }
@@ -22,14 +22,17 @@ exports[`it works 1`] = `
     Hello World
   </p>
   <h1
+    class=""
+  >
+    Testing H1
+  </h1>
+  <h1
     class="c0"
-    font-size="16,24"
   >
     Testing H1
   </h1>
   <h2
     class="c1"
-    color="red"
   >
     Testing H2
   </h2>

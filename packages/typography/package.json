@@ -33,13 +33,15 @@
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "styled-components": "^4.3.0"
+    "styled-components": "*"
   },
   "dependencies": {
-    "styled-system": "^5.1.0"
+    "@styled-system/css": "^5.1.4",
+    "styled-system": "^5.1.4"
   },
   "devDependencies": {
-    "@types/styled-system": "^5.0.0"
+    "@types/styled-system": "^5.1.4",
+    "@types/styled-system__css": "^5.0.4"
   },
   "publishConfig": {
     "access": "public"
