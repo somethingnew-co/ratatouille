@@ -41,12 +41,22 @@ interface Row {
 export const FlexRow: FC<SC & Row> = ({
   noPad,
   children,
+  flexDirection,
+  flexWrap,
   ...rest
 }) => {
   const theme = React.useContext(ThemeContext);
   const margin = calcFlexMargin(theme, noPad);
 
-  return <Flex mx={margin} {...rest}>{children}</Flex>;
+  return (
+    <Flex
+      flexDirection={flexDirection || 'row'}
+      flexWrap={flexWrap || 'wrap'}
+      mx={margin}
+      {...rest}>
+      {children}
+    </Flex>
+  );
 };
 
 
@@ -74,14 +84,19 @@ export const FlexCol: FC<SC & Col> = ({
 }) => {
   const theme = React.useContext(ThemeContext);
 
+  const spanFlex = (spans: number | number[]): string[] => {
+    const flex = calcFlexPercentage(spans, theme);
+    return flex.map(p => `0 0 ${p}`);
+  };
+
   return <Flexbox
     position={rest.position || 'relative'}
     px={calcFlexGap(theme)}
-    width={span ? calcFlexPercentage(span, theme) : '100%'}
     ml={offset ? calcFlexPercentage(offset, theme) : undefined}
     left={push ? calcFlexPercentage(push, theme) : undefined}
     right={pull ? calcFlexPercentage(pull, theme) : undefined}
     order={order || undefined}
+    flex={span ? spanFlex(span) : '1'}
     {...rest}
   >{children}</Flexbox>;
 

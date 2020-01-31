@@ -53,8 +53,12 @@ describe('Flex.Row', () => {
 
 describe('Flex.Col', () => {
   it('should accept layout props', () => {
+    const wrapper0 = mount(<Flex.Col>Hello World!</Flex.Col>);
+    expect(wrapper0).toHaveStyleRule('flex', '1');
+
+
     const wrapper1 = mount(<Flex.Col span={9}>Hello World!</Flex.Col>);
-    expect(wrapper1).toHaveStyleRule('width', '75%');
+    expect(wrapper1).toHaveStyleRule('flex', '0 0 75%');
 
     const wrapper2 = mount(<Flex.Col
       span={3}
@@ -63,7 +67,7 @@ describe('Flex.Col', () => {
       pull={3}
       order={3}
     >Hello World!</Flex.Col>);
-    expect(wrapper2).toHaveStyleRule('width', '25%');
+    expect(wrapper2).toHaveStyleRule('flex', '0 0 25%');
     expect(wrapper2).toHaveStyleRule('margin-left', '25%');
     expect(wrapper2).toHaveStyleRule('left', '25%');
     expect(wrapper2).toHaveStyleRule('right', '25%');
@@ -73,15 +77,15 @@ describe('Flex.Col', () => {
   it('should accept responsive layout props', () => {
     const wrapper = mount(<Flex.Col span={[3, 6, 9, 12]}>Hello World!</Flex.Col>);
 
-    expect(wrapper).toHaveStyleRule('width', '25%');
+    expect(wrapper).toHaveStyleRule('flex', '0 0 25%');
 
-    expect(wrapper).toHaveStyleRule('width', '50%', {
+    expect(wrapper).toHaveStyleRule('flex', '0 0 50%', {
       media: 'screen and (min-width: 40em)',
     });
-    expect(wrapper).toHaveStyleRule('width', '75%', {
+    expect(wrapper).toHaveStyleRule('flex', '0 0 75%', {
       media: 'screen and (min-width: 52em)',
     });
-    expect(wrapper).toHaveStyleRule('width', '100%', {
+    expect(wrapper).toHaveStyleRule('flex', '0 0 100%', {
       media: 'screen and (min-width: 64em)',
     });
   });
