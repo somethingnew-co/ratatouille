@@ -11,7 +11,7 @@ import { baseTheme } from './utils/theme';
  */
 export const Container: FC<SC> = props => {
   const theme = React.useContext(ThemeContext);
-  const gap = theme ? makePropArray(theme.grid.gap).map(gap => gap) : baseTheme.grid.gap;
+  const gap = theme ? makePropArray(theme.grid.gap).map(gap => gap / 2) : baseTheme.grid.gap;
 
   let maxWidth;
 
