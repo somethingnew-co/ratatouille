@@ -89,6 +89,7 @@ export const FlexCol: FC<SC & Col> = ({
   };
 
   return <Flexbox
+    maxWidth='100%'
     position={rest.position || 'relative'}
     px={calcFlexGap(theme)}
     ml={offset ? calcFlexPercentage(offset, theme) : undefined}
