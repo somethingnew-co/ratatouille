@@ -33,7 +33,7 @@ const Component = () => (
 ## CSS Grid Layout
 
 ```javascript
-import * as Grid from '@stnew/layout/grid';
+import { Grid } from '@stnew/layout';
 ```
 
 ### Grid.Container
@@ -48,22 +48,24 @@ CSS grid layout block extending [`<Box>`]. Includes `grid` props from [styled-sy
 
 Basic layout block with `grid` props from [styled-system]. Identical to `<Grid.Box>` besides exclusion of `display: grid`, and intended to be used inside a `<Grid.Box>` container.
 
-Props | Type                                             | Desc
------ | ------------------------------------------------ | ----------------------------
-row   | `string` or `number` or `string[]` or `number[]` | CSS prop `grid-row`
-col   | `string` or `string[]`                           | CSS prop `grid-column`
-start | `number` or `number[]`                           | CSS prop `grid-column-start`
-end   | `number` or `number[]`                           | CSS prop `grid-column-end`
+| Props    | Type                                             | Desc                       |
+| -------- | ------------------------------------------------ | -------------------------- |
+| row      | `string` or `number` or `string[]` or `number[]` | CSS prop `grid-row`        |
+| rowStart | `string` or `number` or `string[]` or `number[]` | CSS prop `grid-row-start`  |
+| rowEnd   | `string` or `number` or `string[]` or `number[]` | CSS prop `grid-row-end`    |
+| col      | `string` or `number` or `string[]` or `number[]` | CSS prop `grid-column`     |
+| colStart | `string` or `number` or `string[]` or `number[]` | CSS prop `grid-column-end` |
+| colEnd   | `string` or `number` or `string[]` or `number[]` | CSS prop `grid-column-end` |
 
 ```javascript
-import * as Grid from '@stnew/layout/grid';
+import { Grid } from '@stnew/layout';
 
 const Component = () => (
   <Grid.Container>
     <Grid.Box>
-      <Grid.Item col="1/7">Hello world!</GridItem>
-      <Grid.Item col="7/12">Hello world!</GridItem>
-      <Grid.Item start={5} end={9}>Hello world!</GridItem>
+      <Grid.Item col="1/7">Hello world!</Grid.Item>
+      <Grid.Item col="7/12">Hello world!</Grid.Item>
+      <Grid.Item start={5} end={9}>Hello world!</Grid.Item>
     </Grid.Box>
   </Grid.Container>
 )
@@ -72,7 +74,7 @@ const Component = () => (
 ## Flex Layout
 
 ```javascript
-import * as Flex from '@stnew/layout/flex';
+import { Flex}  from '@stnew/layout';
 ```
 
 ### Flex.Box
@@ -84,11 +86,11 @@ Extension of [`<Box>`] with `flexbox` props from [styled-system]. Intended to be
 Basic layout block identical to `<Flex.Box>` besides exclusion of `display: flex`, and intended to be used inside a flexbox container.
 
 ```javascript
-import * as Flex from '@stnew/layout/flex';
+import { Flex}  from '@stnew/layout';
 
 const Component = () => (
   <Flex.Box>
-    <Flex.Item>Hello world!</FlexItem>
+    <Flex.Item>Hello world!</Flex.Item>
   </Flex.Box>
 )
 ```
@@ -107,16 +109,16 @@ Extension of `<Flex.Box>` with negative margins. Intended to wrap `<Flex.Col>` c
 
 Child of `<Flex.Row>` with built in padding and bootstrap-style flexbox grid props. Otherwise identical to `<Flex.Item>`.
 
-Props  | Type                   | Desc
------- | ---------------------- | --------------------------------------
-span   | `number` or `number[]` | spans `n` number of columns
-offset | `number` or `number[]` | offset column by `n` number of columns
-push   | `number` or `number[]` | move col left `n` number of columns
-pull   | `number` or `number[]` | move col right `n` number of columns
-order  | `number` or `number[]` | specify order of columns
+| Props  | Type                   | Desc                                   |
+| ------ | ---------------------- | -------------------------------------- |
+| span   | `number` or `number[]` | spans `n` number of columns            |
+| offset | `number` or `number[]` | offset column by `n` number of columns |
+| push   | `number` or `number[]` | move col left `n` number of columns    |
+| pull   | `number` or `number[]` | move col right `n` number of columns   |
+| order  | `number` or `number[]` | specify order of columns               |
 
 ```javascript
-import * as Flex from '@stnew/layout/flex';
+import { Flex}  from '@stnew/layout';
 
 const Component = () => (
   <Flex.Container>

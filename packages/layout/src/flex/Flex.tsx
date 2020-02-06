@@ -46,13 +46,12 @@ export const FlexRow: FC<SC & Row> = ({
   ...rest
 }) => {
   const theme = React.useContext(ThemeContext);
-  const margin = calcFlexMargin(theme, noPad);
 
   return (
     <Flex
       flexDirection={flexDirection || 'row'}
       flexWrap={flexWrap || 'wrap'}
-      mx={margin}
+      mx={calcFlexMargin(theme, noPad)}
       {...rest}>
       {children}
     </Flex>

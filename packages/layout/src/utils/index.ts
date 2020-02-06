@@ -1,10 +1,14 @@
 import { Theme, baseTheme } from './theme';
 
+type arrayProp = string | number | (string | number)[]
+
+const trimUnit = (s: string): string => s.replace(/([0-9]|\.|,)+([\S]+)?/, '$2').trim();
+
 /**
  * Checks if prop is array
  */
-export function makePropArray(n: number | number[]): number[] {
-  let a: number[] = [];
+export function makePropArray(n: arrayProp): (string | number)[] {
+  let a = [];
 
   if (Array.isArray(n)) {
     a = n;
@@ -13,26 +17,6 @@ export function makePropArray(n: number | number[]): number[] {
   }
 
   return a;
-}
-
-/**
- * Returns array of strings used by CSS 'grid-column' property
- */
-export function generateColumnStrings(
-  start?: number | number[],
-  end?: number | number[]
-): string[] {
-
-  if (!start) return ['1 / -1'];
-
-  const s = makePropArray(start);
-  const e = end ? makePropArray(end) : [];
-
-  return s.map(
-    (start: number | string, i: number): string => (
-      `${start} / ${e[i] ? e[i] : -1}`
-    )
-  );
 }
 
 /**
@@ -46,22 +30,33 @@ export function calcFlexPercentage(n: number | number[], theme: Theme): string[]
     col = theme.grid.columns;
   }
 
-  return props.map(prop => `${prop / col * 100}%`);
+  return props
+    .map(prop => parseFloat(prop as string))
+    .map(prop => `${prop / col * 100}%`);
 }
 
 /**
  * Calculates flex padding from theme
  */
-export function calcFlexGap(theme: Theme, row = false): number[] {
-  let gaps = baseTheme.grid.gap;
+export function calcFlexGap(theme: Theme, row = false): (string | number)[] {
+  let gaps = baseTheme.grid.columnGap;
 
   if (theme && theme.grid) {
-    gaps = theme.grid.gap;
+    gaps = theme.grid.columnGap;
   }
 
   const val = makePropArray(gaps);
 
-  return val.map(gap => gap / (row ? -2 : 2));
+
+  return val.map(gap => {
+    if (typeof gap === 'string') {
+      const unit = trimUnit(gap);
+      const float = parseFloat(gap);
+      return (float / (row ? -2 : 2)) + unit;
+    }
+
+    return gap / (row ? -2 : 2);
+  });
 }
 
 /**

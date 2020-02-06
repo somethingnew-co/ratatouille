@@ -4,11 +4,11 @@ import { makePropArray } from '.';
 /**
  * Generates Grid gap from theme
  */
-export function gap(theme: Theme): number[] {
-  let gaps = baseTheme.grid.gap;
+export function gap(theme: Theme): (string | number)[] {
+  let gaps = baseTheme.grid.columnGap;
 
   if (theme && theme.grid) {
-    gaps = theme.grid.gap;
+    gaps = theme.grid.columnGap;
   }
 
   return makePropArray(gaps);

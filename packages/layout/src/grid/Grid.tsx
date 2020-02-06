@@ -1,19 +1,33 @@
 import React, { FC } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { grid, GridProps } from 'styled-system';
+import { grid, GridProps, compose, system } from 'styled-system';
 import { Box } from '../Box';
-import { generateColumnStrings } from '../utils';
 import { gap, columns } from '../utils/grid';
 import { SC } from '../types';
+
+type gridProp = string | number | (string | number)[]
 
 const Grid = styled(Box)<GridProps>`
   display: grid;
   ${grid}
 `;
 
-const Item = styled(Box)<GridProps>`
-  ${grid}
-`;
+interface GridItem extends GridProps{
+  gridRowStart?: gridProp;
+  gridRowEnd?: gridProp;
+  gridColumnStart?: gridProp;
+  gridColumnEnd?: gridProp;
+}
+
+const Item = styled(Box) <GridItem>(
+  compose(grid),
+  system({
+    gridRowStart: true,
+    gridRowEnd: true,
+    gridColumnStart: true,
+    gridColumnEnd: true,
+  })
+);
 
 // <Grid.Box>
 /**
@@ -21,14 +35,14 @@ const Item = styled(Box)<GridProps>`
  * Includes `grid` props from `styled-system`.
  */
 export const GridBox: FC<SC> = props => {
-  const { children } = props;
+  const { children, ...rest } = props;
   const theme = React.useContext(ThemeContext);
 
   return <Grid
     gridTemplateColumns={columns(theme)}
     gridColumnGap={gap(theme)}
     gridRowGap={gap(theme)}
-    {...props}
+    {...rest}
   >
     {children}
   </Grid>;
@@ -43,30 +57,32 @@ export const GridBox: FC<SC> = props => {
  */
 interface GridItemProps {
   // grid-row
-  row?: string | number | (string | number)[];
+  row?: gridProp;
+  // grid-row-start
+  rowStart?: gridProp;
+  // grid-row-end
+  rowEnd?: gridProp;
   // grid-column
-  col?: string | string[];
+  col?: gridProp;
   // grid-column-start
-  start?: number | number[];
+  colStart?: gridProp;
   // grid-column-end
-  end?: number | number[];
+  colEnd?: gridProp;
 }
 
 export const GridItem: FC<SC & GridItemProps> = props => {
-  const { children, start, end, col, row } = props;
-  const gridColumn = generateColumnStrings(start, end);
-
+  const { children, row, rowStart, rowEnd, col, colStart, colEnd, ...rest } = props;
   return (
     <Item
-      gridColumn={col || gridColumn}
-      gridRow={row} {...props}>
+      gridColumn={col}
+      gridRow={row}
+      gridColumnStart={colStart}
+      gridColumnEnd={colEnd}
+      gridRowStart={rowStart}
+      gridRowEnd={rowEnd}
+      {...rest}
+    >
       {children}
     </Item>
   );
-};
-
-GridItem.defaultProps = {
-  start: [1],
-  end: [-1],
-  row: 'auto',
 };

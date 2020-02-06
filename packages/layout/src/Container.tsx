@@ -7,11 +7,15 @@ import { baseTheme } from './utils/theme';
 
 // <Container>
 /**
- * Extension of `<Box>` with max-width applied that corresponds to theme breakpoints.
+ * Extension of `<Box>` with max-width and padding
+ * applied that corresponds to theme breakpoints.
  */
 export const Container: FC<SC> = props => {
+  const { children, ...rest } = props;
   const theme = React.useContext(ThemeContext);
-  const gap = theme ? makePropArray(theme.grid.gap).map(gap => gap / 2) : baseTheme.grid.gap;
+  const margins = theme
+    ? makePropArray(theme.grid.margins)
+    : 0;
 
   let maxWidth;
 
@@ -20,16 +24,15 @@ export const Container: FC<SC> = props => {
   } else if (theme && theme.grid.maxWidth) {
     ({ maxWidth } = theme.grid);
   } else {
-    maxWidth = 1000;
+    ({ maxWidth } = baseTheme.grid);
   }
-
   return (
     <Box
       mx="auto"
-      px={gap}
+      px={margins}
       width="100%"
       maxWidth={maxWidth}
-      {...props}
-    >{props.children}</Box>
+      {...rest}
+    >{children}</Box>
   );
 };

@@ -36,21 +36,23 @@ describe('Container', () => {
   it('should have max-width css prop from theme', () => {
     const wrapper = mountWithTheme(<Container as="main">Hello World!</Container>, baseTheme);
     expect(wrapper.containsMatchingElement(<main>Hello World!</main>)).toEqual(true);
-    expect(wrapper).toHaveStyleRule('max-width', '800px');
+    expect(wrapper).toHaveStyleRule('max-width', '960px');
+    expect(wrapper).toHaveStyleRule('padding-left', '20px');
+    expect(wrapper).toHaveStyleRule('padding-right', '20px');
   });
 
   it('should have responsive max-width', () => {
     const wrapper = mountWithTheme(<Container as="main">Hello World!</Container>, responsiveTheme);
     expect(wrapper.containsMatchingElement(<main>Hello World!</main>)).toEqual(true);
     expect(wrapper).toHaveStyleRule('max-width', '100%');
-    expect(wrapper).toHaveStyleRule('max-width', `${responsiveTheme.breakpoints[0]}px`, {
-      media: `screen and (min-width: ${responsiveTheme.breakpoints[0]})`,
+    expect(wrapper).toHaveStyleRule('max-width', `${String(responsiveTheme.breakpoints[0])}px`, {
+      media: `screen and (min-width: ${String(responsiveTheme.breakpoints[0])})`,
     });
-    expect(wrapper).toHaveStyleRule('max-width', `${responsiveTheme.breakpoints[1]}px`, {
-      media: `screen and (min-width: ${responsiveTheme.breakpoints[1]})`,
+    expect(wrapper).toHaveStyleRule('max-width', `${String(responsiveTheme.breakpoints[1])}px`, {
+      media: `screen and (min-width: ${String(responsiveTheme.breakpoints[1])})`,
     });
-    expect(wrapper).toHaveStyleRule('max-width', `${responsiveTheme.breakpoints[2]}px`, {
-      media: `screen and (min-width: ${responsiveTheme.breakpoints[2]})`,
+    expect(wrapper).toHaveStyleRule('max-width', `${String(responsiveTheme.breakpoints[2])}px`, {
+      media: `screen and (min-width: ${String(responsiveTheme.breakpoints[2])})`,
     });
   });
 });
