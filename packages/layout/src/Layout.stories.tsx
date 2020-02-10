@@ -5,7 +5,7 @@ import { Box, Container, Grid, Flex } from './index';
 
 const Stories = storiesOf('Layout', module);
 
-Stories.add('Basic Accordion', () => (
+Stories.add('Layout tests', () => (
   <ThemeProvider theme={{
     grid: {
       columns: 12,
@@ -30,6 +30,10 @@ Stories.add('Basic Accordion', () => (
         <Flex.Col span={4}>Hola</Flex.Col>
         <Flex.Col>Hola</Flex.Col>
         <Flex.Col span={4}>Hola</Flex.Col>
+      </Flex.Row>
+      <Flex.Row>
+        <Flex.Col span={9}>Hola</Flex.Col>
+        <Flex.Col span={2} offset={1}>Hola</Flex.Col>
       </Flex.Row>
     </Flex.Container>
 

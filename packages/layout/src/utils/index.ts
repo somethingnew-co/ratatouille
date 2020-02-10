@@ -22,7 +22,9 @@ export function makePropArray(n: arrayProp): (string | number)[] {
 /**
  * Calculates flex percentages from theme
  */
-export function calcFlexPercentage(n: number | number[], theme: Theme): string[] {
+export function calcFlexPercentage(n?: number | number[], theme?: Theme): string[] {
+  if (!n) return ['100%'];
+
   const props = makePropArray(n);
   let col = 12;
 

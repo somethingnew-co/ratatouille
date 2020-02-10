@@ -82,21 +82,17 @@ export const FlexCol: FC<SC & Col> = ({
   ...rest
 }) => {
   const theme = React.useContext(ThemeContext);
-
-  const spanFlex = (spans: number | number[]): string[] => {
-    const flex = calcFlexPercentage(spans, theme);
-    return flex.map(p => `0 0 ${p}`);
-  };
+  const flex = calcFlexPercentage(span, theme);
 
   return <Flexbox
-    maxWidth='100%'
+    maxWidth={flex}
     position={rest.position || 'relative'}
     px={calcFlexGap(theme)}
     ml={offset ? calcFlexPercentage(offset, theme) : undefined}
     left={push ? calcFlexPercentage(push, theme) : undefined}
     right={pull ? calcFlexPercentage(pull, theme) : undefined}
     order={order || undefined}
-    flex={span ? spanFlex(span) : '1'}
+    flex={span ? flex.map(p => `0 0 ${p}`) : '1'}
     {...rest}
   >{children}</Flexbox>;
 
