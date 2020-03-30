@@ -58,6 +58,7 @@ module.exports = {
     }],
     'no-new-func': 'error',
     'no-new-wrappers': 'error',
+    'no-param-reassign': 'error',
     'no-plusplus': 'error',
     'no-return-assign': ['error', 'always'],
     'no-return-await': 'error',
