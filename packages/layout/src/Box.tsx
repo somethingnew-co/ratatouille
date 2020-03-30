@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 import {
+  border,
+  BorderProps,
   color,
   ColorProps,
   layout,
@@ -11,25 +13,24 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  compose,
 } from 'styled-system';
 
-export interface BoxProps extends ColorProps, LayoutProps, PositionProps, SpaceProps, TypographyProps {}
+export interface BoxProps extends BorderProps, ColorProps, LayoutProps, PositionProps, SpaceProps, TypographyProps {}
+
 
 /**
  * Basic layout building block.
- * Includes `color`, `layout`, `position`, `space`, and `typography` props from styled-system.
+ * Includes `border`, `color`, `layout`, `position`, `space`, and `typography` props from styled-system.
  * All `<Box>` components are un-styled except for `box-sizing: border-box`.
  */
-export const Box = styled('div')<BoxProps>`
-  &,
-  &:after,
-  &:before {
-    box-sizing: border-box;
-  }
-
-  ${color}
-  ${layout}
-  ${position}
-  ${space}
-  ${typography}
-`;
+export const Box = styled('div')<BoxProps>(
+  compose(
+    border,
+    color,
+    layout,
+    position,
+    space,
+    typography,
+  )
+);
