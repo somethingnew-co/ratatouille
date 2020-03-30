@@ -6,9 +6,37 @@ Layout system built with [styled-components] and [styled-system]. Features basic
 npm install @stnew/layout
 ```
 
+## Setup
+
+In order to customize the grid system, you will need to wrap your application in [styled-components] `ThemeProvider` and pass a theme object with a `grid` property. For more documentation about how theming works [check out the styled-components documentation](https://styled-components.com/docs/advanced#theming).
+
+```javascript
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
+
+const theme = {
+  grid: {
+    columns: 12,
+    columnGap: 20,
+    maxWidth: 1280,
+    margins: 20,
+  }
+  //...rest
+}
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      {/* Your App Here */}
+    </ThemeProvider>
+  )
+}
+```
+
+
 ## Box
 
-Basic layout building block. Includes `layout`, `space`, `position`, `typography`, and `color` props from [styled-system]. All [`<Box>`] components are un-styled except for `box-sizing: border-box`.
+Basic layout building block. Includes `layout`, `space`, `position`, `typography`, `border`, and `color` props from [styled-system]. All [`<Box>`] components are unstyled.
 
 ```javascript
 import { Box } from '@stnew/layout';
@@ -44,7 +72,7 @@ Identical to [`<Container>`], intended to wrap CSS grid.
 
 CSS grid layout block extending [`<Box>`]. Includes `grid` props from [styled-system].
 
-## Grid.Item
+### Grid.Item
 
 Basic layout block with `grid` props from [styled-system]. Identical to `<Grid.Box>` besides exclusion of `display: grid`, and intended to be used inside a `<Grid.Box>` container.
 
@@ -74,7 +102,7 @@ const Component = () => (
 ## Flex Layout
 
 ```javascript
-import { Flex}  from '@stnew/layout';
+import { Flex }  from '@stnew/layout';
 ```
 
 ### Flex.Box
@@ -86,7 +114,7 @@ Extension of [`<Box>`] with `flexbox` props from [styled-system]. Intended to be
 Basic layout block identical to `<Flex.Box>` besides exclusion of `display: flex`, and intended to be used inside a flexbox container.
 
 ```javascript
-import { Flex}  from '@stnew/layout';
+import { Flex }  from '@stnew/layout';
 
 const Component = () => (
   <Flex.Box>
@@ -118,7 +146,7 @@ Child of `<Flex.Row>` with built in padding and bootstrap-style flexbox grid pro
 | order  | `number` or `number[]` | specify order of columns               |
 
 ```javascript
-import { Flex}  from '@stnew/layout';
+import { Flex }  from '@stnew/layout';
 
 const Component = () => (
   <Flex.Container>
@@ -134,3 +162,4 @@ const Component = () => (
 [`<Box>`]: #box
 [`<Container>`]: #container
 [styled-system]: https://styled-system.com/api
+[styled-components]: https://styled-components.com/
