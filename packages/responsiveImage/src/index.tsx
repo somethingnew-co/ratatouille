@@ -90,9 +90,9 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
     if (loaded && defaultMedia) {
       return (
         <picture ref={this.imageElement}>
-          {otherMedia.map(media => (
+          {otherMedia.map((media, index) => (
             <source
-              key={media.src}
+              key={`resposive-image-${index}`}
               media={`(${indexBy}: ${media.width}${indexUnit})`}
               srcSet={media.src}
             />
