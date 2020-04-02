@@ -1,16 +1,11 @@
-import { Theme, baseTheme } from './theme';
 import { makePropArray } from '.';
+import { Theme } from './theme';
 
 /**
  * Generates Grid gap from theme
  */
 export function gap(theme: Theme): (string | number)[] {
-  let gaps = baseTheme.grid.columnGap;
-
-  if (theme && theme.grid) {
-    gaps = theme.grid.columnGap;
-  }
-
+  const gaps = theme.grid.columnGap;
   return makePropArray(gaps);
 }
 
@@ -18,11 +13,6 @@ export function gap(theme: Theme): (string | number)[] {
  * Generates Grid columns from theme
  */
 export function columns(theme: Theme): string {
-  let { columns } = baseTheme.grid;
-
-  if (theme && theme.grid) {
-    ({ columns } = theme.grid);
-  }
-
+  const { columns } = theme.grid;
   return `repeat(${columns}, 1fr)`;
 }
