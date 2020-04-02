@@ -39,7 +39,7 @@ const colAttrs = (props: Col): BoxProps => {
 };
 
 /**
- * Extension of `<Box>`, and child of `<Row>` with built in padding
+ * Extension of `<Box>`. Child of `<Row>` with built in padding
  * and bootstrap-esque flexbox grid props. The number of columns
  * you can span correspond to the `theme.grid.columns` property.
  * Spacing between columns is controlled via `theme.grid.columnGap`.

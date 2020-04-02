@@ -36,7 +36,7 @@ export interface BoxProps extends
 
 /**
  * Basic layout building block. Includes `background`, `border`, `color`,
- * `flexbox`, `grid`, `layout`, `position`, `space`,  and `typography`,
+ * `flexbox`, `grid`, `layout`, `position`, `space`,  and `typography`
  * props from `styled-system`. All `<Box>` components render a `div`
  * by default and have no styling applied.
  */
