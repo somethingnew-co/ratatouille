@@ -13,7 +13,7 @@ describe('Grid', () => {
       <Grid.Box>
         <Grid.Item>Hello World!</Grid.Item>
         <Grid.Item>Hola Mundo!</Grid.Item>
-      </Grid.Box>
+      </Grid.Box>,
     );
     expect(wrapper.containsMatchingElement(<div>Hello World!</div>)).toEqual(true);
     expect(wrapper.containsMatchingElement(<div>Hola Mundo!</div>)).toEqual(true);

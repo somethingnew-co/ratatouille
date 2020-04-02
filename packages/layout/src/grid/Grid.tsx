@@ -26,7 +26,7 @@ const Item = styled(Box) <GridItem>(
     gridRowEnd: true,
     gridColumnStart: true,
     gridColumnEnd: true,
-  })
+  }),
 );
 
 // <Grid.Box>
