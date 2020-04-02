@@ -1,11 +1,5 @@
 import React, { ImgHTMLAttributes } from 'react';
 
-declare module 'react' {
-  interface ImgHTMLAttributes<T> {
-    loading?: 'lazy' | 'eager' | 'auto';
-  }
-}
-
 interface ResponsiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   sources: {
     src: string;
@@ -101,7 +95,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
             src={defaultMedia.src}
             alt={alt || title}
             title={title || alt}
-            loading={lazy ? 'lazy' : 'auto'}
+            loading={lazy ? 'lazy' : 'eager'}
           />
         </picture>
       );
