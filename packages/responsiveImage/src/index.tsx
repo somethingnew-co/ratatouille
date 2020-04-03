@@ -19,7 +19,6 @@ interface ResponsiveImageState {
 class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveImageState> {
   static defaultProps: Partial<ResponsiveImageProps> = {
     lazy: false,
-    lazyTimeout: 2000,
     indexBy: 'min-width',
     indexUnit: 'px',
   };
@@ -42,13 +41,14 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
   }
 
   componentDidMount(): void {
-    const { lazy } = this.props;
+    const { lazy, lazyTimeout } = this.props;
     if (!lazy) {
       this.observer = new IntersectionObserver(this.interactionHandler, {
         rootMargin: '500px',
       });
       if (this.imageElement.current) this.observer.observe(this.imageElement.current);
-      setTimeout(this.completeLoad, this.props.lazyTimeout);
+      if (lazyTimeout !== undefined && lazyTimeout > 0)
+        setTimeout(this.completeLoad, lazyTimeout);
     }
   }
 
