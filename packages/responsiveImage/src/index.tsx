@@ -47,7 +47,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
         rootMargin: '500px',
       });
       if (this.imageElement.current) this.observer.observe(this.imageElement.current);
-      if (lazyTimeout !== undefined && lazyTimeout > 0)
+      if (lazyTimeout !== undefined)
         setTimeout(this.completeLoad, lazyTimeout);
     }
   }
@@ -93,7 +93,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
           ))}
           <img
             src={defaultMedia.src}
-            alt={alt || title}
+            alt={alt !== undefined ? alt : title}
             title={title || alt}
             loading={lazy ? 'lazy' : 'eager'}
           />
