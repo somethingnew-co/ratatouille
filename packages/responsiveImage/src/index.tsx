@@ -48,7 +48,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
         rootMargin: '500px',
       });
       if (this.imageElement.current) this.observer.observe(this.imageElement.current);
-      setTimeout(this.completeLoad, 2000);
+      setTimeout(this.completeLoad, this.props.lazyTimeout);
     }
   }
 
