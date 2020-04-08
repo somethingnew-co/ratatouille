@@ -10,6 +10,7 @@ interface ResponsiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   indexUnit?: 'px' | 'rem' | 'vw';
   lazyTimeout?: number;
   lazy?: boolean;
+  nativeLazy?: boolean;
 }
 
 interface ResponsiveImageState {
@@ -17,15 +18,16 @@ interface ResponsiveImageState {
 }
 
 class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveImageState> {
-  static defaultProps: Partial<ResponsiveImageProps> = {
+  static defaultProps = {
     lazy: false,
+    nativeLazy: false,
     indexBy: 'min-width',
     indexUnit: 'px',
   };
 
   imageElement: React.RefObject<HTMLImageElement>;
-
   observer: IntersectionObserver | null;
+  timeout: ReturnType<typeof setTimeout> | null;
 
   constructor(props: ResponsiveImageProps) {
     super(props);
@@ -38,22 +40,27 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
 
     this.completeLoad = this.completeLoad.bind(this);
     this.interactionHandler = this.interactionHandler.bind(this);
+    this.timeout = null;
   }
 
   componentDidMount(): void {
     const { lazy, lazyTimeout } = this.props;
-    if (!lazy) {
+
+    if (lazyTimeout !== undefined) {
+      this.timeout = setTimeout(this.completeLoad, lazyTimeout);
+    }
+
+    if (lazy) {
       this.observer = new IntersectionObserver(this.interactionHandler, {
-        rootMargin: '500px',
+        rootMargin: '50%',
       });
       if (this.imageElement.current) this.observer.observe(this.imageElement.current);
-      if (lazyTimeout !== undefined)
-        setTimeout(this.completeLoad, lazyTimeout);
     }
   }
 
   componentWillUnmount(): void {
     if (this.observer) this.observer.disconnect();
+    if (this.timeout) clearTimeout(this.timeout);
   }
 
   interactionHandler(entries: IntersectionObserverEntry[]): void {
@@ -65,13 +72,13 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
     if (!loaded && !!this.imageElement.current) {
       this.setState({ loaded: true }, () => {
         if (this.observer)
-          this.observer.unobserve(this.imageElement.current as Element);
+          this.observer.disconnect();
       });
     }
   }
 
   render(): JSX.Element {
-    const { sources, alt, title, lazy, indexBy, indexUnit } = this.props;
+    const { sources, alt, title, nativeLazy, indexBy, indexUnit } = this.props;
     const { loaded } = this.state;
 
     const defaultMedia = sources
@@ -83,7 +90,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
 
     if (loaded && defaultMedia) {
       return (
-        <picture ref={this.imageElement}>
+        <picture>
           {otherMedia.map((media, index) => (
             <source
               key={`resposive-image-${index}`}
@@ -92,18 +99,19 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
             />
           ))}
           <img
+            ref={this.imageElement}
             src={defaultMedia.src}
-            alt={alt !== undefined ? alt : title}
+            alt={alt ? alt || '' : title}
             title={title || alt}
-            loading={lazy ? 'lazy' : 'eager'}
+            loading={nativeLazy ? 'lazy' : 'eager'}
           />
         </picture>
       );
     }
 
     return (
-      <picture ref={this.imageElement}>
-        <img alt={alt || title} title={alt ? title : ''} />
+      <picture >
+        <img alt={alt || title} title={alt ? title : ''} ref={this.imageElement}/>
       </picture>
     );
   }
