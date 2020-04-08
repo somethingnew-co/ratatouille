@@ -111,7 +111,8 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
 
     return (
       <picture >
-        <img alt={alt || title} title={alt ? title : ''} ref={this.imageElement}/>
+        <img alt={alt ? alt || '' : title} title={title || alt}
+          ref={this.imageElement}/>
       </picture>
     );
   }
