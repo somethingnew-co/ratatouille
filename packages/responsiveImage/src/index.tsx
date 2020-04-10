@@ -11,6 +11,7 @@ interface ResponsiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   lazyTimeout?: number;
   lazy?: boolean;
   nativeLazy?: boolean;
+  rootMargin?: string;
 }
 
 interface ResponsiveImageState {
@@ -52,7 +53,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
 
     if (lazy) {
       this.observer = new IntersectionObserver(this.interactionHandler, {
-        rootMargin: '50%',
+        rootMargin: this.props.rootMargin || '500px',
       });
       if (this.imageElement.current) this.observer.observe(this.imageElement.current);
     }
