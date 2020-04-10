@@ -1,6 +1,6 @@
 {
   "name": "@stnew/responsive-image",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "picture componenet that displays different resources at different screen sizes as provided.",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
