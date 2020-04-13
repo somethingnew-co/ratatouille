@@ -12,6 +12,7 @@ interface ResponsiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   lazy?: boolean;
   nativeLazy?: boolean;
   rootMargin?: string;
+  onLoad?: (ev?: any) => void;
 }
 
 interface ResponsiveImageState {
@@ -45,7 +46,12 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
   }
 
   componentDidMount(): void {
-    const { lazy, lazyTimeout } = this.props;
+    const { lazy, lazyTimeout, onLoad } = this.props;
+    const img = this.imageElement.current;
+    if (img && onLoad) {
+      if (img.complete || img.naturalWidth) onLoad();
+      else img.addEventListener('load', onLoad);
+    }
 
     if (lazyTimeout !== undefined) {
       this.timeout = setTimeout(this.completeLoad, lazyTimeout);
@@ -55,7 +61,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
       this.observer = new IntersectionObserver(this.interactionHandler, {
         rootMargin: this.props.rootMargin || '500px',
       });
-      if (this.imageElement.current) this.observer.observe(this.imageElement.current);
+      if (img) this.observer.observe(img);
     }
   }
 
