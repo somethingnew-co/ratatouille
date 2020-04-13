@@ -26,14 +26,13 @@
     "url": "https://github.com/somethingnew-co/ratatouille/issues"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.8.5",
-    "styled-components": "^5.0.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@types/styled-system": "^5.1.0"
+    "@types/styled-system": "^5.1.9"
   },
-  "dependencies": {
-    "styled-system": "^5.1.0"
-  }
+  "dependencies": {}
 }

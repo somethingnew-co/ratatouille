@@ -56,7 +56,7 @@ Stories.add('Smoketest', () => (
     breakpoints,
   }}>
     <Styling>
-      <Container as="section">
+      <Container as="section" width={['100%', '50%']}>
         <h1>Basic</h1>
         <Box/>
         <Box mx="20px" />

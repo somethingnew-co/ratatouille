@@ -34,22 +34,33 @@ export interface BoxProps extends
   SpaceProps,
   TypographyProps {}
 
+const box = compose(
+  background,
+  border,
+  color,
+  flexbox,
+  grid,
+  layout,
+  position,
+  space,
+  typography,
+);
+
+const customProps = [
+  'span',
+  'offset',
+  'push',
+  'pull',
+];
+
+const props = box.propNames ? [...box.propNames, ...customProps] : [...customProps];
+
 /**
  * Basic layout building block. Includes `background`, `border`, `color`,
  * `flexbox`, `grid`, `layout`, `position`, `space`,  and `typography`
  * props from `styled-system`. All `<Box>` components render a `div`
  * by default and have no styling applied.
  */
-export const Box = styled('div')<BoxProps>(
-  compose(
-    background,
-    border,
-    color,
-    flexbox,
-    grid,
-    layout,
-    position,
-    space,
-    typography,
-  ),
-);
+export const Box = styled('div').withConfig({
+  shouldForwardProp: prop => !props.includes(prop),
+})(box);
