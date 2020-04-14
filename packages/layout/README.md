@@ -4,10 +4,10 @@ Layout system built with [styled-components] and [styled-system] for React. Feat
 
 ## Setup
 
-`styled-components` v5 and `styled-system` v5.1 are required dependencies.
+`styled-components` v5.1 and `styled-system` v5.1 are required dependencies.
 
 ```sh
-npm install styled-components@^5.0.0 styled-system
+npm install styled-components styled-system
 npm install @stnew/layout
 ```
 
