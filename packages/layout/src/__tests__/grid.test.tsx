@@ -1,103 +1,84 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { Grid } from '..';
+import { mountWithTheme, baseTheme } from '../../test/utils';
+import { Grid, Box } from '..';
 import 'jest-styled-components';
 
 describe('Grid', () => {
-  it('should render Grid.Box', () => {
-    const wrapper = mount(<Grid.Box>Hello World!</Grid.Box>);
+  it('should render Grid', () => {
+    const wrapper = mountWithTheme(<Grid>Hello World!</Grid>, baseTheme);
     expect(wrapper.containsMatchingElement(<div>Hello World!</div>)).toEqual(true);
   });
-  it('should render Grid.Item', () => {
-    const wrapper = mount(
-      <Grid.Box>
-        <Grid.Item>Hello World!</Grid.Item>
-        <Grid.Item>Hola Mundo!</Grid.Item>
-      </Grid.Box>,
+  it('should render Box', () => {
+    const wrapper = mountWithTheme(
+      <Grid>
+        <Box>Hello World!</Box>
+        <Box>Hola Mundo!</Box>
+      </Grid>,
+      baseTheme,
     );
     expect(wrapper.containsMatchingElement(<div>Hello World!</div>)).toEqual(true);
     expect(wrapper.containsMatchingElement(<div>Hola Mundo!</div>)).toEqual(true);
   });
 });
 
-describe('Grid.Box', () => {
+describe('Grid', () => {
   it('should have "display: flex" css property', () => {
-    const wrapper = mount(<Grid.Box>Hello World!</Grid.Box>);
+    const wrapper = mountWithTheme(<Grid>Hello World!</Grid>, baseTheme);
     expect(wrapper).toHaveStyleRule('display', 'grid');
   });
   it('should accept grid props', () => {
-    const wrapper = mount(<Grid.Box
-      gridTemplateColumns={'1fr 2fr'}
-      gridTemplateAreas='a b'
-    >Hello World!</Grid.Box>);
+    const wrapper = mountWithTheme(
+      <Grid
+        gridTemplateColumns={'1fr 2fr'}
+        gridTemplateAreas='a b'
+      >Hello World!</Grid>,
+      baseTheme,
+    );
     expect(wrapper).toHaveStyleRule('grid-template-columns', '1fr 2fr');
     expect(wrapper).toHaveStyleRule('grid-template-areas', 'a b');
   });
 });
 
-describe('Grid.Item', () => {
+describe('Box', () => {
   it('should accept props', () => {
-    const wrapper1 = mount(<Grid.Item colStart={6}>Hello World!</Grid.Item>);
-    expect(wrapper1).toHaveStyleRule('grid-column-start', '6');
+    const wrapper1 = mountWithTheme(<Box gridColumn="span 6">Hello World!</Box>, baseTheme);
+    expect(wrapper1).toHaveStyleRule('grid-column', 'span 6');
 
-    const wrapper2 = mount(<Grid.Item colStart={1} colEnd={7} row={3}>Hello World!</Grid.Item>);
-    expect(wrapper2).toHaveStyleRule('grid-column-start', '1');
-    expect(wrapper2).toHaveStyleRule('grid-column-end', '7');
+    const wrapper2 = mountWithTheme(<Box gridColumn="1 / 7" gridRow={3}>Hello World!</Box>, baseTheme);
+    expect(wrapper2).toHaveStyleRule('grid-column', '1 / 7');
     expect(wrapper2).toHaveStyleRule('grid-row', '3');
 
-    const wrapper3 = mount(<Grid.Item col="3 / 9" row='1 / 3'>Hello World!</Grid.Item>);
+    const wrapper3 = mountWithTheme(<Box gridColumn="3 / 9" gridRow='1 / 3'>Hello World!</Box>, baseTheme);
     expect(wrapper3).toHaveStyleRule('grid-column', '3 / 9');
     expect(wrapper3).toHaveStyleRule('grid-row', '1 / 3');
 
-    const wrapper4 = mount(<Grid.Item colStart={4} colEnd={9} rowStart={3} rowEnd={8}>Hello World!</Grid.Item>);
-    expect(wrapper4).toHaveStyleRule('grid-column-start', '4');
-    expect(wrapper4).toHaveStyleRule('grid-column-end', '9');
-    expect(wrapper4).toHaveStyleRule('grid-row-start', '3');
-    expect(wrapper4).toHaveStyleRule('grid-row-end', '8');
+    const wrapper4 = mountWithTheme(<Box gridColumn={'4 / span 9'} gridRow={'span 3'}>Hello World!</Box>, baseTheme);
+    expect(wrapper4).toHaveStyleRule('grid-column', '4 / span 9');
+    expect(wrapper4).toHaveStyleRule('grid-row', 'span 3');
   });
 
   it('should accept responsive props', () => {
-    const wrapper = mount(<Grid.Item colStart={[1, 3, 5, 7]} colEnd={[-1, -1, 9, 12]} rowStart={[1, 3, 5, 7]} rowEnd={[-1, -1, 9, 12]} >Hello World!</Grid.Item>);
+    const wrapper = mountWithTheme(<Box gridColumn={['1 / -1', '3 / -1', '5 / 9', '7 / 12']} gridRow={['1 / -1', '3 / -1', '5 / 9', '7 / 12']} >Hello World!</Box>, baseTheme);
 
-    expect(wrapper).toHaveStyleRule('grid-column-start', '1');
-    expect(wrapper).toHaveStyleRule('grid-column-end', '-1');
-    expect(wrapper).toHaveStyleRule('grid-column-start', '3', {
+    expect(wrapper).toHaveStyleRule('grid-column', '1 / -1');
+    expect(wrapper).toHaveStyleRule('grid-column', '3 / -1', {
       media: 'screen and (min-width: 40em)',
     });
-    expect(wrapper).toHaveStyleRule('grid-column-end', '-1', {
-      media: 'screen and (min-width: 40em)',
-    });
-    expect(wrapper).toHaveStyleRule('grid-column-start', '5', {
+    expect(wrapper).toHaveStyleRule('grid-column', '5 / 9', {
       media: 'screen and (min-width: 52em)',
     });
-    expect(wrapper).toHaveStyleRule('grid-column-end', '9', {
-      media: 'screen and (min-width: 52em)',
-    });
-    expect(wrapper).toHaveStyleRule('grid-column-start', '7', {
-      media: 'screen and (min-width: 64em)',
-    });
-    expect(wrapper).toHaveStyleRule('grid-column-end', '12', {
+    expect(wrapper).toHaveStyleRule('grid-column', '7 / 12', {
       media: 'screen and (min-width: 64em)',
     });
 
-    expect(wrapper).toHaveStyleRule('grid-row-start', '1');
-    expect(wrapper).toHaveStyleRule('grid-row-end', '-1');
-    expect(wrapper).toHaveStyleRule('grid-row-start', '3', {
+    expect(wrapper).toHaveStyleRule('grid-row', '1 / -1');
+    expect(wrapper).toHaveStyleRule('grid-row', '3 / -1', {
       media: 'screen and (min-width: 40em)',
     });
-    expect(wrapper).toHaveStyleRule('grid-row-end', '-1', {
-      media: 'screen and (min-width: 40em)',
-    });
-    expect(wrapper).toHaveStyleRule('grid-row-start', '5', {
+    expect(wrapper).toHaveStyleRule('grid-row', '5 / 9', {
       media: 'screen and (min-width: 52em)',
     });
-    expect(wrapper).toHaveStyleRule('grid-row-end', '9', {
-      media: 'screen and (min-width: 52em)',
-    });
-    expect(wrapper).toHaveStyleRule('grid-row-start', '7', {
-      media: 'screen and (min-width: 64em)',
-    });
-    expect(wrapper).toHaveStyleRule('grid-row-end', '12', {
+    expect(wrapper).toHaveStyleRule('grid-row', '7 / 12', {
       media: 'screen and (min-width: 64em)',
     });
   });

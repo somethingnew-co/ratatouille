@@ -3,13 +3,11 @@
   "version": "1.4.1",
   "description": "Extensive flexbox/CSS grid layout system",
   "author": "Something New",
-  "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
+  "homepage": "https://github.com/somethingnew-co/ratatouille/tree/master/packages/layout",
   "license": "ISC",
   "main": "dist/index.js",
   "files": [
-    "dist",
-    "grid.js",
-    "flex.js"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
@@ -28,14 +26,13 @@
     "url": "https://github.com/somethingnew-co/ratatouille/issues"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.8.5",
-    "styled-components": "*"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@types/styled-system": "^5.1.0"
+    "@types/styled-system": "^5.1.9"
   },
-  "dependencies": {
-    "styled-system": "^5.1.0"
-  }
+  "dependencies": {}
 }
