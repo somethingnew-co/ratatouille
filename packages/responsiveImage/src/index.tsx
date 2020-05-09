@@ -48,9 +48,9 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
   componentDidMount(): void {
     const { lazy, lazyTimeout, onLoad } = this.props;
     const img = this.imageElement.current;
-    if (img && onLoad) {
-      if (img.complete || img.naturalWidth) onLoad();
-      else img.addEventListener('load', onLoad);
+    if (img && onLoad && !lazy) {
+      if (img.complete || img.naturalWidth) this.completeLoad();
+      else img.addEventListener('load', this.completeLoad);
     }
 
     if (lazyTimeout !== undefined) {
@@ -75,8 +75,10 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
   }
 
   completeLoad(): void {
+    const { onLoad } = this.props;
     const { loaded } = this.state;
     if (!loaded && !!this.imageElement.current) {
+      if (onLoad) onLoad();
       this.setState({ loaded: true }, () => {
         if (this.observer)
           this.observer.disconnect();
