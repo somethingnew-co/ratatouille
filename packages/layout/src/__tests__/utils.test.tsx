@@ -1,9 +1,12 @@
 import {
   makePropArray,
+} from '../utils';
+
+import {
   calcFlexPercentage,
   calcFlexGap,
-  calcFlexMargin,
-} from '../utils';
+} from '../utils/flex';
+
 
 import {
   columns, gap,
@@ -12,7 +15,7 @@ import {
 import {
   baseTheme,
   responsiveTheme,
-} from '../utils/theme';
+} from '../../test/utils';
 
 describe('Utils', () => {
   it('should convert props to arrays', () => {
@@ -35,11 +38,9 @@ describe('Utils', () => {
   });
 
   it('should generate flex row margins', () => {
-    const margins = calcFlexMargin(baseTheme);
-    const noMargins = calcFlexMargin(baseTheme, true);
-    const marginArray = calcFlexMargin(responsiveTheme);
+    const margins = calcFlexGap(baseTheme, -1);
+    const marginArray = calcFlexGap(responsiveTheme, -1);
     expect(margins).toEqual([-10]);
-    expect(noMargins).toEqual(0);
     expect(marginArray).toEqual(['-0.5rem', -10, '-2.5%']); // half
 
   });
