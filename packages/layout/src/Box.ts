@@ -1,40 +1,21 @@
 import styled from 'styled-components';
+import { BoxProps } from './types';
 
 import {
   background,
-  BackgroundProps,
   border,
-  BorderProps,
   color,
-  ColorProps,
   flexbox,
-  FlexboxProps,
   grid,
-  GridProps,
   layout,
-  LayoutProps,
   position,
-  PositionProps,
   space,
-  SpaceProps,
   typography,
-  TypographyProps,
   compose,
 } from 'styled-system';
 
 
-export interface BoxProps extends
-  BackgroundProps,
-  BorderProps,
-  ColorProps,
-  FlexboxProps,
-  GridProps,
-  LayoutProps,
-  PositionProps,
-  SpaceProps,
-  TypographyProps {}
-
-const box = compose(
+const styledBox = compose(
   background,
   border,
   color,
@@ -53,7 +34,7 @@ const customProps = [
   'pull',
 ];
 
-const props = box.propNames ? [...box.propNames, ...customProps] : [...customProps];
+const props: string[] = customProps.concat(styledBox.propNames || []);
 
 /**
  * Basic layout building block. Includes `background`, `border`, `color`,
@@ -61,6 +42,7 @@ const props = box.propNames ? [...box.propNames, ...customProps] : [...customPro
  * props from `styled-system`. All `<Box>` components render a `div`
  * by default and have no styling applied.
  */
-export const Box = styled('div').withConfig({
-  shouldForwardProp: prop => !props.includes(prop),
-})(box);
+export const Box = styled('div')
+  .withConfig({
+    shouldForwardProp: prop => !props.includes(prop),
+  })<BoxProps>(styledBox);

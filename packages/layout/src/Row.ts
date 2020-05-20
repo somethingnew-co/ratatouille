@@ -1,15 +1,9 @@
-// <Row>
 import styled from 'styled-components';
 import { Flex } from './Flex';
-import { BoxProps } from './Box';
+import { BoxProps, BoxWithTheme } from './types';
 import { calcFlexGap } from './utils/flex';
-import { Theme } from './utils/theme';
 
-interface Row extends BoxProps {
-  theme: Theme;
-}
-
-const rowAttrs = (props: Row): BoxProps => ({
+const rowAttrs = (props: BoxWithTheme): BoxProps => ({
   flexDirection: props.flexDirection || 'row',
   flexWrap: props.flexWrap || 'wrap',
   mx: props.mx || calcFlexGap(props.theme, -1),

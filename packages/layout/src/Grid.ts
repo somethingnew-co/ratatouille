@@ -1,15 +1,9 @@
-// <Grid>
-
 import styled from 'styled-components';
-import { Box, BoxProps } from './Box';
-import { Theme } from './utils/theme';
+import { Box } from './Box';
+import { BoxProps, BoxWithTheme } from './types';
 import { gap, columns } from './utils/grid';
 
-interface Grid extends BoxProps{
-  theme: Theme;
-}
-
-const gridAttrs = (props: Grid): BoxProps => ({
+const gridAttrs = (props: BoxWithTheme): BoxProps => ({
   gridTemplateColumns: props.gridTemplateColumns || columns(props.theme),
   gridColumnGap: props.gridColumnGap || gap(props.theme),
 });
@@ -21,6 +15,6 @@ const gridAttrs = (props: Grid): BoxProps => ({
  * `grid-template-columns` defaults to `repeat(n, 1fr)` to fill available space,
  * but this can be overridden using styled-system's grid props.
  */
-export const Grid = styled(Box).attrs(gridAttrs)`
-  display: grid;
-`;
+export const Grid = styled(Box).attrs(gridAttrs)({
+  display: 'grid',
+});

@@ -1,14 +1,9 @@
 import styled from 'styled-components';
-import { Box, BoxProps } from './Box';
+import { Box } from './Box';
+import { BoxProps, BoxWithTheme } from './types';
 import { makePropArray } from './utils';
-import { Theme } from './utils/theme';
 
-// <Container>
-interface Container extends BoxProps {
-  theme: Theme;
-}
-
-function containerAttrs(props: Container): BoxProps {
+function containerAttrs(props: BoxWithTheme): BoxProps {
   const { theme } = props;
   const margins = makePropArray(theme.grid.margins);
 
@@ -30,7 +25,7 @@ function containerAttrs(props: Container): BoxProps {
 }
 
 /**
- * Extension of [`<Box>`] with max-width and padding applied.
+ * Extension of `<Box>` with max-width and padding applied.
  * This is used as a page or section wrapper.
  */
 export const Container = styled(Box).attrs(containerAttrs)({});

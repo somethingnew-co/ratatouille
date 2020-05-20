@@ -25,6 +25,7 @@ const Styling = styled.div`
   div {
     background-color: rgba(128,0,0,0.35);
     font-family: monospace;
+    position: relative;
 
     &:nth-child(even) {
       background-color: rgba(0,0,128,0.35);
@@ -32,6 +33,7 @@ const Styling = styled.div`
 
     &:after {
       content: counter(section);
+      position: absolute;
       display: block;
       counter-increment: section;
       background: white;
@@ -39,6 +41,8 @@ const Styling = styled.div`
       height: 1rem;
       line-height: 1rem;
       text-align: center;
+      top: 0;
+      right: 0;
     }
   }
 `;
@@ -65,7 +69,26 @@ Stories.add('Smoketest', () => (
       </Container>
 
       <Container as="section">
+        <h1>Test</h1>
+        <Row>
+          <Col span={4} mx="auto">Test</Col>
+          <Col span={4} mx="auto">Test</Col>
+        </Row>
+        <Row justifyContent="space-around">
+          <Col span={4} >Test</Col>
+          <Col span={4} >Test</Col>
+        </Row>
+        <Row>
+          <Col span={4} mx="auto">Test</Col>
+        </Row>
+        <Row>
+          <Col span={4} marginX="auto">Test</Col>
+        </Row>
+      </Container>
+
+      <Container as="section">
         <h1>Flex</h1>
+
         <Flex as="main" justifyContent="space-around">
           <Box px="20px" />
           <Box px="20px" />

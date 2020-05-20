@@ -1,19 +1,9 @@
 import styled from 'styled-components';
-import { Box, BoxProps } from './Box';
+import { Box } from './Box';
+import { BoxProps, ColProps } from './types';
 import { calcFlexPercentage, calcFlexGap } from './utils/flex';
-import { Theme } from './utils/theme';
 
-// <Col>
-interface Col extends BoxProps {
-  theme: Theme;
-  span?: number | number[];
-  offset?: number | number[];
-  push?: number | number[];
-  pull?: number | number[];
-  order?: number | number[];
-}
-
-const colAttrs = (props: Col): BoxProps => {
+const colAttrs = (props: ColProps): BoxProps => {
   const {
     theme,
     span,
