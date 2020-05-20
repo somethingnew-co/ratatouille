@@ -29,8 +29,8 @@ const colAttrs = (props: Col): BoxProps => {
   return {
     flex: props.flex || span ? flex.map(calcFlex) : '1',
     maxWidth: props.maxWidth || flex,
-    px: props.px || calcFlexGap(theme),
-    ml: props.ml || offset && calcFlexPercentage(offset, theme),
+    px: props.px || props.paddingX || calcFlexGap(theme),
+    ml: props.mx || props.marginX ? null : props.ml || offset && calcFlexPercentage(offset, theme),
     position: props.position || 'relative',
     left: props.left || push && calcFlexPercentage(push, theme),
     right: props.left || pull && calcFlexPercentage(pull, theme),
