@@ -16,7 +16,7 @@ Responsive Image component that wraps the HTML [picture] element and handles laz
 | rootMargin | `string` | yes | `'500px'` | Root Margin for the [intersection-observer] |
 | onLoad | `function` | yes | n/a | Callback for when the image is loaded |
 | alt | `string` | yes | n/a | value for the alt tag for the `img` element |
-| title | `string` | yes | n/a | value for the title tag for the `img` element (will be used for alt if alt is not otherwise defined |
+| title | `string` | yes | n/a | value for the title tag for the `img` element (will be used for alt if alt is not otherwise defined) |
 
 **SourceProps**
 
