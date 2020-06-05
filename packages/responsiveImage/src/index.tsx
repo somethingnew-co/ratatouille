@@ -3,7 +3,7 @@ import React, { ImgHTMLAttributes } from 'react';
 interface ResponsiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   sources: {
     src: string;
-    width: number;
+    width?: number;
     isDefault?: boolean;
   }[];
   indexBy?: 'min-width' | 'max-width';
@@ -13,6 +13,8 @@ interface ResponsiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   nativeLazy?: boolean;
   rootMargin?: string;
   onLoad?: (ev?: any) => void;
+  alt?: string;
+  title?: string;
 }
 
 interface ResponsiveImageState {
@@ -25,6 +27,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
     nativeLazy: false,
     indexBy: 'min-width',
     indexUnit: 'px',
+    rootMargin: '500px',
   };
 
   imageElement: React.RefObject<HTMLImageElement>;
@@ -59,7 +62,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
 
     if (lazy) {
       this.observer = new IntersectionObserver(this.interactionHandler, {
-        rootMargin: this.props.rootMargin || '500px',
+        rootMargin: this.props.rootMargin,
       });
       if (img) this.observer.observe(img);
     }
@@ -91,11 +94,11 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
     const { loaded } = this.state;
 
     const defaultMedia = sources
-      .filter(source => source.isDefault && source.src)[0]
-      || sources.filter(source => source.src)[0];
+      .filter(source => source.isDefault && !!source.src)[0]
+      || sources.filter(source => !!source.src)[0];
 
     const otherMedia = sources
-      .filter(source => source.src);
+      .filter(source => !!source.src);
 
     if (loaded && defaultMedia) {
       return (
@@ -110,8 +113,8 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
           <img
             ref={this.imageElement}
             src={defaultMedia.src}
-            alt={alt ? alt || '' : title}
-            title={title || alt}
+            alt={alt || title || ''}
+            title={title}
             loading={nativeLazy ? 'lazy' : 'eager'}
           />
         </picture>
