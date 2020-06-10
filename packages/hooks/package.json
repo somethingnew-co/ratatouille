@@ -1,0 +1,32 @@
+{
+  "name": "@stnew/hooks",
+  "version": "0.0.1",
+  "description": "Something New's custom React hooks",
+  "author": "Something New",
+  "homepage": "https://github.com/somethingnew-co/ratatouille#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somethingnew-co/ratatouille.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "rm -rf dist  && npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/somethingnew-co/ratatouille/issues"
+  }
+}
