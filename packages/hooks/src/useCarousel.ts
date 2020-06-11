@@ -58,7 +58,7 @@ export default function useCarousel(numElements = 0, config = {}): (number | { s
     }
   }, [index, isRotating, options]);
 
-  useInterval(rotateIndex, options.auto && isRotating ? options.interval : null);
+  if (options.auto && isRotating) useInterval(rotateIndex, options.interval);
 
   const controls = { set, next, prev };
 
