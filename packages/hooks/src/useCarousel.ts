@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import useInterval from './useInterval';
+import { useInterval } from '.';
 
 function mod(n: number, m: number): number {
   return ((n % m) + m) % m;
