@@ -17,6 +17,6 @@
     "eslint-plugin"
   ],
   "peerDependencies": {
-    "eslint": ">=5.0.0"
+    "eslint": "*"
   }
 }
