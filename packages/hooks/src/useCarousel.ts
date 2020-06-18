@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useInterval } from '.';
 
 function mod(n: number, m: number): number {
@@ -22,34 +22,34 @@ export default function useCarousel(numElements = 0, config = {}): (number | { s
   const [prevIndex, setPrevIndex] = useState(indexRef.current);
   const [isRotating, setIsRotating] = useState(options.auto);
 
-  function updateIndex(n: number): void {
+  const updateIndex = useCallback((n: number): void => {
     setPrevIndex(indexRef.current);
     indexRef.current = n;
     setIndex(indexRef.current);
-  }
+  }, [setPrevIndex, setIndex, indexRef]);
 
-  function rotateIndex(n = 1): void {
+  const rotateIndex = useCallback((n = 1): void => {
     updateIndex(mod(index + n, numElements));
-  }
+  }, [updateIndex, index, numElements]);
 
-  function next(): void {
+  const next = useCallback((): void => {
     rotateIndex(1);
     setIsRotating(false);
-  }
+  }, []);
 
-  function prev(): void {
+  const prev = useCallback((): void => {
     rotateIndex(-1);
     setIsRotating(false);
-  }
+  }, [rotateIndex, setIsRotating]);
 
-  function set(n: number): void {
+  const set = useCallback((n: number): void => {
     updateIndex(n);
     setIsRotating(false);
-  }
+  }, [updateIndex, setIsRotating]);
 
-  function autoRotate(): void {
+  const autoRotate = useCallback((): void => {
     setIsRotating(true);
-  }
+  }, [setIsRotating]);
 
   useEffect(() => {
     if (options.auto && options.autoTimeout > 0 && !isRotating) {
