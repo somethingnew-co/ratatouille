@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { useInterval } from '.';
+import { useState, useEffect, useRef } from 'react';
+import useInterval from './useInterval';
 
 function mod(n: number, m: number): number {
   return ((n % m) + m) % m;
@@ -22,34 +22,36 @@ export default function useCarousel(numElements = 0, config = {}): (number | { s
   const [prevIndex, setPrevIndex] = useState(indexRef.current);
   const [isRotating, setIsRotating] = useState(options.auto);
 
-  const updateIndex = useCallback((n: number): void => {
+  function updateIndex(n: number): void {
     setPrevIndex(indexRef.current);
     indexRef.current = n;
     setIndex(indexRef.current);
-  }, [setPrevIndex, setIndex, indexRef]);
+  }
 
-  const rotateIndex = useCallback((n = 1): void => {
+  function rotateIndex(n = 1): void {
     updateIndex(mod(index + n, numElements));
-  }, [updateIndex, index, numElements]);
+  }
 
-  const next = useCallback((): void => {
+  function next(): void {
     rotateIndex(1);
     setIsRotating(false);
-  }, []);
+  }
 
-  const prev = useCallback((): void => {
+  function prev(): void {
     rotateIndex(-1);
     setIsRotating(false);
-  }, [rotateIndex, setIsRotating]);
+  }
 
-  const set = useCallback((n: number): void => {
+  function set(n: number): void {
     updateIndex(n);
     setIsRotating(false);
-  }, [updateIndex, setIsRotating]);
+  }
 
-  const autoRotate = useCallback((): void => {
+  function autoRotate(): void {
     setIsRotating(true);
-  }, [setIsRotating]);
+  }
+
+  if (options.auto && isRotating) useInterval(rotateIndex, options.interval);
 
   useEffect(() => {
     if (options.auto && options.autoTimeout > 0 && !isRotating) {
@@ -57,8 +59,6 @@ export default function useCarousel(numElements = 0, config = {}): (number | { s
       return () => clearTimeout(timeout);
     }
   }, [index, isRotating, options]);
-
-  if (options.auto && isRotating) useInterval(rotateIndex, options.interval);
 
   const controls = { set, next, prev };
 
