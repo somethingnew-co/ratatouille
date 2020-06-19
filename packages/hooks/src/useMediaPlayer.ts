@@ -1,15 +1,18 @@
 import { useCallback, useReducer, RefObject } from 'react';
 
-export interface MediaPlayerState {
-  playing: boolean;
+interface MediaPlayerStateOptions {
   muted: boolean;
   autoPlay: boolean;
   playsInline: boolean;
   loop: boolean;
-  duration?: number;
 }
 
-export interface ControlsType {
+interface MediaPlayerState extends MediaPlayerStateOptions {
+  playing: boolean;
+  duration: number | null;
+}
+
+interface ControlsType {
   stop: () => void;
   seek: (time: number) => void;
   restart: () => void;
@@ -18,6 +21,11 @@ export interface ControlsType {
   setLooping: (bool: boolean) => void;
   setMuted: (bool: boolean) => void;
   toggleMute: () => void;
+}
+
+interface MediaPlayerReturnType {
+  controls: ControlsType;
+  state: MediaPlayerState;
 }
 
 interface ActionType {
@@ -31,6 +39,7 @@ const initialState: MediaPlayerState = {
   autoPlay: false,
   playsInline: false,
   loop: false,
+  duration: null,
 };
 
 function reducer(state: MediaPlayerState, action: ActionType): MediaPlayerState {
@@ -48,10 +57,13 @@ function reducer(state: MediaPlayerState, action: ActionType): MediaPlayerState 
   }
 }
 
-function useMediaPlayer(ref: RefObject<HTMLMediaElement>, options = {}): [ControlsType, MediaPlayerState] {
+function useMediaPlayer(
+  ref: RefObject<HTMLMediaElement>,
+  options: MediaPlayerStateOptions,
+): MediaPlayerReturnType {
   const init = {
     ...initialState,
-    ...options,
+    ...(options || {}),
   };
 
   const [state, dispatch] = useReducer(reducer, init);
@@ -156,7 +168,7 @@ function useMediaPlayer(ref: RefObject<HTMLMediaElement>, options = {}): [Contro
     toggleMute,
   };
 
-  return [controls, state];
+  return { controls, state };
 }
 
 export default useMediaPlayer;
