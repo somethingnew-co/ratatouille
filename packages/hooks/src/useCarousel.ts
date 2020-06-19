@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useInterval } from '.';
 
 function mod(n: number, m: number): number {
   return ((n % m) + m) % m;
@@ -51,19 +52,13 @@ export default function useCarousel(numElements = 0, config = {}): (number | { s
   }
 
   useEffect(() => {
-    const { auto, autoTimeout, interval } = options;
-    if (auto && !isRotating && typeof interval === 'number') {
-      if (typeof autoTimeout === 'number' && autoTimeout > 0) {
-        const timeout = setTimeout(autoRotate, options.autoTimeout);
-        return () => clearTimeout(timeout);
-      }
-      else autoRotate();
-    }
-    else if (auto && isRotating && typeof interval === 'number') {
-      const id = setInterval(next, interval);
-      return () => clearInterval(id);
+    if (options.auto && options.autoTimeout > 0 && !isRotating) {
+      const timeout = setTimeout(autoRotate, options.autoTimeout);
+      return () => clearTimeout(timeout);
     }
   }, [index, isRotating, options]);
+
+  useInterval(rotateIndex, options.auto && isRotating ? options.interval : undefined);
 
   const controls = { set, next, prev };
 
