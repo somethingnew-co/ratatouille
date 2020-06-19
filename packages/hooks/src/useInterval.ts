@@ -18,6 +18,9 @@ function useInterval(callback: () => void, delay?: number): void {
       intervalRef.current = setInterval(tick, delay);
       return () => clearInterval(intervalRef.current);
     }
+    else if (delay === null && intervalRef.current > -1) {
+      intervalRef.current = -1;
+    }
   }, [delay]);
 }
 
