@@ -5,15 +5,27 @@ function mod(n: number, m: number): number {
   return ((n % m) + m) % m;
 }
 
-const defaults = {
+interface Config {
+  auto?: boolean;
+  interval?: number;
+  autoTimeout?: number;
+}
+
+interface Controls {
+  set: (n: number) => void;
+  next: () => void;
+  prev: () => void;
+}
+
+const configDefault = {
   auto: false,
   interval: 1000,
   autoTimeout: 5000,
 };
 
-export default function useCarousel(numElements = 0, config = {}): (number | { set: (n: any) => void; next: () => void; prev: () => void } | undefined)[] {
+export default function useCarousel(numElements = 0, config: Config = {}): [number, Controls, number] {
   const options = {
-    ...defaults,
+    ...configDefault,
     ...config,
   };
 
