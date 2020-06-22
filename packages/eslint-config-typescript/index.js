@@ -19,11 +19,11 @@ module.exports = {
     }],
     '@typescript-eslint/member-delimiter-style': ['error', {
       multiline: {
-        delimiter: 'semi',
+        delimiter: 'none',
         requireLast: true,
       },
       singleline: {
-        delimiter: 'semi',
+        delimiter: 'comma',
         requireLast: false,
       },
     }],

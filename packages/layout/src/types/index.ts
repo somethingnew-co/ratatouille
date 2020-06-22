@@ -24,13 +24,13 @@ export interface BoxProps extends
   TypographyProps {}
 
 export interface BoxWithTheme extends BoxProps {
-  theme: Theme;
+  theme: Theme
 }
 
 export interface ColProps extends BoxWithTheme {
-  span?: number | number[];
-  offset?: number | number[];
-  push?: number | number[];
-  pull?: number | number[];
-  order?: number | number[];
+  span?: number | number[]
+  offset?: number | number[]
+  push?: number | number[]
+  pull?: number | number[]
+  order?: number | number[]
 }
