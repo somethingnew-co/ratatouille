@@ -1,11 +1,18 @@
 import { useCallback, useReducer, RefObject } from 'react';
 
-interface MyHTMLMediaElement extends HTMLMediaElement {
-  msRequestFullscreen: any;
-  mozRequestFullScreen: any;
-  webkitRequestFullscreen: any;
-  mozFullScreenElement?: boolean;
-  webkitFullscreenElement?: boolean;
+declare global {
+  interface Document {
+    mozCancelFullScreen: any;
+    msExitFullscreen?: () => Promise<void>;
+    webkitExitFullscreen: any;
+  }
+
+  interface HTMLMediaElement {
+    msRequestFullscreen?: () => Promise<void>;
+    mozRequestFullscreen?: () => Promise<void>;
+    webkitRequestFullscreen?: () => Promise<void>;
+    mozRequestFullScreen?: () => Promise<void>;
+  }
 }
 
 interface MediaPlayerStateOptions {
@@ -67,7 +74,7 @@ function reducer(state: MediaPlayerState, action: ActionType): MediaPlayerState 
 }
 
 function useMediaPlayer(
-  ref: RefObject<MyHTMLMediaElement>,
+  ref: RefObject<HTMLMediaElement>,
   options: MediaPlayerStateOptions,
 ): MediaPlayerReturnType {
   const init = {
@@ -77,7 +84,7 @@ function useMediaPlayer(
 
   const [state, dispatch] = useReducer(reducer, init);
 
-  const checkForMedia = (callback: (element: MyHTMLMediaElement) => void): void => {
+  const checkForMedia = (callback: (element: HTMLMediaElement) => void): void => {
     if (!ref.current) return;
     callback(ref.current);
   };
