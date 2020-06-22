@@ -41,17 +41,6 @@ While developing you can also run tests in watch mode by running:
 npm run test:watch
 ```
 
-## Deploy Static Storybook
-
-To update [ratatouille.somethingnew.co](https://ratatouille.somethingnew.co): (user: stnew / pw: output)
-
-```
-# add git remote
-git remote add dokku dokku@deploy.somethingnew.co:ratatouille
-# then push
-git push dokku master
-```
-
 ## Hygen Package Templates
 
 We use [Hygen](http://www.hygen.io/) to generate starter code for new packages.
