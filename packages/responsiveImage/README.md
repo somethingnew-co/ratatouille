@@ -7,7 +7,8 @@ Responsive Image component that wraps the HTML [picture] element and handles laz
 
 | Props | Type | Optional | Default | Desc |
 | ----- | ----- | ----- | ----- | ----- |
-| sources | `SourceProps[]` | no | n/a | Objects defining the media sources and the breakpoints at which they should be used |
+| sources | `SourceProps[]` | no (unless `src` is set) | n/a | Objects defining the media sources and the breakpoints at which they should be used |
+| src | `string` | no (unless `sources` is set) | n/a | Can be used instead of sources to apply a single media source to the component |
 | indexBy | `'min-width'` or `'max-width'` | yes | `'min-width'` | Rule by which breakpoints are decided |
 | indexUnit | `'px'` or `'rem'` or `'vw'` | yes | `'px'` | Unit used when parsing breakpoints |
 | lazyTimeout | `number` | yes | n/a | If defined, this is the number of milliseconds before the image starts to load |
@@ -48,13 +49,23 @@ const sources = [
   },
 ];
 
-funtion ImageExample() {
+funtion MultipleSourcesExample() {
 	return (
 		<ResponsiveImage
-	      sources={sources}
-	      alt="something new graphic"
-	      title="this is something new"
-	    />
+      sources={sources}
+      alt="something new graphic"
+      title="this is something new"
+    />
+	)
+}
+
+funtion SingleSourceExample() {
+	return (
+		<ResponsiveImage
+      src="/assets/stn-new.png"
+      alt="something new graphic"
+      title="this is something new"
+    />
 	)
 }
 ```

@@ -1,7 +1,7 @@
 import React, { ImgHTMLAttributes } from 'react';
 
 interface ResponsiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-  sources: {
+  sources?: {
     src: string;
     width?: number;
     isDefault?: boolean;
@@ -90,14 +90,22 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
   }
 
   render(): JSX.Element {
-    const { sources, alt, title, nativeLazy, indexBy, indexUnit } = this.props;
+    const { sources, src, alt, title, nativeLazy, indexBy, indexUnit } = this.props;
     const { loaded } = this.state;
 
-    const defaultMedia = sources
-      .filter(source => source.isDefault && !!source.src)[0]
-      || sources.filter(source => !!source.src)[0];
+    let srcSet: {
+      src: string;
+      width?: number;
+      isDefault?: boolean;
+    }[] = [];
+    if (sources && sources.length) srcSet = sources;
+    else if (src) srcSet = [{ src, isDefault: true }];
 
-    const otherMedia = sources
+    const defaultMedia = srcSet
+      .filter(source => source.isDefault && !!source.src)[0]
+      || srcSet.filter(source => !!source.src)[0];
+
+    const otherMedia = srcSet
       .filter(source => !!source.src);
 
     if (loaded && defaultMedia) {

@@ -37,5 +37,13 @@ export default css`
     button {
         appearance: none;
         outline: none;
+        color: inherit;
+        cursor: pointer;
+        display: inline-flex;
+        line-height: 1;
+        position: relative;
+        text-decoration: none;
+        touch-action: manipulation;
+        white-space: nowrap;
     }
 `;
