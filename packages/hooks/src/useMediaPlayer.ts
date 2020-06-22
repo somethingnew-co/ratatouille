@@ -1,5 +1,13 @@
 import { useCallback, useReducer, RefObject } from 'react';
 
+interface MyHTMLMediaElement extends HTMLMediaElement {
+  msRequestFullscreen: any;
+  mozRequestFullScreen: any;
+  webkitRequestFullscreen: any;
+  mozFullScreenElement?: boolean;
+  webkitFullscreenElement?: boolean;
+}
+
 interface MediaPlayerStateOptions {
   muted: boolean;
   autoPlay: boolean;
@@ -14,13 +22,14 @@ interface MediaPlayerState extends MediaPlayerStateOptions {
 
 interface ControlsType {
   stop: () => void;
-  seek: (time: number) => void;
+  seek: (time: number, type?: 'time' | 'percent') => void;
   restart: () => void;
   setPlaying: (bool: boolean) => void;
   setVolume: (volume: number) => void;
   setLooping: (bool: boolean) => void;
   setMuted: (bool: boolean) => void;
   toggleMute: () => void;
+  setFullscreen: (bool: boolean) => void;
 }
 
 interface MediaPlayerReturnType {
@@ -58,7 +67,7 @@ function reducer(state: MediaPlayerState, action: ActionType): MediaPlayerState 
 }
 
 function useMediaPlayer(
-  ref: RefObject<HTMLMediaElement>,
+  ref: RefObject<MyHTMLMediaElement>,
   options: MediaPlayerStateOptions,
 ): MediaPlayerReturnType {
   const init = {
@@ -68,7 +77,7 @@ function useMediaPlayer(
 
   const [state, dispatch] = useReducer(reducer, init);
 
-  const checkForMedia = (callback: (element: HTMLMediaElement) => void): void => {
+  const checkForMedia = (callback: (element: MyHTMLMediaElement) => void): void => {
     if (!ref.current) return;
     callback(ref.current);
   };
@@ -78,7 +87,7 @@ function useMediaPlayer(
   function play(): void {
     checkMedia(media => {
       if (!state.playing) {
-        // HTMLMediaElement.play() returns a Promise
+        // MyHTMLMediaElement.play() returns a Promise
         const playPromise = media.play();
         playPromise.then(() => {
           dispatch({ type: 'playing', payload: true });
@@ -107,10 +116,30 @@ function useMediaPlayer(
     });
   }
 
-  function seek(time: number): void {
+  function seek(time: number, type?: 'time' | 'percent'): void {
     checkMedia(media => {
-      const newTime = Math.min(media.duration, Math.max(0, time));
+      let newTime = Math.min(media.duration, Math.max(0, time));
+      if (type === 'percent' && time > 0 && time < 1)
+        newTime = media.duration * Math.min(1, Math.max(0, time));
+      else if (type === 'percent')
+        throw new Error('If you pass \'percent\' as the type argument, time must be within the range from 0 to 1.');
       media.currentTime = newTime;
+    });
+  }
+
+  function setFullscreen(bool: boolean): void {
+    checkMedia(media => {
+      if (bool) {
+        if (media.requestFullscreen) media.requestFullscreen();
+        else if (media.mozRequestFullScreen) media.mozRequestFullScreen();
+        else if (media.webkitRequestFullscreen) media.webkitRequestFullscreen();
+        else if (media.msRequestFullscreen) media.msRequestFullscreen();
+      }
+      else {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      }
     });
   }
 
@@ -166,6 +195,7 @@ function useMediaPlayer(
     setLooping,
     setMuted,
     toggleMute,
+    setFullscreen,
   };
 
   return { controls, state };
