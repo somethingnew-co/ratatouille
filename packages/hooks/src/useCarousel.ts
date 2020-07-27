@@ -6,15 +6,15 @@ function mod(n: number, m: number): number {
 }
 
 interface Config {
-  auto?: boolean;
-  interval?: number;
-  autoTimeout?: number;
+  auto?: boolean
+  interval?: number
+  autoTimeout?: number
 }
 
 interface Controls {
-  set: (n: number) => void;
-  next: () => void;
-  prev: () => void;
+  set: (n: number) => void
+  next: () => void
+  prev: () => void
 }
 
 const configDefault = {
@@ -70,7 +70,7 @@ export default function useCarousel(numElements = 0, config: Config = {}): [numb
     }
   }, [index, isRotating, options]);
 
-  useInterval(rotateIndex, options.auto && isRotating ? options.interval : undefined);
+  useInterval(rotateIndex, options.auto && isRotating ? options.interval : null);
 
   const controls = { set, next, prev };
 
