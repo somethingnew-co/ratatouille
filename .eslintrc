@@ -5,16 +5,17 @@
         "./packages/eslint-config-typescript",
         "eslint:recommended",
         "plugin:react/recommended",
+        "plugin:react-hooks/recommended"
     ],
     "env": {
         "jest/globals": true,
         "browser": true,
-        "node": true,
+        "node": true
     },
     "globals": {
         "shallow": true,
         "render": true,
-        "mount": true,
+        "mount": true
     },
     "plugins": ["jest", "react", "import", "jsx-a11y"],
     "settings": {
@@ -23,7 +24,7 @@
         }
     },
     "parserOptions": {
-        "ecmaVersion": 2018,
+        "ecmaVersion": 2020,
         "sourceType": "module",
         "ecmaFeatures": {
           "jsx": true
@@ -48,7 +49,7 @@
             }
         }],
         "jsx-a11y/click-events-have-key-events": "off",
-        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/no-static-element-interactions": "off"
     },
     "overrides": [
         {
@@ -56,7 +57,7 @@
                 "**/*{-,.}{spec,test,stories}.js",
                 "**/*{-,.}{spec,test,stories}.jsx",
                 "**/*{-,.}{spec,test,stories}.ts",
-                "**/*{-,.}{spec,test,stories}.tsx",
+                "**/*{-,.}{spec,test,stories}.tsx"
             ],
             "rules":{
                 //devDependencies are all in the root
@@ -70,7 +71,7 @@
             ],
             "rules": {
                 "react/require-default-props": "off",
-                "react/button-has-type": "off",
+                "react/button-has-type": "off"
             }
         },
         {
@@ -81,8 +82,8 @@
             "rules": {
                 "react/jsx-filename-extension": "off",
                 "react/prop-types": "off",
-                "react/display-name": "off",
+                "react/display-name": "off"
             }
-          },
+          }
     ]
 }
