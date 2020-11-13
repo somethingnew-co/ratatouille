@@ -1,7 +1,7 @@
-import { useRef, createRef, RefObject } from 'react';
+import { useRef, createRef, MutableRefObject } from 'react';
 
-function useRefs(array: any[]): RefObject<any>[] {
-  const refs = useRef<RefObject<any>[]>([]);
+function useRefs(array: any[]): MutableRefObject<any>[] {
+  const refs = useRef<MutableRefObject<any>[]>([]);
   refs.current = Array.from(array, (_, i) => refs.current[i] || createRef());
   return refs.current;
 }
