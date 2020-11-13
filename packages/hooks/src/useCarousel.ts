@@ -23,7 +23,7 @@ const configDefault = {
   autoTimeout: 5000,
 };
 
-export default function useCarousel(numElements = 0, config: Config = {}): [number, Controls, number] {
+export default function useCarousel(numElements: number, config?: Config): [number, Controls, number] {
   const options = {
     ...configDefault,
     ...config,
@@ -66,7 +66,9 @@ export default function useCarousel(numElements = 0, config: Config = {}): [numb
   useEffect(() => {
     if (options.auto && options.autoTimeout > 0 && !isRotating) {
       const timeout = setTimeout(autoRotate, options.autoTimeout);
-      return () => clearTimeout(timeout);
+      return () => {
+        clearTimeout(timeout);
+      };
     }
   }, [index, isRotating, options]);
 
