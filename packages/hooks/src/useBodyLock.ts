@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 
-function useBodyLock(): void {
+function useBodyLock(bool = true): void {
   useEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = 'hidden';
-    return (): void => {
-      document.body.style.overflow = originalStyle;
-    };
-  }, []);
+    if (bool) {
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = 'hidden';
+      return (): void => {
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [bool]);
 }
 
 export default useBodyLock;
