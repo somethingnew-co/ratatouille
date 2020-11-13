@@ -2,51 +2,51 @@ import { useCallback, useReducer, RefObject } from 'react';
 
 declare global {
   interface Document {
-    mozCancelFullScreen: any;
-    msExitFullscreen?: () => Promise<void>;
-    webkitExitFullscreen: any;
+    mozCancelFullScreen: any
+    msExitFullscreen?: () => Promise<void>
+    webkitExitFullscreen: any
   }
 
   interface HTMLMediaElement {
-    msRequestFullscreen?: () => Promise<void>;
-    mozRequestFullscreen?: () => Promise<void>;
-    webkitRequestFullscreen?: () => Promise<void>;
-    mozRequestFullScreen?: () => Promise<void>;
+    msRequestFullscreen?: () => Promise<void>
+    mozRequestFullscreen?: () => Promise<void>
+    webkitRequestFullscreen?: () => Promise<void>
+    mozRequestFullScreen?: () => Promise<void>
   }
 }
 
 interface MediaPlayerStateOptions {
-  muted: boolean;
-  autoPlay: boolean;
-  playsInline: boolean;
-  loop: boolean;
+  muted: boolean
+  autoPlay: boolean
+  playsInline: boolean
+  loop: boolean
 }
 
 interface MediaPlayerState extends MediaPlayerStateOptions {
-  playing: boolean;
-  duration: number | null;
+  playing: boolean
+  duration: number | null
 }
 
 interface ControlsType {
-  stop: () => void;
-  seek: (time: number, type?: 'time' | 'percent') => void;
-  restart: () => void;
-  setPlaying: (bool: boolean) => void;
-  setVolume: (volume: number) => void;
-  setLooping: (bool: boolean) => void;
-  setMuted: (bool: boolean) => void;
-  toggleMute: () => void;
-  setFullscreen: (bool: boolean) => void;
+  stop: () => void
+  seek: (time: number, type?: 'time' | 'percent') => void
+  restart: () => void
+  setPlaying: (bool: boolean) => void
+  setVolume: (volume: number) => void
+  setLooping: (bool: boolean) => void
+  setMuted: (bool: boolean) => void
+  toggleMute: () => void
+  setFullscreen: (bool: boolean) => void
 }
 
 interface MediaPlayerReturnType {
-  controls: ControlsType;
-  state: MediaPlayerState;
+  controls: ControlsType
+  state: MediaPlayerState
 }
 
 interface ActionType {
-  type: 'playing' | 'muted' | 'looping' | 'duration';
-  payload: any;
+  type: 'playing' | 'muted' | 'looping' | 'duration'
+  payload: any
 }
 
 const initialState: MediaPlayerState = {
