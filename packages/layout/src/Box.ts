@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { BoxProps } from './types';
+import { props as styledSystemProps } from '@styled-system/should-forward-prop';
 
 import {
   background,
@@ -34,7 +35,7 @@ const customProps = [
   'pull',
 ];
 
-const props: string[] = customProps.concat(styledBox.propNames || []);
+const props: string[] = styledSystemProps.concat(customProps);
 
 /**
  * Basic layout building block. Includes `background`, `border`, `color`,
