@@ -1,0 +1,26 @@
+{
+  "name": "@stnew/eslint-config-next",
+  "version": "0.1.0",
+  "description": "Something New eslint config for Next.js",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somethingnew-co/ratatouille.git"
+  },
+  "author": "@stnew",
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslint-plugin"
+  ],
+  "peerDependencies": {
+    "@stnew/eslint-config": "*",
+    "@babel/eslint-parser": "*",
+    "eslint": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-react-hooks": "*"
+  }
+}
