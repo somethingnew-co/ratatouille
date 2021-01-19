@@ -1,6 +1,6 @@
 {
   "name": "@stnew/eslint-config-next",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Something New eslint config for Next.js",
   "main": "index.js",
   "publishConfig": {
@@ -17,8 +17,8 @@
     "eslint-plugin"
   ],
   "peerDependencies": {
-    "@stnew/eslint-config": "*",
     "@babel/eslint-parser": "*",
+    "@stnew/eslint-config": "*",
     "eslint": "*",
     "eslint-plugin-react": "*",
     "eslint-plugin-react-hooks": "*"
