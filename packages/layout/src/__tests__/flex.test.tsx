@@ -91,7 +91,9 @@ describe('Col', () => {
   });
 
   it('should override custom props', () => {
-    const wrapper = mountWithTheme(<Col span={10} offset={1} px='20px' mx="auto">Hello World!</Col>, baseTheme);
+    const wrapper = mountWithTheme(
+      <Col span={10} offset={1} px='20px' mx="auto">Hello World!</Col>, baseTheme,
+    );
     expect(wrapper).toHaveStyleRule('padding-left', '20px');
     expect(wrapper).toHaveStyleRule('padding-right', '20px');
     expect(wrapper).toHaveStyleRule('margin-left', 'auto');

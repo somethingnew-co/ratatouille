@@ -44,21 +44,35 @@ describe('Box', () => {
     const wrapper1 = mountWithTheme(<Box gridColumn="span 6">Hello World!</Box>, baseTheme);
     expect(wrapper1).toHaveStyleRule('grid-column', 'span 6');
 
-    const wrapper2 = mountWithTheme(<Box gridColumn="1 / 7" gridRow={3}>Hello World!</Box>, baseTheme);
+    const wrapper2 = mountWithTheme(
+      <Box gridColumn="1 / 7" gridRow={3}>Hello World!</Box>, baseTheme,
+    );
     expect(wrapper2).toHaveStyleRule('grid-column', '1 / 7');
     expect(wrapper2).toHaveStyleRule('grid-row', '3');
 
-    const wrapper3 = mountWithTheme(<Box gridColumn="3 / 9" gridRow='1 / 3'>Hello World!</Box>, baseTheme);
+    const wrapper3 = mountWithTheme(
+      <Box gridColumn="3 / 9" gridRow='1 / 3'>Hello World!</Box>, baseTheme,
+    );
     expect(wrapper3).toHaveStyleRule('grid-column', '3 / 9');
     expect(wrapper3).toHaveStyleRule('grid-row', '1 / 3');
 
-    const wrapper4 = mountWithTheme(<Box gridColumn={'4 / span 9'} gridRow={'span 3'}>Hello World!</Box>, baseTheme);
+    const wrapper4 = mountWithTheme(
+      <Box gridColumn={'4 / span 9'} gridRow={'span 3'}>Hello World!</Box>, baseTheme,
+    );
     expect(wrapper4).toHaveStyleRule('grid-column', '4 / span 9');
     expect(wrapper4).toHaveStyleRule('grid-row', 'span 3');
   });
 
   it('should accept responsive props', () => {
-    const wrapper = mountWithTheme(<Box gridColumn={['1 / -1', '3 / -1', '5 / 9', '7 / 12']} gridRow={['1 / -1', '3 / -1', '5 / 9', '7 / 12']} >Hello World!</Box>, baseTheme);
+    const wrapper = mountWithTheme(
+      <Box
+        gridColumn={['1 / -1', '3 / -1', '5 / 9', '7 / 12']}
+        gridRow={['1 / -1', '3 / -1', '5 / 9', '7 / 12']}
+      >
+        Hello World!
+      </Box>,
+      baseTheme,
+    );
 
     expect(wrapper).toHaveStyleRule('grid-column', '1 / -1');
     expect(wrapper).toHaveStyleRule('grid-column', '3 / -1', {
