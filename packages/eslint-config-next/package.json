@@ -1,6 +1,6 @@
 {
   "name": "@stnew/eslint-config-next",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Something New eslint config for Next.js",
   "main": "index.js",
   "publishConfig": {
