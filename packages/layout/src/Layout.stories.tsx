@@ -22,7 +22,7 @@ const Styling = styled.div`
     background: rgba(128,128,128,0.35);
   }
 
-  div {
+  section div {
     background-color: rgba(128,0,0,0.35);
     font-family: monospace;
     position: relative;
@@ -47,7 +47,7 @@ const Styling = styled.div`
   }
 `;
 
-const breakpoints = ['600px', '900px', '1200px'];
+const breakpoints = ['600px', '900px', '1200px', '1440px'];
 
 Stories.add('Smoketest', () => (
   <ThemeProvider theme={{
@@ -60,9 +60,27 @@ Stories.add('Smoketest', () => (
     breakpoints,
   }}>
     <Styling>
-      <Container as="section" width={['100%', '50%']}>
+      <Container >
+        <Row as="section">
+          <Col
+            order={[1, 1, 0, 1]}
+            span={[12, 10, 6, 4]}
+            mx="auto"
+          >
+            Test
+          </Col>
+          <Col
+            order={[0, 0, 1, 0]}
+            span={[12, 10, 6, 4]}
+            mx="auto"
+          >
+            Test
+          </Col>
+        </Row>
+      </Container>
+      <Container as="section">
         <h1>Basic</h1>
-        <Box/>
+        <Box width={['100%', '50%']}/>
         <Box mx="20px" />
         <Box mx="40px" />
         <Box mx="60px" />
@@ -79,7 +97,7 @@ Stories.add('Smoketest', () => (
           <Col span={4} >Test</Col>
         </Row>
         <Row>
-          <Col span={4} mx="auto">Test</Col>
+          <Col span={[4, 6]} mx="auto">Test</Col>
         </Row>
         <Row>
           <Col span={4} marginX="auto">Test</Col>
@@ -89,28 +107,28 @@ Stories.add('Smoketest', () => (
       <Container as="section">
         <h1>Flex</h1>
 
-        <Flex as="main" justifyContent="space-around">
-          <Box px="20px" />
-          <Box px="20px" />
-          <Box px="20px" />
+        <Flex justifyContent="space-around">
+          <Box>Test</Box>
+          <Box>Test</Box>
+          <Box>Test</Box>
         </Flex>
 
-        <Row as="main">
+        <Row>
           <Col />
           <Col />
           <Col />
           <Col />
         </Row>
-        <Row as="main">
+        <Row>
           <Col span="2" />
           <Col />
           <Col span="2" />
         </Row>
 
-        <Row as="main">
+        <Row>
           <Col span={[12, 6]}/>
           <Col as="header" span={[12, 5]}>
-            <Row as="main">
+            <Row>
               <Col span={6} />
               <Col span={6} />
             </Row>
@@ -118,13 +136,13 @@ Stories.add('Smoketest', () => (
           <Col span={1} display={['none', 'block']}/>
         </Row>
 
-        <Row as="main">
+        <Row>
           <Col span={4} />
           <Col pull={2}/>
           <Col span={4} />
         </Row>
 
-        <Row as="main">
+        <Row>
           <Col span={9} />
           <Col span={2} offset={1} />
         </Row>
@@ -133,7 +151,7 @@ Stories.add('Smoketest', () => (
       <Container as="section">
         <h1>Grid</h1>
 
-        <Grid as="main" mb={20}>
+        <Grid mb={20}>
           <Box gridColumn="span 8"></Box>
           <Box gridColumn="span 4"></Box>
           <Box gridColumn="span 4"></Box>
@@ -142,7 +160,7 @@ Stories.add('Smoketest', () => (
           <Box gridColumn="2 / span 10"></Box>
         </Grid>
 
-        <Grid as="main">
+        <Grid>
           <Box gridColumn={['span 12', 'span 6']} />
           <Box gridColumn={'7 / 13'} />
           <Box gridColumn={'7 / -1'} gridRow="2" />
@@ -153,7 +171,7 @@ Stories.add('Smoketest', () => (
           <Box gridColumn={'12'} gridRow={'4'} />
         </Grid>
 
-        <Grid as="main" gridTemplateRows="repeat(6, 50px)" mt="100px">
+        <Grid gridTemplateRows="repeat(6, 50px)" mt="100px">
           <Box gridColumn="1 / span 1" gridRow="1/6"/>
           <Box gridColumn="1 / span 3" gridRow="1"/>
           <Box gridColumn="1 / span 3" gridRow="5"/>

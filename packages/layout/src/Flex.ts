@@ -4,6 +4,6 @@ import { Box } from './Box';
 /**
  * Extension of `<Box>` with `display: flex`.
  */
-export const Flex = styled(Box)({
+export const Flex = styled(Box).attrs({
   display: 'flex',
-});
+})({});
