@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import { BoxProps } from './types';
-import { props as styledSystemProps } from '@styled-system/should-forward-prop';
-
 import {
   background,
   border,
@@ -14,9 +11,10 @@ import {
   typography,
   compose,
 } from 'styled-system';
+import { BoxProps } from './types';
+import { props } from '@styled-system/should-forward-prop';
 
-
-const styledBox = compose(
+export const box = compose(
   background,
   border,
   color,
@@ -28,14 +26,12 @@ const styledBox = compose(
   typography,
 );
 
-const customProps = [
+const boxProps: string[] = props.concat([
   'span',
   'offset',
   'push',
   'pull',
-];
-
-const props: string[] = styledSystemProps.concat(customProps);
+]);
 
 /**
  * Basic layout building block. Includes `background`, `border`, `color`,
@@ -43,7 +39,6 @@ const props: string[] = styledSystemProps.concat(customProps);
  * props from `styled-system`. All `<Box>` components render a `div`
  * by default and have no styling applied.
  */
-export const Box = styled('div')
-  .withConfig({
-    shouldForwardProp: prop => !props.includes(prop),
-  })<BoxProps>(styledBox);
+export const Box = styled('div').withConfig({
+  shouldForwardProp: prop => !boxProps.includes(prop),
+})<BoxProps>(box);

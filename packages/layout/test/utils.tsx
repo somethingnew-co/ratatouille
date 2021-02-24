@@ -4,28 +4,39 @@ import { mount, ReactWrapper, MountRendererProps } from 'enzyme';
 import { Theme } from '../src/utils/theme';
 import 'jest-styled-components';
 
+/**
+ * Theme mocks
+ */
+
 const breakpoints = ['600px', '900px', '1200px'];
 
-/**
- * Base theme for tests
- */
-export const baseTheme: Theme = {
+export const baseTheme = {
   grid: {
     columns: 12,
     columnGap: 20,
-    maxWidth: 960,
     margins: 20,
+    maxWidth: 960,
   },
 };
 
-export const responsiveTheme: Theme = {
+export const arrayTheme = {
+  breakpoints,
   grid: {
     columns: 12,
     columnGap: ['1rem', 20, '5%'],
-    maxWidth: breakpoints,
     margins: ['1rem', 20, '5%'],
+    maxWidth: breakpoints,
   },
+};
+
+export const objectTheme = {
   breakpoints,
+  grid: {
+    columnGap: { _: '1rem', md: 20, lg: '5%' },
+    columns: 12,
+    margins: { _: '1rem', md: 20, lg: '5%' },
+    maxWidth: breakpoints,
+  },
 };
 
 export const mountWithTheme = (tree: ReactElement<any>, theme: Theme): ReactWrapper => {

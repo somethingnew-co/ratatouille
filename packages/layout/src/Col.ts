@@ -1,32 +1,7 @@
 import styled from 'styled-components';
 import { Box } from './Box';
 import { BoxProps, ColProps } from './types';
-import { calcFlexPercentage, calcFlexGap } from './utils/flex';
-
-const colAttrs = (props: ColProps): BoxProps => {
-  const {
-    theme,
-    span,
-    offset,
-    push,
-    pull,
-    order,
-  } = props;
-
-  const flex = calcFlexPercentage(span || theme.grid.columns, theme);
-  const calcFlex = (percent: string): string => `0 0 ${percent}`;
-
-  return {
-    flex: props.flex || span ? flex.map(calcFlex) : '1',
-    maxWidth: props.maxWidth || flex,
-    px: props.px || props.paddingX || calcFlexGap(theme),
-    ml: props.mx || props.marginX ? null : props.ml || offset && calcFlexPercentage(offset, theme),
-    position: props.position || 'relative',
-    left: props.left || push && calcFlexPercentage(push, theme),
-    right: props.left || pull && calcFlexPercentage(pull, theme),
-    order,
-  };
-};
+import { calcSpan, calcColGutter, flexBasis } from './utils';
 
 /**
  * Extension of `<Box>`. Child of `<Row>` with built in padding
@@ -34,4 +9,35 @@ const colAttrs = (props: ColProps): BoxProps => {
  * you can span correspond to the `theme.grid.columns` property.
  * Spacing between columns is controlled via `theme.grid.columnGap`.
  */
-export const Col = styled(Box).attrs(colAttrs)({});
+export const Col = styled(Box).attrs(({
+  theme,
+  span,
+  push,
+  pull,
+  offset,
+}: ColProps) => {
+  const attrs: BoxProps = {
+    flex: 1,
+    maxWidth: '100%',
+    position: 'relative',
+    paddingX: calcColGutter(theme.grid.columnGap),
+  };
+
+  const colSpan = calcSpan(theme.grid.columns);
+
+  if (span) {
+    attrs.flex = flexBasis(colSpan(span));
+    attrs.maxWidth = colSpan(span);
+  }
+  if (push) {
+    attrs.left = colSpan(push);
+  }
+  if (pull) {
+    attrs.right = colSpan(pull);
+  }
+  if (offset) {
+    attrs.marginLeft = colSpan(offset);
+  }
+
+  return attrs;
+})({});

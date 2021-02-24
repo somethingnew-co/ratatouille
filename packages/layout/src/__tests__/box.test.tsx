@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Container } from '..';
-import { mountWithTheme, baseTheme, responsiveTheme } from '../../test/utils';
+import { Box } from '..';
+import { mountWithTheme, baseTheme } from '../../test/utils';
 import 'jest-styled-components';
 
 describe('Box', () => {
@@ -23,33 +23,65 @@ describe('Box', () => {
     expect(wrapper).toHaveStyleRule('width', '50%');
     expect(wrapper).toHaveStyleRule('margin-left', '20px');
   });
-});
 
-describe('Container', () => {
-  it('should render Container', () => {
-    const wrapper = mountWithTheme(<Container as="main">Hello World!</Container>, baseTheme);
-    expect(wrapper.containsMatchingElement(<main>Hello World!</main>)).toEqual(true);
+  it('should accept flex properties', () => {
+    const wrapper = mountWithTheme(<Box flex="1 1 auto">Hello World!</Box>, baseTheme);
+    expect(wrapper).toHaveStyleRule('flex', '1 1 auto');
   });
 
-  it('should have max-width css prop from theme', () => {
-    const wrapper = mountWithTheme(<Container as="main">Hello World!</Container>, baseTheme);
-    expect(wrapper.containsMatchingElement(<main>Hello World!</main>)).toEqual(true);
-    expect(wrapper).toHaveStyleRule('max-width', '960px');
-    expect(wrapper).toHaveStyleRule('padding-left', '20px');
-    expect(wrapper).toHaveStyleRule('padding-right', '20px');
+  it('should accept grid props', () => {
+    const wrapper1 = mountWithTheme(<Box gridColumn="span 6">Hello World!</Box>, baseTheme);
+    expect(wrapper1).toHaveStyleRule('grid-column', 'span 6');
+
+    const wrapper2 = mountWithTheme(
+      <Box gridColumn="1 / 7" gridRow={3}>Hello World!</Box>, baseTheme,
+    );
+    expect(wrapper2).toHaveStyleRule('grid-column', '1 / 7');
+    expect(wrapper2).toHaveStyleRule('grid-row', '3');
+
+    const wrapper3 = mountWithTheme(
+      <Box gridColumn="3 / 9" gridRow='1 / 3'>Hello World!</Box>, baseTheme,
+    );
+    expect(wrapper3).toHaveStyleRule('grid-column', '3 / 9');
+    expect(wrapper3).toHaveStyleRule('grid-row', '1 / 3');
+
+    const wrapper4 = mountWithTheme(
+      <Box gridColumn={'4 / span 9'} gridRow={'span 3'}>Hello World!</Box>, baseTheme,
+    );
+    expect(wrapper4).toHaveStyleRule('grid-column', '4 / span 9');
+    expect(wrapper4).toHaveStyleRule('grid-row', 'span 3');
   });
 
-  it('should have responsive max-width', () => {
-    const wrapper = mountWithTheme(<Container as="main">Hello World!</Container>, responsiveTheme);
-    expect(wrapper.containsMatchingElement(<main>Hello World!</main>)).toEqual(true);
-    expect(wrapper).toHaveStyleRule('max-width', '100%');
-    expect(wrapper).toHaveStyleRule('max-width', `${String(responsiveTheme.grid.maxWidth[0])}`, {
+  it('should accept responsive grid props', () => {
+    const wrapper = mountWithTheme(
+      <Box
+        gridColumn={['1 / -1', '3 / -1', '5 / 9', '7 / 12']}
+        gridRow={['1 / -1', '3 / -1', '5 / 9', '7 / 12']}
+      >
+        Hello World!
+      </Box>,
+      baseTheme,
+    );
+
+    expect(wrapper).toHaveStyleRule('grid-column', '1 / -1');
+    expect(wrapper).toHaveStyleRule('grid-column', '3 / -1', {
       media: 'screen and (min-width: 40em)',
     });
-    expect(wrapper).toHaveStyleRule('max-width', `${String(responsiveTheme.grid.maxWidth[1])}`, {
+    expect(wrapper).toHaveStyleRule('grid-column', '5 / 9', {
       media: 'screen and (min-width: 52em)',
     });
-    expect(wrapper).toHaveStyleRule('max-width', `${String(responsiveTheme.grid.maxWidth[2])}`, {
+    expect(wrapper).toHaveStyleRule('grid-column', '7 / 12', {
+      media: 'screen and (min-width: 64em)',
+    });
+
+    expect(wrapper).toHaveStyleRule('grid-row', '1 / -1');
+    expect(wrapper).toHaveStyleRule('grid-row', '3 / -1', {
+      media: 'screen and (min-width: 40em)',
+    });
+    expect(wrapper).toHaveStyleRule('grid-row', '5 / 9', {
+      media: 'screen and (min-width: 52em)',
+    });
+    expect(wrapper).toHaveStyleRule('grid-row', '7 / 12', {
       media: 'screen and (min-width: 64em)',
     });
   });
