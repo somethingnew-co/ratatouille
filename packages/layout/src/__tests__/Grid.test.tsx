@@ -25,4 +25,13 @@ describe('Grid', () => {
     expect(wrapper.containsMatchingElement(<div>Hello World!</div>)).toEqual(true);
     expect(wrapper.containsMatchingElement(<div>Hola Mundo!</div>)).toEqual(true);
   });
+
+  it('should override defaults', () => {
+    const wrapper = mountWithTheme(
+      <Grid gridTemplateColumns="100px 100px" gridColumnGap="100px" />,
+      baseTheme,
+    );
+    expect(wrapper).toHaveStyleRule('grid-template-columns', '100px 100px');
+    expect(wrapper).toHaveStyleRule('grid-column-gap', '100px');
+  });
 });

@@ -35,13 +35,13 @@ export interface BoxProps extends
   LayoutProps,
   PositionProps,
   SpaceProps,
-  TypographyProps { }
+  TypographyProps {}
 
-export interface BoxWithTheme extends BoxProps {
+export interface ThemedBox extends BoxProps {
   theme: Theme
 }
 
-export interface ColProps extends BoxWithTheme {
+export interface ColProps extends ThemedBox {
   span?: ResponsiveProp
   push?: ResponsiveProp
   pull?: ResponsiveProp

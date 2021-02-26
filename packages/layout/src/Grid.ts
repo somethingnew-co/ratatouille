@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Box } from './Box';
+import { ThemedBox } from './types';
 
 /**
  * Extension of [`<Box>`] with `display: grid`.
@@ -7,13 +8,14 @@ import { Box } from './Box';
  * corresponding  `theme.grid.columns` and `theme.grid.columnGap`, respectively.
  * `grid-template-columns` defaults to `repeat(n, 1fr)` to fill available space.
  */
-export const Grid = styled(Box).attrs(({ theme }) => {
-  const { columnGap } = theme.grid;
-  const columns = `repeat(${theme.grid.columns}, 1fr)`;
+export const Grid = styled(Box)
+  .attrs(({ theme, gridColumnGap, gridTemplateColumns }: ThemedBox) => {
+    const { columnGap } = theme.grid;
+    const columns = `repeat(${theme.grid.columns}, 1fr)`;
 
-  return {
-    display: 'grid',
-    gridColumnGap: columnGap,
-    gridTemplateColumns: columns,
-  };
-})({});
+    return {
+      display: 'grid',
+      gridColumnGap: gridColumnGap ?? columnGap,
+      gridTemplateColumns: gridTemplateColumns ?? columns,
+    };
+  })({});

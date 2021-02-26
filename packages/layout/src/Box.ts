@@ -14,7 +14,7 @@ import {
 import { BoxProps } from './types';
 import { props } from '@styled-system/should-forward-prop';
 
-export const box = compose(
+const box = compose(
   background,
   border,
   color,
