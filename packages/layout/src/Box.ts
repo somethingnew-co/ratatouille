@@ -1,18 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   background,
   border,
   color,
+  compose,
   flexbox,
   grid,
   layout,
   position,
   space,
+  styleFn,
   typography,
-  compose,
 } from 'styled-system';
 import { BoxProps } from './types';
 import { props } from '@styled-system/should-forward-prop';
+import styledCss from '@styled-system/css';
 
 const box = compose(
   background,
@@ -31,7 +33,25 @@ const boxProps: string[] = props.concat([
   'offset',
   'push',
   'pull',
+  'spaceX',
+  'sx',
+  'spaceY',
+  'sy',
 ]);
+
+const spaceSystem = ({ spaceX, sx, spaceY, sy }: BoxProps): styleFn =>
+  styledCss({
+    marginLeft: spaceX,
+    ml: sx,
+    marginTop: spaceY,
+    mt: sy,
+  });
+
+const spaceExtension = css`
+  & > * + * {
+    ${spaceSystem}
+  }
+`;
 
 /**
  * Basic layout building block. Includes `background`, `border`, `color`,
@@ -41,4 +61,4 @@ const boxProps: string[] = props.concat([
  */
 export const Box = styled('div').withConfig({
   shouldForwardProp: prop => !boxProps.includes(prop),
-})<BoxProps>(box);
+})<BoxProps>(box, spaceExtension);
