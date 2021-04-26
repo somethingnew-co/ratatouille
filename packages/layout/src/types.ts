@@ -6,16 +6,16 @@ import {
   GridProps,
   LayoutProps,
   PositionProps,
-  SpaceProps,
-  TypographyProps,
   ResponsiveValue,
-  TLengthStyledSystem,
+  SpaceProps,
   Theme as StyledSystemTheme,
+  TLengthStyledSystem,
+  TypographyProps,
 } from 'styled-system';
 import { DefaultTheme } from 'styled-components';
 
-export type Value = TLengthStyledSystem
-export type ResponsiveProp = ResponsiveValue<Value, Theme>
+export type Value = TLengthStyledSystem;
+export type ResponsiveProp = ResponsiveValue<Value, Theme>;
 
 export interface Theme extends DefaultTheme, StyledSystemTheme {
   grid: {
@@ -35,7 +35,12 @@ export interface BoxProps extends
   LayoutProps,
   PositionProps,
   SpaceProps,
-  TypographyProps {}
+  TypographyProps {
+  spaceX?: ResponsiveProp
+  sx?: ResponsiveProp
+  spaceY?: ResponsiveProp
+  sy?: ResponsiveProp
+}
 
 export interface ThemedBox extends BoxProps {
   theme: Theme

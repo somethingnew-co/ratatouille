@@ -60,6 +60,21 @@ Stories.add('Smoketest', () => (
     breakpoints,
   }}>
     <Styling>
+      <Flex spaceX={[0, '32px', 64]}>
+        <Box bg="grey" flex="1">Hello</Box>
+        <Box bg="grey" flex="1">World</Box>
+        <Box bg="grey" flex="1">World</Box>
+      </Flex>
+      <Flex spaceX={[0, '32px', 64]}>
+        <Box bg="grey" flex="1">Hello</Box>
+        <Box bg="grey" flex="1">World</Box>
+        <Box bg="grey" flex="1">World</Box>
+      </Flex>
+      <Box sy={3}>
+        <Box bg="grey">Hello</Box>
+        <Box bg="grey">World</Box>
+        <Box bg="grey">World</Box>
+      </Box>
       <Container >
         <Row as="section">
           <Col
