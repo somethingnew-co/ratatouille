@@ -31,17 +31,13 @@
     "responsive-typography"
   ],
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "styled-components": "*"
-  },
-  "dependencies": {
-    "@styled-system/css": "^5.1.4",
-    "styled-system": "^5.1.4"
+    "@styled-system/css": "^5.1.5",
+    "@styled-system/should-forward-prop": "^5.1.5",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@types/styled-system": "^5.1.4",
-    "@types/styled-system__css": "^5.0.4"
+    "@types/styled-system": "^5.1.9"
   },
   "publishConfig": {
     "access": "public"
