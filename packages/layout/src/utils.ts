@@ -46,3 +46,16 @@ export const calcRowGutter = calcGutter(true);
 export const calcColGutter = calcGutter(false);
 
 export const flexBasis = transformProp((value: Value) => `0 0 ${value}`);
+
+export const isReverse = (prop: ResponsiveProp): boolean => {
+  if (Array.isArray(prop)) {
+    return prop.includes('row-reverse') || prop.includes('column-reverse');
+  }
+
+  if (prop instanceof Object) {
+    const test = Object.values(prop);
+    return test.includes('row-reverse') || test.includes('column-reverse');
+  }
+
+  return prop === 'row-reverse' || prop === 'column-reverse';
+};
