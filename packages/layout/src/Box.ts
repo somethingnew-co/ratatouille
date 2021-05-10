@@ -12,9 +12,10 @@ import {
   styleFn,
   typography,
 } from 'styled-system';
-import { BoxProps } from './types';
+import { BoxProps, ResponsiveProp } from './types';
 import { props } from '@styled-system/should-forward-prop';
 import styledCss from '@styled-system/css';
+import { isReverse } from './utils';
 
 const box = compose(
   background,
@@ -40,13 +41,24 @@ const boxProperties: Set<string> = new Set([
   'sy',
 ]);
 
-const spaceSystem = ({ spaceX, sx, spaceY, sy }: BoxProps): styleFn =>
-  styledCss({
+const spaceSystem = ({ spaceX, sx, spaceY, sy, flexDirection }: BoxProps): styleFn => {
+  if (isReverse(flexDirection as ResponsiveProp)) {
+    return styledCss({
+      marginRight: spaceX,
+      mr: sx,
+      marginBottom: spaceY,
+      mb: sy,
+    });
+  }
+
+  return styledCss({
     marginLeft: spaceX,
     ml: sx,
     marginTop: spaceY,
     mt: sy,
   });
+};
+
 
 const spaceExtension = css`
   & > * + * {

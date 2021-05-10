@@ -61,9 +61,14 @@ Stories.add('Smoketest', () => (
   }}>
     <Styling>
       <Flex spaceX={[0, '32px', 64]}>
-        <Box bg="grey" flex="1">Hello</Box>
-        <Box bg="grey" flex="1">World</Box>
-        <Box bg="grey" flex="1">World</Box>
+        <Box bg="grey" >Hello</Box>
+        <Box bg="grey" >World</Box>
+        <Box bg="grey" >World</Box>
+      </Flex>
+      <Flex flexDirection={['row-reverse']} spaceX={[0, '32px', 64]}>
+        <Box bg="grey" >Hello</Box>
+        <Box bg="grey" >World</Box>
+        <Box bg="grey" >World</Box>
       </Flex>
       <Flex spaceX={[0, '32px', 64]}>
         <Box bg="grey" flex="1">Hello</Box>
