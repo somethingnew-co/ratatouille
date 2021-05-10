@@ -1,6 +1,6 @@
 {
   "name": "@stnew/layout",
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-beta.0",
   "description": "Extensive flexbox/CSS grid layout system",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille/tree/master/packages/layout",
