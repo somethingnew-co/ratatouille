@@ -2,10 +2,8 @@
     "root": true,
     "extends": [
         "./packages/eslint-config",
-        "./packages/eslint-config-typescript",
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended"
+        "./packages/eslint-config-react",
+        "./packages/eslint-config-typescript"
     ],
     "env": {
         "jest/globals": true,
@@ -24,7 +22,7 @@
         }
     },
     "parserOptions": {
-        "ecmaVersion": 2020,
+        "ecmaVersion": 2021,
         "sourceType": "module",
         "ecmaFeatures": {
           "jsx": true

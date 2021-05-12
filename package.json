@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@stnew/eslint-config": "*",
+    "@stnew/eslint-config-react": "*",
     "@stnew/eslint-config-typescript": "*",
     "@storybook/addon-a11y": "^5.3.18",
     "@storybook/addon-actions": "^5.3.18",
