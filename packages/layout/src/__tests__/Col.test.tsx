@@ -17,13 +17,18 @@ describe('Col', () => {
     const wrapper1 = mountWithTheme(<Col span={9}>Hello World!</Col>, baseTheme);
     expect(wrapper1).toHaveStyleRule('flex', '0 0 75%');
 
-    const wrapper2 = mountWithTheme(<Col
-      span={3}
-      offset={3}
-      push={3}
-      pull={3}
-      order={3}
-    >Hello World!</Col>, baseTheme);
+    const wrapper2 = mountWithTheme(
+      <Col
+        span={3}
+        offset={3}
+        push={3}
+        pull={3}
+        order={3}
+      >
+        Hello World!
+      </Col>,
+      baseTheme,
+    );
     expect(wrapper2).toHaveStyleRule('flex', '0 0 25%');
     expect(wrapper2).toHaveStyleRule('margin-left', '25%');
     expect(wrapper2).toHaveStyleRule('left', '25%');

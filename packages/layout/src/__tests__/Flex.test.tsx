@@ -12,11 +12,14 @@ describe('Flex', () => {
 
 describe('Flex', () => {
   it('should have "display: flex" css property', () => {
-    const wrapper = mountWithTheme(<Flex
-      flexDirection="column"
-      justifyContent="space-between"
-      alignItems="center"
-    >Hello World!</Flex>, baseTheme);
+    const wrapper = mountWithTheme(
+      <Flex
+        flexDirection="column"
+        justifyContent="space-between"
+        alignItems="center"
+      >Hello World!
+      </Flex>, baseTheme,
+    );
     expect(wrapper).toHaveStyleRule('display', 'flex');
     expect(wrapper).toHaveStyleRule('flex-direction', 'column');
     expect(wrapper).toHaveStyleRule('align-items', 'center');

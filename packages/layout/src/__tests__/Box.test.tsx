@@ -9,13 +9,18 @@ describe('Box', () => {
     expect(wrapper.containsMatchingElement(<div>Hello World!</div>)).toEqual(true);
   });
   it('should have styled-system props', () => {
-    const wrapper = mountWithTheme(<Box
-      color="blue"
-      position="absolute"
-      fontSize={20}
-      width="50%"
-      ml={20}
-    >Hello World!</Box>, baseTheme);
+    const wrapper = mountWithTheme(
+      <Box
+        color="blue"
+        position="absolute"
+        fontSize={20}
+        width="50%"
+        ml={20}
+      >
+      Hello World!
+      </Box>,
+      baseTheme,
+    );
     expect(wrapper.containsMatchingElement(<div>Hello World!</div>)).toEqual(true);
     expect(wrapper).toHaveStyleRule('color', 'blue');
     expect(wrapper).toHaveStyleRule('position', 'absolute');
@@ -46,7 +51,7 @@ describe('Box', () => {
     expect(wrapper3).toHaveStyleRule('grid-row', '1 / 3');
 
     const wrapper4 = mountWithTheme(
-      <Box gridColumn={'4 / span 9'} gridRow={'span 3'}>Hello World!</Box>, baseTheme,
+      <Box gridColumn="4 / span 9" gridRow="span 3">Hello World!</Box>, baseTheme,
     );
     expect(wrapper4).toHaveStyleRule('grid-column', '4 / span 9');
     expect(wrapper4).toHaveStyleRule('grid-row', 'span 3');
