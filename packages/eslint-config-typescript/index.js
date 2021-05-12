@@ -11,6 +11,7 @@ module.exports = {
     'indent': 'off',
     'no-undef': 'off',
     'no-unused-vars': 'off',
+    'no-use-before-define': 'off',
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
