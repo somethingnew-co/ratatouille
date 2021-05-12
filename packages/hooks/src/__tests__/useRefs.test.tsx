@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import React, { useEffect } from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import useRefs from '../useRefs';
 
 const RefTest: React.FC = () => {
@@ -8,9 +8,11 @@ const RefTest: React.FC = () => {
   const refs = useRefs(items);
 
   useEffect(() => {
-    refs.forEach((ref, i) => {
-      ref.current.innerText = `test${i}`;
-    });
+    let index = 0;
+    for (const ref of refs) {
+      ref.current.textContent = `test${index}`;
+      index += 1;
+    }
   }, [refs]);
 
   return (
@@ -25,16 +27,8 @@ const RefTest: React.FC = () => {
 describe('useRefs', () => {
   test('attaches refs', () => {
     const { getByText } = render(<RefTest />);
-    expect(getByText('ichi')).toBeInTheDocument();
-    expect(getByText('ni')).toBeInTheDocument();
-    expect(getByText('san')).toBeInTheDocument();
-
-    waitFor(() => {
-      expect(getByText('test1')).toBeInTheDocument();
-      expect(getByText('test2')).toBeInTheDocument();
-      expect(getByText('test3')).toBeInTheDocument();
-    });
-
-
+    expect(getByText('test0')).toBeInTheDocument();
+    expect(getByText('test1')).toBeInTheDocument();
+    expect(getByText('test2')).toBeInTheDocument();
   });
 });

@@ -5,17 +5,17 @@ function useMatchMedia(mediaQuery: string): boolean | null {
 
   useEffect(() => {
     /* istanbul ignore next */
-    function onChange(this: MediaQueryList): void {
-      setMatches(this.matches);
+    function onChange(mediaQueryList: MediaQueryListEvent): void {
+      setMatches(mediaQueryList.matches);
     }
 
     const mediaQueryList = window.matchMedia(mediaQuery);
 
     setMatches(mediaQueryList.matches);
     // deprecated method is for Safari support, replace with addEventListener
-    mediaQueryList.addListener(onChange);
+    mediaQueryList.addEventListener('change', onChange);
     return () => {
-      mediaQueryList.removeListener(onChange);
+      mediaQueryList.removeEventListener('change', onChange);
     };
   }, [mediaQuery]);
 

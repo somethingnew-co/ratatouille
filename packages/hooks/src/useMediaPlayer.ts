@@ -1,3 +1,4 @@
+/* eslint-disable no-invalid-this */
 import { useCallback, useRef, useReducer, useEffect } from 'react';
 
 declare global {
@@ -78,7 +79,7 @@ function reducer(state: MediaPlayerState, action: ActionType): MediaPlayerState 
     case Actions.seeking:
       return { ...state, seeking: action.payload };
     default:
-      throw new Error();
+      return { ...state };
   }
 }
 
@@ -146,7 +147,7 @@ function useMediaPlayer(): MediaPlayer {
 
   const seek = useCallback((value: number | string) => {
     if (media.current) {
-      const percent = typeof value === 'string' ? parseFloat(value) : value;
+      const percent = typeof value === 'string' ? Number.parseFloat(value) : value;
       if (percent >= 0 && percent <= 1) {
         media.current.currentTime = media.current.duration * Math.min(1, Math.max(0, percent));
       } else {
@@ -184,7 +185,7 @@ function useMediaPlayer(): MediaPlayer {
 
   const setVolume = useCallback((value: number | string) => {
     if (media.current) {
-      const volume = typeof value === 'string' ? parseFloat(value) : value;
+      const volume = typeof value === 'string' ? Number.parseFloat(value) : value;
       const newVolume = Math.min(1, Math.max(0, volume));
       media.current.volume = newVolume;
     }

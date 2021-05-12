@@ -7,16 +7,16 @@ import { ThemedBox, Value } from './types';
  * This is used as a page or section wrapper.
  */
 export const Container = styled(Box).attrs(({ theme }: ThemedBox) => {
-  let { maxWidth } = theme.grid;
+  let containerWidth = theme.grid.maxWidth;
 
-  if (Array.isArray(maxWidth)) {
-    maxWidth = ['100%', ...theme.grid.maxWidth as (Value)[]];
+  if (Array.isArray(containerWidth)) {
+    containerWidth = ['100%', ...theme.grid.maxWidth as (Value)[]];
   }
 
   return {
     width: '100%',
     marginX: 'auto',
     paddingX: theme.grid.margins,
-    maxWidth,
+    maxWidth: containerWidth,
   };
 })({});

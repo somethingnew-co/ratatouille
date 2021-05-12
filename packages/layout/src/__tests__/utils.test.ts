@@ -33,31 +33,31 @@ describe('calcSpan', () => {
 describe('transformProp', () => {
   it('should trasnform number prop', () => {
     const prop = 20;
-    const func = transformProp(n => n * 2);
-    expect(func(prop)).toEqual(40);
+    const testFunction = transformProp(n => n * 2);
+    expect(testFunction(prop)).toEqual(40);
   });
 
   it('should trasnform string prop', () => {
     const prop = '20px';
-    const func = transformProp(n => parseFloat(n) * 2 + trimUnit(n));
-    expect(func(prop)).toEqual('40px');
+    const testFunction = transformProp(n => Number.parseFloat(n) * 2 + trimUnit(n));
+    expect(testFunction(prop)).toEqual('40px');
   });
 
   it('should trasnform array prop', () => {
     const prop = [20, 30, 40];
-    const func = transformProp(n => n * 2);
-    expect(func(prop)).toEqual([40, 60, 80]);
+    const testFunction = transformProp(n => n * 2);
+    expect(testFunction(prop)).toEqual([40, 60, 80]);
   });
 
   it('should trasnform object prop', () => {
     const prop = { _: 20, sm: 30, xl: 40 };
-    const func = transformProp(n => n * 2);
-    expect(func(prop)).toEqual({ _: 40, sm: 60, xl: 80 });
+    const testFunction = transformProp(n => n * 2);
+    expect(testFunction(prop)).toEqual({ _: 40, sm: 60, xl: 80 });
   });
 
   it('should ignore undefined props', () => {
     const prop = { _: 20, sm: undefined, xl: 40 };
-    const func = transformProp(n => n * 2);
-    expect(func(prop)).toEqual({ _: 40, xl: 80 });
+    const testFunction = transformProp(n => n * 2);
+    expect(testFunction(prop)).toEqual({ _: 40, xl: 80 });
   });
 });

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useInterval } from '.';
 
-function mod(n: number, m: number): number {
+function modulo(n: number, m: number): number {
   return ((n % m) + m) % m;
 }
 
@@ -23,7 +23,10 @@ const configDefault = {
   autoTimeout: 5000,
 };
 
-export default function useCarousel(numElements: number, config?: Config): [number, Controls, number] {
+export default function useCarousel(
+  numberElements: number,
+  config?: Config,
+): [number, Controls, number] {
   const options = {
     ...configDefault,
     ...config,
@@ -31,17 +34,17 @@ export default function useCarousel(numElements: number, config?: Config): [numb
 
   const indexRef: { current: number } = useRef(0);
   const [index, setIndex] = useState(indexRef.current);
-  const [prevIndex, setPrevIndex] = useState(indexRef.current);
+  const [previousIndex, setPreviousIndex] = useState(indexRef.current);
   const [isRotating, setIsRotating] = useState(options.auto);
 
   function updateIndex(n: number): void {
-    setPrevIndex(indexRef.current);
+    setPreviousIndex(indexRef.current);
     indexRef.current = n;
     setIndex(indexRef.current);
   }
 
   function rotateIndex(n = 1): void {
-    updateIndex(mod(index + n, numElements));
+    updateIndex(modulo(index + n, numberElements));
   }
 
   function next(): void {
@@ -49,7 +52,7 @@ export default function useCarousel(numElements: number, config?: Config): [numb
     setIsRotating(false);
   }
 
-  function prev(): void {
+  function previous(): void {
     rotateIndex(-1);
     setIsRotating(false);
   }
@@ -74,7 +77,7 @@ export default function useCarousel(numElements: number, config?: Config): [numb
 
   useInterval(rotateIndex, options.auto && isRotating ? options.interval : null);
 
-  const controls = { set, next, prev };
+  const controls = { set, next, prev: previous };
 
-  return [index, controls, prevIndex];
+  return [index, controls, previousIndex];
 }

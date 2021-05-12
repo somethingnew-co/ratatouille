@@ -3,7 +3,7 @@ import { ResponsiveProp, Value } from './types';
 type Transformer = (prop: ResponsiveProp) => ResponsiveProp
 type TransformProp = (func: (value: Value) => Value) => Transformer
 
-export const trimUnit = (s: string): string => s.replace(/([0-9]|\.|,)+([\S]+)?/, '$2').trim();
+export const trimUnit = (s: string): string => s.replace(/([\d,.])+(\S+)?/, '$2').trim();
 
 export const transformProp: TransformProp = transform =>
   prop => {
@@ -13,11 +13,11 @@ export const transformProp: TransformProp = transform =>
 
     if (prop instanceof Object) {
       const init: { [s: string]: Value } = {};
-      return Object.entries(prop).reduce((acc, [key, value]) => {
+      return Object.entries(prop).reduce((accumulator, [key, value]) => {
         if (value !== undefined) {
-          acc[key] = transform(value);
+          accumulator[key] = transform(value);
         }
-        return acc;
+        return accumulator;
       }, init);
     }
 
@@ -26,20 +26,20 @@ export const transformProp: TransformProp = transform =>
 
 export const calcSpan = (columns: number): Transformer =>
   transformProp((value: Value) => {
-    const int = typeof value === 'string' ? parseInt(value, 10) : value;
+    const int = typeof value === 'string' ? Number.parseInt(value, 10) : value;
     return `${(int / columns) * 100}%`;
   });
 
 export const calcGutter = (isRow: boolean): Transformer =>
   transformProp((gap: Value) => {
-    const i = isRow ? -1 : 1;
+    const index = isRow ? -1 : 1;
 
     if (typeof gap === 'string') {
-      const [value, unit] = [parseFloat(gap), trimUnit(gap)];
-      return value / (2 * i) + unit;
+      const [value, unit] = [Number.parseFloat(gap), trimUnit(gap)];
+      return value / (2 * index) + unit;
     }
 
-    return gap / (2 * i);
+    return gap / (2 * index);
   });
 
 export const calcRowGutter = calcGutter(true);

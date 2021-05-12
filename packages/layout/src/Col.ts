@@ -16,7 +16,7 @@ export const Col = styled(Box).attrs(({
   pull,
   offset,
 }: ColProps) => {
-  const attrs: BoxProps = {
+  const props: BoxProps = {
     flex: 1,
     maxWidth: '100%',
     position: 'relative',
@@ -26,18 +26,18 @@ export const Col = styled(Box).attrs(({
   const colSpan = calcSpan(theme.grid.columns);
 
   if (span) {
-    attrs.flex = flexBasis(colSpan(span));
-    attrs.maxWidth = colSpan(span);
+    props.flex = flexBasis(colSpan(span));
+    props.maxWidth = colSpan(span);
   }
   if (push) {
-    attrs.left = colSpan(push);
+    props.left = colSpan(push);
   }
   if (pull) {
-    attrs.right = colSpan(pull);
+    props.right = colSpan(pull);
   }
   if (offset) {
-    attrs.marginLeft = colSpan(offset);
+    props.marginLeft = colSpan(offset);
   }
 
-  return attrs;
+  return props;
 })({});

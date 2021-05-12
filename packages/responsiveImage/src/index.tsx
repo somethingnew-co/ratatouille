@@ -2,23 +2,23 @@ import React, { ImgHTMLAttributes } from 'react';
 
 interface ResponsiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   sources?: {
-    src: string;
-    width?: number;
-    isDefault?: boolean;
-  }[];
-  indexBy?: 'min-width' | 'max-width';
-  indexUnit?: 'px' | 'rem' | 'vw';
-  lazyTimeout?: number;
-  lazy?: boolean;
-  nativeLazy?: boolean;
-  rootMargin?: string;
-  onLoad?: (ev?: any) => void;
-  alt?: string;
-  title?: string;
+    src: string
+    width?: number
+    isDefault?: boolean
+  }[]
+  indexBy?: 'min-width' | 'max-width'
+  indexUnit?: 'px' | 'rem' | 'vw'
+  lazyTimeout?: number
+  lazy?: boolean
+  nativeLazy?: boolean
+  rootMargin?: string
+  onLoad?: (ev?: any) => void
+  alt?: string
+  title?: string
 }
 
 interface ResponsiveImageState {
-  loaded: boolean;
+  loaded: boolean
 }
 
 class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveImageState> {
@@ -49,7 +49,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
   }
 
   componentDidMount(): void {
-    const { lazy, lazyTimeout, onLoad } = this.props;
+    const { lazy, lazyTimeout, onLoad, rootMargin } = this.props;
     const img = this.imageElement.current;
     if (img && onLoad && !lazy) {
       if (img.complete || img.naturalWidth) this.completeLoad();
@@ -62,7 +62,7 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
 
     if (lazy) {
       this.observer = new IntersectionObserver(this.interactionHandler, {
-        rootMargin: this.props.rootMargin,
+        rootMargin,
       });
       if (img) this.observer.observe(img);
     }
@@ -93,19 +93,20 @@ class ResponsiveImage extends React.Component<ResponsiveImageProps, ResponsiveIm
     const { sources, src, alt, title, nativeLazy, indexBy, indexUnit } = this.props;
     const { loaded } = this.state;
 
-    let srcSet: {
-      src: string;
-      width?: number;
-      isDefault?: boolean;
+    let sourceSet: {
+      src: string
+      width?: number
+      isDefault?: boolean
     }[] = [];
-    if (sources && sources.length) srcSet = sources;
-    else if (src) srcSet = [{ src, isDefault: true }];
 
-    const defaultMedia = srcSet
-      .filter(source => source.isDefault && !!source.src)[0]
-      || srcSet.filter(source => !!source.src)[0];
+    if (sources && sources.length > 0) sourceSet = sources;
+    else if (src) sourceSet = [{ src, isDefault: true }];
 
-    const otherMedia = srcSet
+    const defaultMedia = sourceSet
+      .find(source => source.isDefault && !!source.src)
+      || sourceSet.find(source => !!source.src);
+
+    const otherMedia = sourceSet
       .filter(source => !!source.src);
 
     if (loaded && defaultMedia) {

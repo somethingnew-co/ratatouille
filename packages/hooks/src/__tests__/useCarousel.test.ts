@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import useCarousel from '../useCarousel';
 
-const testItems = Array(10);
+const testItems = Array.from({ length: 10 });
 
 beforeAll(() => {
   jest.useFakeTimers();

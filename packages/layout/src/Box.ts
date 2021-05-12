@@ -26,7 +26,7 @@ const box = compose(
   typography,
 );
 
-const boxProps: string[] = props.concat([
+const boxProperties: Set<string> = new Set([...props,
   'span',
   'offset',
   'push',
@@ -40,5 +40,5 @@ const boxProps: string[] = props.concat([
  * by default and have no styling applied.
  */
 export const Box = styled('div').withConfig({
-  shouldForwardProp: prop => !boxProps.includes(prop),
+  shouldForwardProp: prop => !boxProperties.has(prop),
 })<BoxProps>(box);
