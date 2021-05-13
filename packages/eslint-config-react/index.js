@@ -1,9 +1,7 @@
 module.exports = {
   parser: '@babel/eslint-parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaFeatures: { jsx: true },
     ecmaVersion: 2021,
     sourceType: 'module',
   },
@@ -16,11 +14,7 @@ module.exports = {
     'react',
     'react-hooks',
   ],
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  settings: { react: { version: 'detect' } },
   rules: {
     'react/boolean-prop-naming': [
       'error',

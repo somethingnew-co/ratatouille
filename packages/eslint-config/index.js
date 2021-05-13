@@ -100,6 +100,22 @@ module.exports = {
     'no-useless-escape': 'error',
     'no-whitespace-before-property': 'error',
     'no-var': 'error',
+    'object-curly-newline': ['error', {
+      'ObjectExpression': {
+        'multiline': true,
+        'minProperties': 4,
+        'consistent': true,
+      },
+      'ObjectPattern': {
+        'multiline': true,
+        'minProperties': 4,
+        'consistent': true,
+      },
+      'ImportDeclaration': 'never',
+      'ExportDeclaration': {
+        'multiline': true, 'minProperties': 4,
+      },
+    }],
     'object-curly-spacing': ['error', 'always'],
     'object-shorthand': ['error', 'always', {
       ignoreConstructors: false,
@@ -108,7 +124,9 @@ module.exports = {
     'one-var': ['error', 'never'],
     'one-var-declaration-per-line': ['error', 'always'],
     'operator-linebreak': ['error', 'before', {
-      overrides: { '=': 'none' },
+      overrides: {
+        '=': 'none',
+      },
     }],
     'prefer-arrow-callback': 'error',
     'prefer-const': ['error', {
