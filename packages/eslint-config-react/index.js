@@ -43,6 +43,7 @@ module.exports = {
       'props': 'never',
       'children': 'never',
     }],
+    'react/jsx-curly-newline': 'error',
     'react/jsx-fragments': ['error', 'syntax'],
     'react/jsx-no-useless-fragment': 'error',
     'react/jsx-pascal-case': 'error',
