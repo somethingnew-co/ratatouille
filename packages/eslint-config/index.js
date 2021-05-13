@@ -133,12 +133,12 @@ module.exports = {
         },
         'ImportDeclaration': {
           'multiline': true,
-          'minProperties': 5,
+          'minProperties': 9,
           'consistent': true,
         },
         'ExportDeclaration': {
           'multiline': true,
-          'minProperties': 5,
+          'minProperties': 9,
           'consistent': true,
         },
       },
