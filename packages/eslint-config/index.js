@@ -249,6 +249,10 @@ module.exports = {
     'unicorn/prefer-type-error': 'error',
     'unicorn/prevent-abbreviations': ['error', {
       'allowList': {
+        'arg': true,
+        'Arg': true,
+        'args': true,
+        'Args': true,
         'ref': true,
         'Ref': true,
         'refs': true,
