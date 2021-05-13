@@ -103,17 +103,22 @@ module.exports = {
     'object-curly-newline': ['error', {
       'ObjectExpression': {
         'multiline': true,
-        'minProperties': 4,
         'consistent': true,
       },
       'ObjectPattern': {
         'multiline': true,
-        'minProperties': 4,
+        'minProperties': 5,
         'consistent': true,
       },
-      'ImportDeclaration': 'never',
+      'ImportDeclaration': {
+        'multiline': true,
+        'minProperties': 5,
+        'consistent': true,
+      },
       'ExportDeclaration': {
-        'multiline': true, 'minProperties': 4,
+        'multiline': true,
+        'minProperties': 5,
+        'consistent': true,
       },
     }],
     'object-curly-spacing': ['error', 'always'],
@@ -195,12 +200,7 @@ module.exports = {
     'unicorn/escape-case': 'error',
     'unicorn/expiring-todo-comments': 'error',
     'unicorn/explicit-length-check': 'error',
-    'unicorn/filename-case': ['error', {
-      cases: {
-        camelCase: true,
-        pascalCase: true,
-      },
-    }],
+    'unicorn/filename-case': 'off',
     'unicorn/import-index': 'off',
     'unicorn/import-style': 'error',
     'unicorn/new-for-builtins': 'error',
