@@ -128,17 +128,14 @@ module.exports = {
         },
         'ObjectPattern': {
           'multiline': true,
-          'minProperties': 5,
           'consistent': true,
         },
         'ImportDeclaration': {
           'multiline': true,
-          'minProperties': 9,
           'consistent': true,
         },
         'ExportDeclaration': {
           'multiline': true,
-          'minProperties': 9,
           'consistent': true,
         },
       },
