@@ -17,24 +17,24 @@ import { DefaultTheme } from 'styled-components';
 export type Value = TLengthStyledSystem;
 export type ResponsiveProp = ResponsiveValue<TLengthStyledSystem>;
 
-export type BoxProps =
-  & BackgroundProps
-  & BorderProps
-  & ColorProps
-  & FlexboxProps
-  & GridProps
-  & LayoutProps
-  & PositionProps
-  & SpaceProps
-  & TypographyProps
-  & {
-    spaceX?: ResponsiveProp
-    sx?: ResponsiveProp
-    spaceY?: ResponsiveProp
-    sy?: ResponsiveProp
-  }
+export interface BoxProps extends
+  BackgroundProps,
+  BorderProps,
+  ColorProps,
+  FlexboxProps,
+  GridProps,
+  LayoutProps,
+  PositionProps,
+  SpaceProps,
+  TypographyProps
+{
+  spaceX?: ResponsiveProp
+  sx?: ResponsiveProp
+  spaceY?: ResponsiveProp
+  sy?: ResponsiveProp
+}
 
-export type ThemedBox = BoxProps & {
+export interface ThemedBox extends BoxProps {
   theme: DefaultTheme & StyledSystemTheme & {
     grid: {
       columns: number
@@ -45,7 +45,7 @@ export type ThemedBox = BoxProps & {
   }
 }
 
-export type ColProps = ThemedBox & {
+export interface ColProps extends ThemedBox {
   span?: ResponsiveProp
   push?: ResponsiveProp
   pull?: ResponsiveProp
