@@ -15,7 +15,7 @@ export const Col = styled(Box).attrs(({
   push,
   pull,
   offset,
-}: ColProps) => {
+}: ColProps): BoxProps => {
   const props: BoxProps = {
     flex: 1,
     maxWidth: '100%',
