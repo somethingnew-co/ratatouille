@@ -1,6 +1,6 @@
 {
   "name": "@stnew/layout",
-  "version": "3.0.0-beta.0",
+  "version": "3.0.0-beta.1",
   "description": "Extensive flexbox/CSS grid layout system",
   "author": "Something New",
   "homepage": "https://github.com/somethingnew-co/ratatouille/tree/master/packages/layout",
@@ -25,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/somethingnew-co/ratatouille/issues"
   },
-
   "peerDependencies": {
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
