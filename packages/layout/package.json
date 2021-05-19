@@ -25,6 +25,7 @@
   "bugs": {
     "url": "https://github.com/somethingnew-co/ratatouille/issues"
   },
+
   "peerDependencies": {
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
@@ -32,6 +33,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@types/styled-system": "^5.1.9"
+    "@types/styled-system": "^5.1.9",
+    "csstype": "latest"
   }
 }
