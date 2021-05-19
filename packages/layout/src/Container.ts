@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { Box } from './Box';
-import { ThemedBox, Value } from './types';
+import { BoxProps, ThemedBox, Value } from './types';
 
 /**
  * Extension of `<Box>` with max-width and padding applied.
  * This is used as a page or section wrapper.
  */
-export const Container = styled(Box).attrs(({ theme }: ThemedBox) => {
+export const Container = styled(Box).attrs(({ theme }: ThemedBox): BoxProps => {
   let containerWidth = theme.grid.maxWidth;
 
   if (Array.isArray(containerWidth)) {
