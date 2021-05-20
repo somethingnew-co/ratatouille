@@ -1,3 +1,5 @@
+import { Property } from 'csstype';
+import { DefaultTheme } from 'styled-components';
 import {
   BackgroundProps,
   BorderProps,
@@ -12,7 +14,6 @@ import {
   TLengthStyledSystem,
   Theme as StyledSystemTheme,
 } from 'styled-system';
-import { DefaultTheme } from 'styled-components';
 
 export type Value = TLengthStyledSystem;
 export type ResponsiveProp = ResponsiveValue<TLengthStyledSystem>;
@@ -32,6 +33,11 @@ export interface BoxProps extends
   sx?: ResponsiveProp
   spaceY?: ResponsiveProp
   sy?: ResponsiveProp
+
+  // This clashes with @types/react, which thinks it's a DOM attribute and
+  // wants it to be a string. This is a temporary workaround.
+  color?: string
+  textColor?: ResponsiveValue<Property.Color>
 }
 
 export interface ThemedBox extends BoxProps {

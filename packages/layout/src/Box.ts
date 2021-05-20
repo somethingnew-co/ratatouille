@@ -9,6 +9,7 @@ import {
   layout,
   position,
   space,
+  style,
   styleFn,
   typography,
 } from 'styled-system';
@@ -17,17 +18,12 @@ import { props } from '@styled-system/should-forward-prop';
 import styledCss from '@styled-system/css';
 import { isReverse } from './utils';
 
-const box = compose(
-  background,
-  border,
-  color,
-  flexbox,
-  grid,
-  layout,
-  position,
-  space,
-  typography,
-);
+const textColor = style({
+  prop: 'textColor',
+  cssProperty: 'color',
+  key: 'colors',
+});
+
 
 const boxProperties: Set<string> = new Set([
   ...props,
@@ -65,6 +61,21 @@ const spaceExtension = css`
     ${spaceSystem}
   }
 `;
+
+const box = compose(
+  background,
+  border,
+  color,
+  flexbox,
+  grid,
+  layout,
+  position,
+  space,
+  typography,
+
+  // Custom properties
+  textColor,
+);
 
 /**
  * Basic layout building block. Includes `background`, `border`, `color`,
