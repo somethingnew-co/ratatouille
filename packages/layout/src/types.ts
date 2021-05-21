@@ -21,7 +21,9 @@ export type ResponsiveProp = ResponsiveValue<TLengthStyledSystem>;
 export interface BoxProps extends
   BackgroundProps,
   BorderProps,
-  ColorProps,
+  // This clashes with @types/react, which thinks it's a DOM attribute and
+  // wants it to be a string. This is a temporary workaround.
+  Omit<ColorProps, 'color'>,
   FlexboxProps,
   GridProps,
   LayoutProps,
@@ -34,9 +36,7 @@ export interface BoxProps extends
   spaceY?: ResponsiveProp
   sy?: ResponsiveProp
 
-  // This clashes with @types/react, which thinks it's a DOM attribute and
-  // wants it to be a string. This is a temporary workaround.
-  color?: string
+  // Custom prop to allow responsive text color props.
   textColor?: ResponsiveValue<Property.Color>
 }
 
