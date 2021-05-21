@@ -2,8 +2,43 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import styled, { ThemeProvider } from 'styled-components';
 import { Box, Container, Grid, Flex, Row, Col } from './index';
+import { BoxProps } from './types';
 
 const Stories = storiesOf('Layout', module);
+
+const StyledTestBox = styled(Box)`
+  color: lime;
+`;
+const StyledTestFlex = styled(Flex)`
+  color: red;
+`;
+const StyledTestGrid = styled(Grid)`
+  color: blue;
+`;
+const StyledTestRow = styled(Row)`
+  color: yellow;
+`;
+const StyledTestCol = styled(Col)`
+  color: pink;
+`;
+const StyledTestContainer = styled(Container)`
+  color: orange;
+`;
+
+interface WrapperTest extends BoxProps {
+  isTest: boolean
+}
+
+const WrapperTest = ({ isTest, ...rest }: WrapperTest): JSX.Element => (
+  <>
+    <StyledTestBox {...rest}>{isTest ? 'Test!' : ' No test...'}</StyledTestBox>
+    <StyledTestFlex {...rest}>{isTest ? 'Test!' : ' No test...'}</StyledTestFlex>
+    <StyledTestGrid {...rest}>{isTest ? 'Test!' : ' No test...'}</StyledTestGrid>
+    <StyledTestRow {...rest}>{isTest ? 'Test!' : ' No test...'}</StyledTestRow>
+    <StyledTestCol {...rest}>{isTest ? 'Test!' : ' No test...'}</StyledTestCol>
+    <StyledTestContainer {...rest}>{isTest ? 'Test!' : ' No test...'}</StyledTestContainer>
+  </>
+);
 
 const Styling = styled.div`
   * {
@@ -58,17 +93,21 @@ Stories.add('Smoketest', () => (
       margins: 10,
     },
     breakpoints,
-  }}>
+  }}
+  >
     <Styling>
+      <WrapperTest isTest={true} />
+      <WrapperTest isTest={true} mx={40} />
+      <WrapperTest isTest={true} backgroundColor="green" />
       <Flex spaceX={[0, '32px', 64]}>
-        <Box bg="grey" >Hello</Box>
-        <Box bg="grey" >World</Box>
-        <Box bg="grey" >World</Box>
+        <Box bg="grey">Hello</Box>
+        <Box bg="grey">World</Box>
+        <Box bg="grey">World</Box>
       </Flex>
       <Flex flexDirection={['row-reverse']} spaceX={[0, '32px', 64]}>
-        <Box bg="grey" >Hello</Box>
-        <Box bg="grey" >World</Box>
-        <Box bg="grey" >World</Box>
+        <Box bg="grey">Hello</Box>
+        <Box bg="grey">World</Box>
+        <Box bg="grey">World</Box>
       </Flex>
       <Flex spaceX={[0, '32px', 64]}>
         <Box bg="grey" flex="1">Hello</Box>
@@ -80,7 +119,7 @@ Stories.add('Smoketest', () => (
         <Box bg="grey">World</Box>
         <Box bg="grey">World</Box>
       </Box>
-      <Container >
+      <Container>
         <Row as="section">
           <Col
             order={[1, 1, 0, 1]}
@@ -100,7 +139,7 @@ Stories.add('Smoketest', () => (
       </Container>
       <Container as="section">
         <h1>Basic</h1>
-        <Box width={['100%', '50%']}/>
+        <Box width={['100%', '50%']} />
         <Box mx="20px" />
         <Box mx="40px" />
         <Box mx="60px" />
@@ -113,8 +152,8 @@ Stories.add('Smoketest', () => (
           <Col span={4} mx="auto">Test</Col>
         </Row>
         <Row justifyContent="space-around">
-          <Col span={4} >Test</Col>
-          <Col span={4} >Test</Col>
+          <Col span={4}>Test</Col>
+          <Col span={4}>Test</Col>
         </Row>
         <Row>
           <Col span={[4, 6]} mx="auto">Test</Col>
@@ -146,19 +185,19 @@ Stories.add('Smoketest', () => (
         </Row>
 
         <Row>
-          <Col span={[12, 6]}/>
+          <Col span={[12, 6]} />
           <Col as="header" span={[12, 5]}>
             <Row>
               <Col span={6} />
               <Col span={6} />
             </Row>
           </Col>
-          <Col span={1} display={['none', 'block']}/>
+          <Col span={1} display={['none', 'block']} />
         </Row>
 
         <Row>
           <Col span={4} />
-          <Col pull={2}/>
+          <Col pull={2} />
           <Col span={4} />
         </Row>
 
@@ -182,35 +221,35 @@ Stories.add('Smoketest', () => (
 
         <Grid>
           <Box gridColumn={['span 12', 'span 6']} />
-          <Box gridColumn={'7 / 13'} />
-          <Box gridColumn={'7 / -1'} gridRow="2" />
-          <Box gridColumn={'2 / 4'} gridRow={'2 / 5'} />
-          <Box gridColumn={'1 / 9'} gridRow={3} />
-          <Box gridColumn={'5 / 10'} gridRow={'4 / 4'} />
-          <Box gridColumn={'5 / 10'} gridRow={'2 / 4'} />
-          <Box gridColumn={'12'} gridRow={'4'} />
+          <Box gridColumn="7 / 13" />
+          <Box gridColumn="7 / -1" gridRow="2" />
+          <Box gridColumn="2 / 4" gridRow="2 / 5" />
+          <Box gridColumn="1 / 9" gridRow={3} />
+          <Box gridColumn="5 / 10" gridRow="4 / 4" />
+          <Box gridColumn="5 / 10" gridRow="2 / 4" />
+          <Box gridColumn="12" gridRow="4" />
         </Grid>
 
         <Grid gridTemplateRows="repeat(6, 50px)" mt="100px">
-          <Box gridColumn="1 / span 1" gridRow="1/6"/>
-          <Box gridColumn="1 / span 3" gridRow="1"/>
-          <Box gridColumn="1 / span 3" gridRow="5"/>
+          <Box gridColumn="1 / span 1" gridRow="1/6" />
+          <Box gridColumn="1 / span 3" gridRow="1" />
+          <Box gridColumn="1 / span 3" gridRow="5" />
 
-          <Box gridColumn="4 / span 3" gridRow="1"/>
-          <Box gridColumn="4" gridRow="1 / span 5"/>
-          <Box gridColumn="4 / span 3" gridRow="3"/>
-          <Box gridColumn="6" gridRow="1 / span 5"/>
+          <Box gridColumn="4 / span 3" gridRow="1" />
+          <Box gridColumn="4" gridRow="1 / span 5" />
+          <Box gridColumn="4 / span 3" gridRow="3" />
+          <Box gridColumn="6" gridRow="1 / span 5" />
 
-          <Box gridColumn="7 / span 3" gridRow="1"/>
-          <Box gridColumn="7 / span 3" gridRow="3"/>
-          <Box gridColumn="7 / span 3" gridRow="5"/>
-          <Box gridColumn="7" gridRow="1 / span 5"/>
-          <Box gridColumn="9" gridRow="1 / span 5"/>
+          <Box gridColumn="7 / span 3" gridRow="1" />
+          <Box gridColumn="7 / span 3" gridRow="3" />
+          <Box gridColumn="7 / span 3" gridRow="5" />
+          <Box gridColumn="7" gridRow="1 / span 5" />
+          <Box gridColumn="9" gridRow="1 / span 5" />
 
-          <Box gridColumn="10 / span 3" gridRow="1"/>
-          <Box gridColumn="10 / span 3" gridRow="3"/>
-          <Box gridColumn="10 / span 3" gridRow="5"/>
-          <Box gridColumn="10" gridRow="1 / span 5"/>
+          <Box gridColumn="10 / span 3" gridRow="1" />
+          <Box gridColumn="10 / span 3" gridRow="3" />
+          <Box gridColumn="10 / span 3" gridRow="5" />
+          <Box gridColumn="10" gridRow="1 / span 5" />
 
         </Grid>
       </Container>
