@@ -45,7 +45,7 @@ describe('Box', () => {
     expect(wrapper2).toHaveStyleRule('grid-row', '3');
 
     const wrapper3 = mountWithTheme(
-      <Box gridColumn="3 / 9" gridRow='1 / 3'>Hello World!</Box>, baseTheme,
+      <Box gridColumn="3 / 9" gridRow="1 / 3">Hello World!</Box>, baseTheme,
     );
     expect(wrapper3).toHaveStyleRule('grid-column', '3 / 9');
     expect(wrapper3).toHaveStyleRule('grid-row', '1 / 3');
