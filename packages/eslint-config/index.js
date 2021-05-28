@@ -45,6 +45,7 @@ module.exports = {
         VariableDeclarator: 1,
       },
     ],
+    'jsx-quotes': ['error', 'prefer-double'],
     'keyword-spacing': [
       'error', {
         before: true,
