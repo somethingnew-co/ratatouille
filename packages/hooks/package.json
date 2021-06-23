@@ -14,7 +14,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^16.13.1"
+    "react": "^16.8.x || ^17.x"
   },
   "repository": {
     "type": "git",
