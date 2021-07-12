@@ -17,10 +17,9 @@
     "eslint-plugin"
   ],
   "peerDependencies": {
-    "eslint": "*"
+    "eslint": "*",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-unicorn": "^34.0.1"
   },
-  "dependencies": {
-    "eslint-plugin-import": "latest",
-    "eslint-plugin-unicorn": "latest"
-  }
+  "dependencies": {}
 }

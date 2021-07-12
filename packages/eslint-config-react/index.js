@@ -26,7 +26,8 @@ module.exports = {
     'react/jsx-closing-bracket-location': 'error',
     'react/jsx-closing-tag-location': 'error',
     'react/jsx-curly-brace-presence': [
-      'error', {
+      'error',
+      {
         'props': 'never',
         'children': 'never',
       },
@@ -36,7 +37,8 @@ module.exports = {
     'react/jsx-no-useless-fragment': 'error',
     'react/jsx-pascal-case': 'error',
     'react/jsx-tag-spacing': [
-      'error', {
+      'error',
+      {
         'closingSlash': 'never',
         'beforeSelfClosing': 'always',
         'afterOpening': 'never',
@@ -44,7 +46,8 @@ module.exports = {
       },
     ],
     'react/jsx-wrap-multilines': [
-      'error', {
+      'error',
+      {
         'declaration': 'parens-new-line',
         'assignment': 'parens-new-line',
         'return': 'parens-new-line',

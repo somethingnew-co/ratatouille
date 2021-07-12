@@ -17,11 +17,11 @@
     "eslint-plugin"
   ],
   "peerDependencies": {
-    "eslint": "*"
+    "eslint": "*",
+    "@babel/eslint-parser": "*",
+    "@stnew/eslint-config": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-react-hooks": "*"
   },
-  "dependencies": {
-    "@stnew/eslint-config": "latest",
-    "eslint-plugin-react": "latest",
-    "eslint-plugin-react-hooks": "latest"
-  }
+  "dependencies": {}
 }
