@@ -1,6 +1,6 @@
 {
   "name": "@stnew/eslint-config-react",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Something New eslint config for React",
   "main": "index.js",
   "publishConfig": {
@@ -17,11 +17,10 @@
     "eslint-plugin"
   ],
   "peerDependencies": {
-    "eslint": "*",
     "@babel/eslint-parser": "*",
     "@stnew/eslint-config": "*",
+    "eslint": "*",
     "eslint-plugin-react": "*",
     "eslint-plugin-react-hooks": "*"
-  },
-  "dependencies": {}
+  }
 }
