@@ -23,7 +23,6 @@ module.exports = {
     'react/prefer-es6-class': ['error', 'always'],
     'react/prefer-stateless-function': 'error',
     'react/void-dom-elements-no-children': 'error',
-    'react/jsx-boolean-value': ['error', 'always'],
     'react/jsx-closing-bracket-location': 'error',
     'react/jsx-closing-tag-location': 'error',
     'react/jsx-curly-brace-presence': [
