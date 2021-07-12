@@ -1,6 +1,6 @@
 import React from 'react';
-import { mountWithTheme, baseTheme } from '../../test/utils';
-import { Grid, Box } from '..';
+import { baseTheme, mountWithTheme } from '../../test/utils';
+import { Box, Grid } from '..';
 import 'jest-styled-components';
 
 describe('Grid', () => {

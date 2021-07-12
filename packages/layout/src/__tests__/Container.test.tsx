@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '..';
-import { mountWithTheme, baseTheme, arrayTheme } from '../../test/utils';
+import { arrayTheme, baseTheme, mountWithTheme } from '../../test/utils';
 import 'jest-styled-components';
 
 describe('Container', () => {

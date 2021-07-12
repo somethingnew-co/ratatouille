@@ -1,5 +1,5 @@
 import React from 'react';
-import { mountWithTheme, baseTheme } from '../../test/utils';
+import { baseTheme, mountWithTheme } from '../../test/utils';
 import { Flex } from '..';
 import 'jest-styled-components';
 

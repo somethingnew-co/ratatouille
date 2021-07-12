@@ -1,4 +1,4 @@
-import { transformProp, trimUnit, calcGutter, calcSpan } from '../utils';
+import { calcGutter, calcSpan, transformProp, trimUnit } from '../utils';
 
 describe('trimUnit', () => {
   it('should trim unit', () => {

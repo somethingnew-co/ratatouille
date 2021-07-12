@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import React, { useState } from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import useBodyLock from '../useBodyLock';
 
 const MountTest: React.FC = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '..';
-import { mountWithTheme, baseTheme } from '../../test/utils';
+import { baseTheme, mountWithTheme } from '../../test/utils';
 import 'jest-styled-components';
 
 describe('Box', () => {
