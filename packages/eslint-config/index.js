@@ -8,17 +8,24 @@ module.exports = {
     ecmaVersion: 2021,
     sourceType: 'module',
   },
-  plugins: ['unicorn'],
+  plugins: [
+    'import',
+    'unicorn',
+  ],
   rules: {
     'arrow-body-style': [
-      'error', 'as-needed', {
+      'error',
+      'as-needed',
+      {
         requireReturnForObjectLiteral: false,
       },
     ],
     'array-bracket-newline': ['error', { 'multiline': true }],
     'array-bracket-spacing': ['error', 'never'],
     'arrow-parens': [
-      'error', 'always', {
+      'error',
+      'always',
+      {
         requireForBlockBody: true,
       },
     ],
@@ -32,7 +39,9 @@ module.exports = {
     'default-case': 'error',
     'dot-notation': 'error',
     'func-style': [
-      2, 'declaration', {
+      2,
+      'declaration',
+      {
         allowArrowFunctions: true,
       },
     ],
@@ -40,14 +49,17 @@ module.exports = {
     'eol-last': ['error', 'always'],
     'eqeqeq': 'error',
     'indent': [
-      'error', 2, {
+      'error',
+      2,
+      {
         SwitchCase: 1,
         VariableDeclarator: 1,
       },
     ],
     'jsx-quotes': ['error', 'prefer-double'],
     'keyword-spacing': [
-      'error', {
+      'error',
+      {
         before: true,
         after: true,
         overrides: {
@@ -59,12 +71,15 @@ module.exports = {
     ],
     'linebreak-style': ['error', 'unix'],
     'lines-between-class-members': [
-      'error', 'always', {
+      'error',
+      'always',
+      {
         exceptAfterSingleLine: true,
       },
     ],
     'max-len': [
-      'error', {
+      'error',
+      {
         'code': 100,
         'ignoreUrls': true,
         'ignoreStrings': true,
@@ -85,7 +100,8 @@ module.exports = {
     'no-multi-spaces': 'error',
     'no-multi-str': 'error',
     'no-multiple-empty-lines': [
-      'error', {
+      'error',
+      {
         max: 2,
         maxEOF: 1,
         maxBOF: 0,
@@ -102,13 +118,15 @@ module.exports = {
     'no-spaced-func': 'error',
     'no-this-before-super': 'error',
     'no-trailing-spaces': [
-      'error', {
+      'error',
+      {
         skipBlankLines: false,
         ignoreComments: false,
       },
     ],
     'no-unneeded-ternary': [
-      'error', {
+      'error',
+      {
         defaultAssignment: false,
       },
     ],
@@ -122,7 +140,8 @@ module.exports = {
     'no-whitespace-before-property': 'error',
     'no-var': 'error',
     'object-curly-newline': [
-      'error', {
+      'error',
+      {
         'ObjectExpression': {
           'multiline': true,
           'consistent': true,
@@ -142,9 +161,15 @@ module.exports = {
       },
     ],
     'object-curly-spacing': ['error', 'always'],
-    'object-property-newline': ['error', { 'allowAllPropertiesOnSameLine': true }],
+    'object-property-newline': [
+      'error', {
+        'allowAllPropertiesOnSameLine': true,
+      },
+    ],
     'object-shorthand': [
-      'error', 'always', {
+      'error',
+      'always',
+      {
         ignoreConstructors: false,
         avoidQuotes: true,
       },
@@ -152,7 +177,9 @@ module.exports = {
     'one-var': ['error', 'never'],
     'one-var-declaration-per-line': ['error', 'always'],
     'operator-linebreak': [
-      'error', 'before', {
+      'error',
+      'before',
+      {
         overrides: {
           '=': 'none',
         },
@@ -160,13 +187,15 @@ module.exports = {
     ],
     'prefer-arrow-callback': 'error',
     'prefer-const': [
-      'error', {
+      'error',
+      {
         destructuring: 'any',
         ignoreReadBeforeAssign: true,
       },
     ],
     'prefer-destructuring': [
-      'error', {
+      'error',
+      {
         VariableDeclarator: {
           array: false,
           object: true,
@@ -175,7 +204,8 @@ module.exports = {
           array: true,
           object: true,
         },
-      }, {
+      },
+      {
         enforceForRenamedProperties: false,
       },
     ],
@@ -189,8 +219,15 @@ module.exports = {
     'radix': 'error',
     'rest-spread-spacing': ['error', 'never'],
     'semi': ['error', 'never'],
+    'sort-imports': [
+      'error',
+      {
+        ignoreDeclarationSort: true,
+      },
+    ],
     'space-before-function-paren': [
-      'error', {
+      'error',
+      {
         anonymous: 'always',
         named: 'never',
         asyncArrow: 'always',
@@ -199,7 +236,9 @@ module.exports = {
     'space-in-parens': ['error', 'never'],
     'space-infix-ops': 'error',
     'spaced-comment': [
-      'error', 'always', {
+      'error',
+      'always',
+      {
         line: {
           exceptions: ['-', '+'],
           markers: ['=', '!'],
@@ -212,7 +251,8 @@ module.exports = {
       },
     ],
     'switch-colon-spacing': [
-      'error', {
+      'error',
+      {
         after: true,
         before: false,
       },
@@ -221,8 +261,37 @@ module.exports = {
     'template-curly-spacing': 'error',
     'vars-on-top': 'error',
     'wrap-iife': [
-      'error', 'outside', {
+      'error',
+      'outside',
+      {
         functionPrototypeMethods: false,
+      },
+    ],
+
+    // https://github.com/benmosher/eslint-plugin-import
+    'import/default': 'error',
+    'import/export': 'error',
+    'import/first': 'error',
+    'import/named': 'error',
+    'import/namespace': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
+    'import/no-named-as-default-member': 'warn',
+    'import/no-named-as-default': 'warn',
+    'import/no-self-import': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
       },
     ],
 
@@ -231,7 +300,8 @@ module.exports = {
     'unicorn/catch-error-name': 'error',
     'unicorn/consistent-destructuring': 'error',
     'unicorn/consistent-function-scoping': [
-      'error', {
+      'error',
+      {
         'checkArrowFunctions': false,
       },
     ],
